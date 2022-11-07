@@ -1,0 +1,10 @@
+rootProject.name = "DameDame"
+include(":app")
+include(":domain")
+include(":data")
+include(":feature:settings")
+include(":feature:write-diary")
+include(":feature:set-profile")
+include(":feature:friend-search")
+include(":shared")
+include(":core-ui")
