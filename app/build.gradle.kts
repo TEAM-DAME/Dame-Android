@@ -39,6 +39,7 @@ dependencies {
     implementation(project(":feature:friend-search"))
     implementation(project(":shared"))
     implementation(project(":core-ui"))
+    implementation(project(":navigator"))
 
     // Kotlin
     implementation(KotlinDependencies.kotlin)
