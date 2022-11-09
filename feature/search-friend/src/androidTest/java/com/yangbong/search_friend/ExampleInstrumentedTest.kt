@@ -1,4 +1,4 @@
-package com.yangbong.friend_search
+package com.yangbong.search_friend
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -36,7 +36,7 @@ dependencies {
     implementation(project(":feature:settings"))
     implementation(project(":feature:write-diary"))
     implementation(project(":feature:set-profile"))
-    implementation(project(":feature:friend-search"))
+    implementation(project(":feature:search-friend"))
     implementation(project(":shared"))
     implementation(project(":core-ui"))
     implementation(project(":navigator"))
