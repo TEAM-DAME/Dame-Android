@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">DameDame</string>
+    <string name="home">홈</string>
+    <string name="search">검색</string>
+    <string name="my_profile">내 프로필</string>
 </resources>
