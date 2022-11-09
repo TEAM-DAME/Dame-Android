@@ -1,4 +1,4 @@
-package com.yangbong.friend_search
+package com.yangbong.search_friend
 
 import org.junit.Test
 

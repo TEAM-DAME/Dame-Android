@@ -10,7 +10,7 @@ android {
     buildFeatures {
         dataBinding = true
     }
-    namespace = "com.yangbong.damedame.friend_search"
+    namespace = "com.yangbong.damedame.search_friend"
 }
 
 
