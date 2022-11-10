@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f3f3ed">
+
+        <ImageView
+            android:id="@+id/backButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="26dp"
+            android:layout_marginStart="29dp"
+            android:src="@drawable/img_backbutton"
+            android:layout_height="18dp"
+            android:layout_width="14dp">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/settingText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="23dp"
+            android:layout_marginStart="168dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="normal"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:gravity="center_horizontal"
+            android:fontFamily="@font/jua"
+            android:text="설정"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/settingRecycler"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="97dp"
+            android:layout_marginStart="30dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
