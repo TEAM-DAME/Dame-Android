@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_back_set_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/fragment_set_profile_id_label_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/id"
+            android:textAppearance="@style/TitleTextStyleBold"
+            app:layout_constraintEnd_toStartOf="@id/fragment_set_profile_id_label_normal"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fragment_set_profile_id_label_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@string/id_input"
+            android:textAppearance="@style/TitleTextStyleNormal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/fragment_set_profile_id_label_bold"
+            app:layout_constraintTop_toTopOf="@id/fragment_set_profile_id_label_bold" />
+
+        <TextView
+            android:id="@+id/fragment_set_profile_image_label_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/profile_image"
+            android:textAppearance="@style/TitleTextStyleBold"
+            app:layout_constraintEnd_toStartOf="@id/fragment_set_profile_image_label_normal"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_set_profile_id_label_bold" />
+
+        <TextView
+            android:id="@+id/fragment_set_profile_image_label_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@string/profile_image_register"
+            android:textAppearance="@style/TitleTextStyleNormal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/fragment_set_profile_image_label_bold"
+            app:layout_constraintTop_toTopOf="@id/fragment_set_profile_image_label_bold" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fragment_set_profile_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="60dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_set_profile_image_label_bold"
+            tools:src="@drawable/img_profile_tmp_01" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_camera"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_set_profile_image"
+            app:layout_constraintEnd_toEndOf="@id/fragment_set_profile_image" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/fragment_set_profile_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/jua"
+            android:hint="@string/id_input_hint"
+            android:includeFontPadding="false"
+            android:inputType="text|textEmailAddress"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:paddingStart="19dp"
+            android:privateImeOptions="defaultInputmode=english"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@id/fragment_set_profile_image"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jua"
+            android:includeFontPadding="false"
+            android:text="@string/special_character_at"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_set_profile_edit_text"
+            app:layout_constraintStart_toStartOf="@id/fragment_set_profile_edit_text"
+            app:layout_constraintTop_toTopOf="@id/fragment_set_profile_edit_text" />
+
+        <TextView
+            android:id="@+id/fragment_set_profile_current_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jua"
+            android:includeFontPadding="false"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_set_profile_edit_text"
+            app:layout_constraintEnd_toEndOf="@id/fragment_set_profile_edit_text"
+            app:layout_constraintTop_toTopOf="@id/fragment_set_profile_edit_text"
+            tools:text="0/10" />
+
+        <View
+            android:id="@+id/fragment_set_profile_edit_text_underscore_view"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray_1"
+            app:layout_constraintEnd_toEndOf="@id/fragment_set_profile_edit_text"
+            app:layout_constraintStart_toStartOf="@id/fragment_set_profile_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/fragment_set_profile_edit_text" />
+
+        <TextView
+            android:id="@+id/fragment_register_profile_alert_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/jua"
+            android:includeFontPadding="false"
+            android:text="@string/id_is_duplicated"
+            android:textColor="@color/pink_ff6161"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@id/fragment_set_profile_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/fragment_set_profile_edit_text_underscore_view"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/fragment_set_profile_next_button"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@drawable/bg_button_pink_15_dp"
+            android:elevation="0dp"
+            android:fontFamily="@font/jua"
+            android:gravity="center"
+            android:layout_marginBottom="60dp"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            app:layout_constraintStart_toStartOf="@id/guideline_left" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

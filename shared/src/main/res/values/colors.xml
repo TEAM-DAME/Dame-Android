@@ -14,7 +14,6 @@
     <color name="gray_3">#757575</color>
     <color name="gray_5">#292929</color>
     <color name="yellow">#ffca7a</color>
-    <color name="main_white">#F3F3ED</color>
     <color name="main_blue">#79a5fb</color>
     <color name="main_blue_0.4">#6679a5fb</color>
     <color name="main_blue_0.6">#9979a5fb</color>
@@ -24,7 +23,15 @@
     <color name="alert_red">#d23939</color>
     <color name="gray_background">#f8f8f8</color>
     <color name="crimson">#FB7979</color>
-    <color name="kakao_yellow">#FEE500</color>
+    <color name="kakao_yellow">#E9D647</color>
     <color name="naver_green">#03C75A</color>
+
+    <color name="main_white">#F3F3ED</color>
     <color name="write_feed_gray">#eeeeee</color>
+    <color name="transparent">#00FF0000</color>
+    <color name="gray_808080">#808080</color>
+    <color name="pink_ff6161">#ff6161</color>
+    <color name="pink_dc9b8c">#dc9b8c</color>
+    <color name="gray_eeeeee">#eeeeee</color>
+    <color name="kakao_text">#402829</color>
 </resources>
