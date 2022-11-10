@@ -1,4 +1,4 @@
-package com.yangbong.settings
+package com.yangbong.notification
 
 import org.junit.Test
 

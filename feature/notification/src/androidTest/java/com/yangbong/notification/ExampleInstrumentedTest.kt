@@ -1,4 +1,4 @@
-package com.yangbong.settings
+package com.yangbong.notification
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
