@@ -1,4 +1,4 @@
-package com.yangbong.set_profile
+package com.yangbong.auth
 
 import org.junit.Test
 

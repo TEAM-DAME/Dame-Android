@@ -1,4 +1,4 @@
-package com.yangbong.set_profile
+package com.yangbong.auth
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
