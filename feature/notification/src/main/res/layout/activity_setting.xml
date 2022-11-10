@@ -15,7 +15,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="26dp"
             android:layout_marginStart="29dp"
-            android:src="@drawable/backbutton"
+            android:src="@drawable/img_backbutton"
             android:layout_height="18dp"
             android:layout_width="14dp">
         </ImageView>
