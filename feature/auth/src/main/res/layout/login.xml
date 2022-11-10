@@ -11,7 +11,7 @@
             android:id="@+id/loginImageView"
             android:layout_width="278dp"
             android:layout_height="185dp"
-            android:src="@drawable/character_cloud"
+            android:src="@drawable/img_character_01"
             android:layout_marginTop="62dp"
             android:layout_marginLeft="41dp"
             android:layout_marginRight="41dp"
