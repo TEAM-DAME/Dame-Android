@@ -5,8 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yangbong.damedame.settings.databinding.ItemSettingBinding
 
-class SettingRecyclerViewAdapter(private val items: List<String>) : RecyclerView.Adapter<SettingRecyclerViewAdapter.ViewHolder>() {
-    inner class ViewHolder(val binding: ItemSettingBinding)  : RecyclerView.ViewHolder(binding.root)
+class SettingRecyclerViewAdapter(private val items: List<String>) :
+    RecyclerView.Adapter<SettingRecyclerViewAdapter.ViewHolder>() {
+    inner class ViewHolder(val binding: ItemSettingBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -17,7 +18,7 @@ class SettingRecyclerViewAdapter(private val items: List<String>) : RecyclerView
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.settingType.text=items[position]
+        holder.binding.settingType.text = items[position]
     }
 
     override fun getItemCount(): Int = items.size
