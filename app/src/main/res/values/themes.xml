@@ -14,14 +14,14 @@
         <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
         <item name="android:includeFontPadding">false</item>
-        <item name="bottomSheetDialogTheme">@style/ReadmeBottomSheetDialogStyle</item>
+        <item name="bottomSheetDialogTheme">@style/DameDameBottomSheetDialogStyle</item>
     </style>
 
     <style name="TextStyleBottomNavigationView">
         <item name="textAllCaps">false</item>
     </style>
 
-    <style name="ReadmeBottomSheetDialogStyle" parent="Theme.Design.Light.BottomSheetDialog">
+    <style name="DameDameBottomSheetDialogStyle" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/ModalStyle</item>
     </style>
 
