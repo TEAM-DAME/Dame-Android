@@ -36,7 +36,6 @@ dependencies {
     implementation(project(":feature:notification"))
     implementation(project(":feature:write-diary"))
     implementation(project(":feature:auth"))
-    implementation(project(":feature:search-friend"))
     implementation(project(":shared"))
     implementation(project(":core-ui"))
     implementation(project(":navigator"))
