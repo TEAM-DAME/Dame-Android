@@ -33,7 +33,7 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
-    implementation(project(":feature:settings"))
+    implementation(project(":feature:notification"))
     implementation(project(":feature:write-diary"))
     implementation(project(":feature:auth"))
     implementation(project(":feature:search-friend"))

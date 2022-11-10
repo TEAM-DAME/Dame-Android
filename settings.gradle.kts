@@ -2,7 +2,7 @@ rootProject.name = "DameDame"
 include(":app")
 include(":domain")
 include(":data")
-include(":feature:settings")
+include(":feature:notification")
 include(":feature:write-diary")
 include(":feature:auth")
 include(":feature:search-friend")
