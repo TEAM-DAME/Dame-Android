@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rowBackground"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edittext"
+            android:backgroundTint="#FFFFFF"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="14dp"
+            app:layout_constraintStart_toStartOf="@id/line"
+            app:layout_constraintEnd_toEndOf="@id/line"
+
+            >
+
+            <TextView
+                android:id="@+id/friendNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="17dp"
+                android:text="지환짱123"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@id/rowBackground"
+                app:layout_constraintTop_toTopOf="@id/rowBackground" />
+            <TextView
+                android:id="@+id/X_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="19dp"
+                android:layout_marginTop="17dp"
+                android:text="X"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                app:layout_constraintTop_toTopOf="@id/rowBackground"
+                app:layout_constraintEnd_toEndOf="@id/rowBackground"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+</layout>
