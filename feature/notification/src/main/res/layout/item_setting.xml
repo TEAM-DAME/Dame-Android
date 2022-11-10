@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="23dp"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rowBackground"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/shape_rect_white_fill_10"
+            android:backgroundTint="#FFFFFF">
+
+            <ImageView
+                android:id="@+id/leftItemImage"
+                android:layout_width="22dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="19dp"
+                android:src="@drawable/bell"
+                app:layout_constraintLeft_toLeftOf="@+id/rowBackground"
+                app:layout_constraintTop_toTopOf="@id/rowBackground" />
+
+            <TextView
+                android:id="@+id/settingType"
+                android:layout_width="110dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="59dp"
+                android:layout_marginTop="19dp"
+                android:fontFamily="@font/jua"
+                android:text="알림"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/rightItemImage"
+                android:layout_width="8dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="23dp"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/leftarrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</layout>
