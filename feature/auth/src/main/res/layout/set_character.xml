@@ -51,7 +51,7 @@
             <ImageView
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:src="@drawable/character_cloud"/>
+                android:src="@drawable/img_character_01"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -78,7 +78,7 @@
             <ImageView
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:src="@drawable/character_green" />
+                android:src="@drawable/img_character_02" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -107,7 +107,7 @@
             <ImageView
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:src="@drawable/character_deeppink" />
+                android:src="@drawable/img_character_03" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -135,7 +135,7 @@
             <ImageView
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:src="@drawable/character_yellow"/>
+                android:src="@drawable/img_character_04"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -162,7 +162,7 @@
             <ImageView
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:src="@drawable/character_dark" />
+                android:src="@drawable/img_character_05" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -191,7 +191,7 @@
             <ImageView
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:src="@drawable/character_pastelpink" />
+                android:src="@drawable/img_character_06" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -218,7 +218,7 @@
             <ImageView
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:src="@drawable/character_brown"/>
+                android:src="@drawable/img_character_07"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -245,7 +245,7 @@
             <ImageView
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:src="@drawable/character_grey" />
+                android:src="@drawable/img_character_08" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -274,7 +274,7 @@
             <ImageView
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:src="@drawable/character_white" />
+                android:src="@drawable/img_character_09" />
 
             <TextView
                 android:layout_width="match_parent"

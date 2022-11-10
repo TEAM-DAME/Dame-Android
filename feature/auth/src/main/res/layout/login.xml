@@ -11,7 +11,7 @@
             android:id="@+id/loginImageView"
             android:layout_width="278dp"
             android:layout_height="185dp"
-            android:src="@drawable/character_cloud"
+            android:src="@drawable/img_character_01"
             android:layout_marginTop="62dp"
             android:layout_marginLeft="41dp"
             android:layout_marginRight="41dp"
@@ -64,7 +64,6 @@
             android:layout_marginLeft="13dp"
             android:layout_marginTop="120dp"
             android:scaleType="fitXY"
-            android:src="@drawable/kakao_login_medium_narrow"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/loginTextViewNomal" />
