@@ -11,6 +11,7 @@
     <string name="post_position">를</string>
     <string name="raise">키워보아요</string>
     <string name="kakao_login_text">카카오톡으로 1초만에 로그인</string>
+    <string name="login_explain"><b>간단한 회원가입</b>으로 <b>다메다메</b>를 시작해볼까요?</string>
 
     <!-- 캐릭터 선택 화면 -->
     <string name="character">캐릭터</string>
