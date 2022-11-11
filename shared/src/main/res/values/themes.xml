@@ -27,4 +27,13 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <!-- 상단 프로필 아이디 텍스트 볼드 -->
+    <style name="ProfileIdTextStyleBold">
+        <item name="android:textSize">16sp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/jua</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
