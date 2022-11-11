@@ -8,6 +8,12 @@ import dagger.hilt.android.components.ActivityComponent
 sealed interface Injector {
     @EntryPoint
     @InstallIn(ActivityComponent::class)
+    interface ResolutionMetricsInjector {
+        fun resolutionMetrics(): ResolutionMetrics
+    }
+
+    @EntryPoint
+    @InstallIn(ActivityComponent::class)
     interface MainNavigatorInjector {
         fun mainNavigator(): MainNavigator
     }
