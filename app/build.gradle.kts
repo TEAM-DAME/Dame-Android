@@ -7,14 +7,23 @@ plugins {
     id("com.android.application")
     id("kotlin-parcelize")
     kotlin("android")
-    kotlin("kapt")
     kotlin("plugin.serialization") version Versions.kotlinVersion
     id("dagger.hilt.android.plugin")
+    kotlin("kapt")
 }
 
 android {
     buildFeatures {
         dataBinding = true
+    }
+    defaultConfig {
+        buildConfigField(
+            "String",
+            "KAKAO_NATIVE_APP_KEY",
+            properties.getProperty("KAKAO_NATIVE_APP_KEY")
+        )
+        manifestPlaceholders["NATIVE_APP_KEY"] =
+            properties.getProperty("KAKAO_NATIVE_APP_KEY_NO_QUOTES")
     }
     buildTypes {
         getByName("release") {
@@ -105,6 +114,9 @@ dependencies {
     implementation(ThirdPartyDependencies.ossLicense)
 
     debugImplementation(ThirdPartyDependencies.leakCanary)
+
+    // Kakao Login
+    implementation(ThirdPartyDependencies.kakaoAuth)
 }
 
 
