@@ -3,19 +3,15 @@ package com.yangbong.damedame.navigator
 import android.content.Context
 import com.yangbong.core_ui.extension.navigateActivity
 import com.yangbong.damedame.MainActivity
+import com.yangbong.write_diary.WriteDiaryActivity
 import javax.inject.Inject
 
 internal class MainNavigatorImpl @Inject constructor() : MainNavigator {
-
     override fun navigateMain(context: Context) {
         context.navigateActivity<MainActivity>()
     }
 
-    override fun navigateFriendSearch(context: Context) {
-        TODO("Not yet implemented")
-    }
-
-    override fun navigateSetProfile(
+    override fun navigateAuth(
         context: Context,
         socialToken: Pair<String, String>,
         platform: Pair<String, String>
@@ -28,10 +24,12 @@ internal class MainNavigatorImpl @Inject constructor() : MainNavigator {
     }
 
     override fun navigateWriteDiary(context: Context) {
-        TODO("Not yet implemented")
+        context.navigateActivity<WriteDiaryActivity>()
     }
 
     override fun transactionToHome() {
-        TODO("Not yet implemented")
+        MainActivity.transactionToHome()
     }
+
+
 }
