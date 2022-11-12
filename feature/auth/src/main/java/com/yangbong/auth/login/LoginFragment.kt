@@ -2,6 +2,7 @@ package com.yangbong.auth.login
 
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.activityViewModels
 import com.yangbong.auth.social_login_manager.KakaoLoginManager
 import com.yangbong.core_ui.base.BindingFragment
@@ -25,6 +26,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         initClickEvent()
         initLoginObserver()
         initMoveToHomeObserver()
+        setLogoScaleAnimation()
     }
 
     private fun initClickEvent() {
@@ -52,6 +54,12 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
                 navigateMainActivity()
             }
         )
+    }
+
+    private fun setLogoScaleAnimation() {
+        AnimationUtils.loadAnimation(requireActivity(), R.anim.logo_scale).apply {
+            binding.ivLogo.startAnimation(this)
+        }
     }
 
     private fun navigateMainActivity() {
