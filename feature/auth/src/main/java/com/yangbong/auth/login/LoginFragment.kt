@@ -23,6 +23,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initClickEvent()
+        initLoginObserver()
         initMoveToHomeObserver()
     }
 
@@ -34,7 +35,13 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
                     loginViewModel.updateSocialToken(it)
                 }
             }
-            TODO("확장 가능성을 고려함. 추가 소셜 플랫폼 로그인 구현시 이곳에 구현")
+            // TODO("확장 가능성을 고려함. 추가 소셜 플랫폼 로그인 구현시 이곳에 구현")
+        }
+    }
+
+    private fun initLoginObserver() {
+        loginViewModel.socialToken.observe(viewLifecycleOwner) {
+            navigateMainActivity()
         }
     }
 
