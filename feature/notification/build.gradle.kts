@@ -10,7 +10,7 @@ android {
     buildFeatures {
         dataBinding = true
     }
-    namespace = "com.yangbong.damedame.settings"
+    namespace = "com.yangbong.damedame.notification"
 }
 
 dependencies {
