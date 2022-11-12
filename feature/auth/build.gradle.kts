@@ -1,3 +1,8 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+
+val properties = Properties()
+properties.load(project.rootProject.file("local.properties").inputStream())
+
 plugins {
     id("com.android.library")
     id("kotlin-parcelize")
@@ -10,7 +15,14 @@ android {
     buildFeatures {
         dataBinding = true
     }
-    namespace = "com.yangbong.damedame.set_profile"
+    defaultConfig {
+        buildConfigField(
+            "String",
+            "KAKAO_NATIVE_APP_KEY",
+            properties.getProperty("KAKAO_NATIVE_APP_KEY")
+        )
+    }
+    namespace = "com.yangbong.damedame.auth"
 }
 
 
@@ -18,6 +30,7 @@ dependencies {
     implementation(project(":core-ui"))
     implementation(project(":domain"))
     implementation(project(":shared"))
+    implementation(project(":navigator"))
 
     // Android Core
     implementation(AndroidXDependencies.coreKtx)
