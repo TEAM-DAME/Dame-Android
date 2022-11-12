@@ -1,6 +1,7 @@
 package com.yangbong.damedame.navigator
 
 import android.content.Context
+import com.yangbong.auth.AuthActivity
 import com.yangbong.core_ui.extension.navigateActivity
 import com.yangbong.damedame.MainActivity
 import com.yangbong.write_diary.WriteDiaryActivity
@@ -11,16 +12,12 @@ internal class MainNavigatorImpl @Inject constructor() : MainNavigator {
         context.navigateActivity<MainActivity>()
     }
 
-    override fun navigateAuth(
-        context: Context,
-        socialToken: Pair<String, String>,
-        platform: Pair<String, String>
-    ) {
-        TODO("Not yet implemented")
+    override fun navigateAuth(context: Context) {
+        context.navigateActivity<AuthActivity>()
     }
 
     override fun navigateSettings(context: Context) {
-        TODO("Not yet implemented")
+//        context.navigateActivity<>()
     }
 
     override fun navigateWriteDiary(context: Context) {
