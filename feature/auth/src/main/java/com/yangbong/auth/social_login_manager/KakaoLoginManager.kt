@@ -1,4 +1,4 @@
-package com.yangbong.auth
+package com.yangbong.auth.social_login_manager
 
 import android.content.Context
 import com.kakao.sdk.auth.model.OAuthToken

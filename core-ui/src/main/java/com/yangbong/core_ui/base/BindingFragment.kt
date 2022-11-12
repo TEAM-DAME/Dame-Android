@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.yangbong.core_ui.util.Injector
-import com.yangbong.damedame.navigator.MainNavigator
+import com.yangbong.damedame.navigator.*
 import dagger.hilt.android.EntryPointAccessors
 
 abstract class BindingFragment<T : ViewDataBinding>(

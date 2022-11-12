@@ -7,11 +7,7 @@ interface MainNavigator {
     fun navigateMain(context: Context)
 
     /** AuthActivity로 이동 */
-    fun navigateAuth(
-        context: Context,
-        socialToken: Pair<String, String>,
-        platform: Pair<String, String>
-    )
+    fun navigateAuth(context: Context)
 
     /** SettingsActivity로 이동 */
     fun navigateSettings(context: Context)
