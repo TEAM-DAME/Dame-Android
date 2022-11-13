@@ -1,4 +1,4 @@
-package com.yangbong.data.local.datasource
+package com.yangbong.data.local.data_source
 
 interface LocalPreferenceUserDataSource {
     fun getAccessToken(): String

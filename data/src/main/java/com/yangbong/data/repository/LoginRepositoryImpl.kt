@@ -1,11 +1,19 @@
 package com.yangbong.data.repository
 
-import com.yangbong.data.local.datasource.LocalPreferenceUserDataSource
+import com.yangbong.core_data.exception.RetrofitFailureStateException
+import com.yangbong.data.local.data_source.LocalPreferenceUserDataSource
+import com.yangbong.data.remote.call_adapter.NetworkState
+import com.yangbong.data.remote.data_source.RemoteLoginDataSource
+import com.yangbong.data.remote.model.request.LoginRequest
+import com.yangbong.domain.entity.request.DomainLoginRequest
+import com.yangbong.domain.entity.response.DomainLoginResponse
 import com.yangbong.domain.repository.LoginRepository
+import timber.log.Timber
 import javax.inject.Inject
 
 class LoginRepositoryImpl @Inject constructor(
-    private val localPreferenceUserDataSource: LocalPreferenceUserDataSource
+    private val localPreferenceUserDataSource: LocalPreferenceUserDataSource,
+    private val remoteLoginDataSource: RemoteLoginDataSource
 ) : LoginRepository {
     override fun getAccessToken(): String {
         return localPreferenceUserDataSource.getAccessToken()
@@ -27,6 +35,38 @@ class LoginRepositoryImpl @Inject constructor(
 
     override fun saveUserProfileImageUrl(userProfileImageUrl: String) {
         localPreferenceUserDataSource.saveUserProfileImageUrl(userProfileImageUrl)
+    }
+
+    override suspend fun postLogin(loginRequest: DomainLoginRequest): Result<DomainLoginResponse> {
+        val response = remoteLoginDataSource.postLogin(
+            LoginRequest(
+                platform = loginRequest.platform,
+                socialToken = loginRequest.socialToken
+            )
+        )
+
+        when (response) {
+            is NetworkState.Success -> return Result.success(
+                DomainLoginResponse(
+                    accessToken = response.body.data.accessToken
+                )
+            )
+            is NetworkState.Failure -> return Result.failure(
+                RetrofitFailureStateException(
+                    response.error,
+                    response.code
+                )
+            )
+            is NetworkState.NetworkError -> Timber.d(
+                response.error,
+                "${this.javaClass.name}_postKakaoLogin"
+            )
+            is NetworkState.UnknownError -> Timber.d(
+                response.t,
+                "${this.javaClass.name}_postKakaoLogin"
+            )
+        }
+        return Result.failure(IllegalStateException("NetworkError or UnKnownError please check timber"))
     }
 
 }
