@@ -6,5 +6,6 @@ data class LoginUseCases(
     val getIsFirstVisited: GetIsFirstVisited,
     val setIsFirstVisited: SetIsFirstVisited,
     val saveUserNickname: SaveUserNickname,
-    val saveUserProfileImageUrl: SaveUserProfileImageUrl
+    val saveUserProfileImageUrl: SaveUserProfileImageUrl,
+    val postLogin: PostLogin
 )
