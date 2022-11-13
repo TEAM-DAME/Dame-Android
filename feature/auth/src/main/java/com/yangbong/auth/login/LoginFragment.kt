@@ -48,9 +48,6 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         loginViewModel.socialToken.observe(viewLifecycleOwner) {
             navigateMainActivity()
         }
-//        loginViewModel.socialToken.observe(viewLifecycleOwner) {
-//            loginViewModel.postLogin()
-//        }
     }
 
     private fun initLoginFailureMessageObserver() {
