@@ -5,6 +5,8 @@ import com.yangbong.domain.entity.response.DomainLoginResponse
 
 interface LoginRepository {
 
+    fun getFcmToken(tokenCallBack: (String) -> Unit)
+
     fun getAccessToken(): String
 
     fun saveAccessToken(accessToken: String)
