@@ -6,8 +6,6 @@ import androidx.fragment.app.activityViewModels
 import com.yangbong.core_ui.base.BindingFragment
 import com.yangbong.core_ui.util.ResolutionMetrics
 import com.yangbong.damedame.main.R
-import com.yangbong.damedame.main.databinding.FragmentHomeBinding
-import com.yangbong.damedame.main.databinding.FragmentProfileBinding
 import com.yangbong.damedame.main.databinding.FragmentSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -19,6 +19,16 @@ android {
     defaultConfig {
         buildConfigField(
             "String",
+            "DAME_DAME_SERVER_BASE_URL_DEBUG",
+            properties.getProperty("DAME_DAME_SERVER_BASE_URL_DEBUG")
+        )
+        buildConfigField(
+            "String",
+            "DAME_DAME_SERVER_BASE_URL_RELEASE",
+            properties.getProperty("DAME_DAME_SERVER_BASE_URL_RELEASE")
+        )
+        buildConfigField(
+            "String",
             "KAKAO_NATIVE_APP_KEY",
             properties.getProperty("KAKAO_NATIVE_APP_KEY")
         )

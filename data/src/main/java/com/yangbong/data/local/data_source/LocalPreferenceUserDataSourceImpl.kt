@@ -1,4 +1,4 @@
-package com.yangbong.data.local.datasource
+package com.yangbong.data.local.data_source
 
 import android.content.SharedPreferences
 import androidx.core.content.edit

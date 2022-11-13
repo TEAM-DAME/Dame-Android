@@ -7,7 +7,6 @@ import com.yangbong.core_ui.base.BindingFragment
 import com.yangbong.core_ui.util.ResolutionMetrics
 import com.yangbong.damedame.main.R
 import com.yangbong.damedame.main.databinding.FragmentHomeBinding
-import com.yangbong.damedame.main.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

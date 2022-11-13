@@ -1,7 +1,6 @@
 package com.yangbong.core_ui.extension
 
 import android.view.View
-import timber.log.Timber
 
 inline fun View.setOnSingleClickListener(
     delay: Long = 500L,
