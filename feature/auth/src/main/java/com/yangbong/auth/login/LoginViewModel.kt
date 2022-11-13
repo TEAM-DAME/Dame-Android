@@ -39,6 +39,7 @@ class LoginViewModel @Inject constructor(
                 )
             ).onSuccess {
                 loginUseCases.saveAccessToken(it.accessToken ?: "")
+                _navigateToHome.postValue(Event(true))
             }.onFailure {
                 _loginFailureMessage.postValue(it.message)
             }
