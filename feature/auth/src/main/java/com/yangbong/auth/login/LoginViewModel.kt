@@ -40,7 +40,7 @@ class LoginViewModel @Inject constructor(
             ).onSuccess {
                 loginUseCases.saveAccessToken(it.accessToken ?: "")
             }.onFailure {
-                _loginFailureMessage.value = it.message
+                _loginFailureMessage.postValue(it.message)
             }
         }
     }
