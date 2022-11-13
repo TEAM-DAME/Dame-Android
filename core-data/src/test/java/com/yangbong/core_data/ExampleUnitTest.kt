@@ -1,4 +1,4 @@
-package com.yangbong.core
+package com.yangbong.core_data
 
 import org.junit.Test
 

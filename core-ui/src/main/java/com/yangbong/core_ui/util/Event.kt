@@ -1,4 +1,4 @@
-package com.yangbong.core_ui.util
+package com.yangbong.core.util
 
 open class Event<out T>(private val content: T) {
     var hasBeenHandled = false

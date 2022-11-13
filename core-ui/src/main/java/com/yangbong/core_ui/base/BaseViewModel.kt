@@ -1,9 +1,9 @@
-package com.yangbong.core_ui.base
+package com.yangbong.core.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.yangbong.core_ui.util.Event
+import com.yangbong.core.util.Event
 import kotlinx.coroutines.CoroutineExceptionHandler
 import java.security.cert.CertificateException
 

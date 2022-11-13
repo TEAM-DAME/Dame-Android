@@ -1,4 +1,4 @@
-package com.yangbong.core
+package com.yangbong.core_data
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.yangbong.core_ui.test", appContext.packageName)
+        assertEquals("com.yangbong.core_data.test", appContext.packageName)
     }
 }

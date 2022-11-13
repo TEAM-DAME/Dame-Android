@@ -1,4 +1,4 @@
-package com.yangbong.core_ui.util
+package com.yangbong.core.util
 
 import android.util.DisplayMetrics
 import androidx.annotation.Px

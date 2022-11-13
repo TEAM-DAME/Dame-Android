@@ -1,4 +1,4 @@
-package com.yangbong.core_ui.extension
+package com.yangbong.core.extension
 
 import android.app.Activity
 import android.content.Context

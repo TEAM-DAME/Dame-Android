@@ -1,4 +1,4 @@
-package com.yangbong.core_ui.util
+package com.yangbong.core.util
 
 import android.content.SharedPreferences
 import com.yangbong.damedame.navigator.MainNavigator
