@@ -1,4 +1,4 @@
-package com.yangbong.core.base
+package com.yangbong.core_ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.yangbong.core.util.Injector
+import com.yangbong.core_ui.util.Injector
 import com.yangbong.damedame.navigator.*
 import dagger.hilt.android.EntryPointAccessors
 

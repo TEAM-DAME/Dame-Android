@@ -1,4 +1,4 @@
-package com.yangbong.core.base
+package com.yangbong.core_ui.base
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.yangbong.core.util.EventObserver
-import com.yangbong.core.util.Injector
+import com.yangbong.core_ui.util.EventObserver
+import com.yangbong.core_ui.util.Injector
 import com.yangbong.damedame.navigator.MainNavigator
 
 import dagger.hilt.android.EntryPointAccessors

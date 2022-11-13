@@ -1,4 +1,4 @@
-package com.yangbong.core.util
+package com.yangbong.core_ui.util
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.FlowCollector

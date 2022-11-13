@@ -1,4 +1,4 @@
-package com.yangbong.core.extension
+package com.yangbong.core_ui.extension
 
 import android.app.Activity
 import androidx.annotation.ColorInt

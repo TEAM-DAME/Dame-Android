@@ -1,4 +1,4 @@
-package com.yangbong.core.util
+package com.yangbong.core_ui.util
 
 import timber.log.Timber
 
