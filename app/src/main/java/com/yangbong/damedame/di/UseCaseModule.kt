@@ -21,7 +21,8 @@ object UseCaseModule {
             getIsFirstVisited = GetIsFirstVisited(repository),
             setIsFirstVisited = SetIsFirstVisited(repository),
             saveUserNickname = SaveUserNickname(repository),
-            saveUserProfileImageUrl = SaveUserProfileImageUrl(repository)
+            saveUserProfileImageUrl = SaveUserProfileImageUrl(repository),
+            postLogin = PostLogin(repository)
         )
     }
 

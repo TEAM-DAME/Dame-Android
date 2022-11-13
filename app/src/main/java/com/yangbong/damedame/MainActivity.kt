@@ -2,7 +2,6 @@ package com.yangbong.damedame
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.yangbong.core_ui.base.BindingActivity
 import com.yangbong.core_ui.extension.setOnSingleClickListener
 import com.yangbong.damedame.adapter.MainViewPagerAdapter

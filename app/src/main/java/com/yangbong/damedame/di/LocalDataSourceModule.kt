@@ -1,7 +1,7 @@
 package com.yangbong.damedame.di
 
-import com.yangbong.data.local.datasource.LocalPreferenceUserDataSource
-import com.yangbong.data.local.datasource.LocalPreferenceUserDataSourceImpl
+import com.yangbong.data.local.data_source.LocalPreferenceUserDataSource
+import com.yangbong.data.local.data_source.LocalPreferenceUserDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
