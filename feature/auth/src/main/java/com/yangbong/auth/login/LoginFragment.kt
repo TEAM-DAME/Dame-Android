@@ -23,6 +23,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loginViewModel.getFcmToken()
         initClickEvent()
         initLoginObserver()
         initMoveToHomeObserver()

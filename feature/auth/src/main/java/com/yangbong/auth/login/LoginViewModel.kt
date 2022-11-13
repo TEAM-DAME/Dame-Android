@@ -19,22 +19,28 @@ class LoginViewModel @Inject constructor(
     private val _socialToken = MutableLiveData<String>()
     val socialToken: LiveData<String> = _socialToken
 
+    private val _fcmToken = MutableLiveData<String>()
+    val fcmToken: LiveData<String> = _fcmToken
+
     private lateinit var platform: String
 
     private val _navigateToHome = MutableLiveData<Event<Boolean>>()
     val navigateToHome: LiveData<Event<Boolean>> = _navigateToHome
 
+    private val _loginFailureMessage = MutableLiveData<String>()
+    val loginFailureMessage: LiveData<String> = _loginFailureMessage
+
     fun postLogin() {
         viewModelScope.launch {
             loginUseCases.postLogin(
                 DomainLoginRequest(
-                    platform = platform,
-                    socialToken = socialToken.value ?: ""
+                    socialToken = socialToken.value ?: "",
+                    fcmToken = fcmToken.value ?: ""
                 )
             ).onSuccess {
                 loginUseCases.saveAccessToken(it.accessToken ?: "")
             }.onFailure {
-                // TODO("실패했을 때 로직 추가")
+                _loginFailureMessage.value = it.message
             }
         }
     }
@@ -49,5 +55,15 @@ class LoginViewModel @Inject constructor(
 
     fun updatePlatform(platform: String) {
         this.platform = platform
+    }
+
+    fun getFcmToken() {
+        loginUseCases.getFcmToken {
+            updateFcmToken(it)
+        }
+    }
+
+    private fun updateFcmToken(fcmToken: String) {
+        _fcmToken.value = fcmToken
     }
 }
