@@ -3,7 +3,6 @@ package com.yangbong.auth.login
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.yangbong.auth.social_login_manager.KakaoLoginManager
 import com.yangbong.core_ui.base.BindingFragment
@@ -29,6 +28,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         initLoginObserver()
         initLoginFailureMessageObserver()
         initMoveToHomeObserver()
+        initMoveToSetProfileObserver()
         setLogoScaleAnimation()
     }
 
@@ -46,14 +46,30 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
 
     private fun initLoginObserver() {
         loginViewModel.socialToken.observe(viewLifecycleOwner) {
-            navigateMainActivity()
+            loginViewModel.postLogin()
         }
     }
 
     private fun initLoginFailureMessageObserver() {
+        /**
+         * @author onseok
+         * 서버가 구현안되었기 때문에, 로그인 실패해도 임시로 프로필 설정 화면으로 넘어가도록 구현하였습니다.
+         */
+//        loginViewModel.loginFailureMessage.observe(viewLifecycleOwner) {
+//            Toast.makeText(requireContext(), "로그인에 실패 하였습니다", Toast.LENGTH_SHORT).show()
+//        }
         loginViewModel.loginFailureMessage.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), "로그인에 실패 하였습니다", Toast.LENGTH_SHORT).show()
+            navigateSetProfileActivity()
         }
+    }
+
+    private fun initMoveToSetProfileObserver() {
+        loginViewModel.navigateToSetProfile.observe(
+            viewLifecycleOwner,
+            EventObserver {
+                navigateSetProfileActivity()
+            }
+        )
     }
 
     private fun initMoveToHomeObserver() {
@@ -74,6 +90,17 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
     private fun navigateMainActivity() {
         mainNavigator.navigateMain(requireActivity())
         requireActivity().finish()
+    }
+
+    private fun navigateSetProfileActivity() {
+        mainNavigator.navigateSetProfile(
+            context = requireContext()
+        )
+        /**
+         * @author onseok
+         * 뒤로가기를 허용하기 위해 아래의 코드를 주석 처리 하였습니다.
+         */
+        //  requireActivity().finish()
     }
 
     companion object {
