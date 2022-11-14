@@ -24,6 +24,9 @@ class LoginViewModel @Inject constructor(
 
     private lateinit var platform: String
 
+    private val _navigateToSetProfile = MutableLiveData<Event<String>>()
+    val navigateToSetProfile: LiveData<Event<String>> = _navigateToSetProfile
+
     private val _navigateToHome = MutableLiveData<Event<Boolean>>()
     val navigateToHome: LiveData<Event<Boolean>> = _navigateToHome
 
@@ -38,8 +41,12 @@ class LoginViewModel @Inject constructor(
                     fcmToken = fcmToken.value ?: ""
                 )
             ).onSuccess {
-                loginUseCases.saveAccessToken(it.accessToken ?: "")
-                _navigateToHome.postValue(Event(true))
+                if (it.isNewUser) {
+                    _navigateToSetProfile.postValue(Event(platform))
+                } else {
+                    loginUseCases.saveAccessToken(it.accessToken ?: "")
+                    _navigateToHome.postValue(Event(true))
+                }
             }.onFailure {
                 _loginFailureMessage.postValue(it.message)
             }
