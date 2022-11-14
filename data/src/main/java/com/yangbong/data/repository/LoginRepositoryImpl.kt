@@ -1,6 +1,7 @@
 package com.yangbong.data.repository
 
 import com.yangbong.core_data.exception.RetrofitFailureStateException
+import com.yangbong.core_data.fcm.FirebaseTokenManager
 import com.yangbong.data.local.data_source.LocalPreferenceUserDataSource
 import com.yangbong.data.remote.call_adapter.NetworkState
 import com.yangbong.data.remote.data_source.RemoteLoginDataSource
@@ -13,8 +14,15 @@ import javax.inject.Inject
 
 class LoginRepositoryImpl @Inject constructor(
     private val localPreferenceUserDataSource: LocalPreferenceUserDataSource,
-    private val remoteLoginDataSource: RemoteLoginDataSource
+    private val remoteLoginDataSource: RemoteLoginDataSource,
+    private val firebaseTokenManager: FirebaseTokenManager,
 ) : LoginRepository {
+    override fun getFcmToken(tokenCallBack: (String) -> Unit) {
+        firebaseTokenManager.getFirebaseToken {
+            tokenCallBack(it)
+        }
+    }
+
     override fun getAccessToken(): String {
         return localPreferenceUserDataSource.getAccessToken()
     }
@@ -40,15 +48,16 @@ class LoginRepositoryImpl @Inject constructor(
     override suspend fun postLogin(loginRequest: DomainLoginRequest): Result<DomainLoginResponse> {
         val response = remoteLoginDataSource.postLogin(
             LoginRequest(
-                platform = loginRequest.platform,
-                socialToken = loginRequest.socialToken
+                socialToken = loginRequest.socialToken,
+                fcmToken = loginRequest.fcmToken
             )
         )
 
         when (response) {
             is NetworkState.Success -> return Result.success(
                 DomainLoginResponse(
-                    accessToken = response.body.data.accessToken
+                    accessToken = response.body.data.accessToken,
+                    isNewUser = response.body.data.isNewUser
                 )
             )
             is NetworkState.Failure -> return Result.failure(

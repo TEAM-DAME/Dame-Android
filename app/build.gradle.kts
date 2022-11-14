@@ -8,6 +8,7 @@ plugins {
     id("kotlin-parcelize")
     kotlin("android")
     kotlin("plugin.serialization") version Versions.kotlinVersion
+    id("com.google.gms.google-services")
     id("dagger.hilt.android.plugin")
     kotlin("kapt")
 }
@@ -58,6 +59,7 @@ dependencies {
     implementation(project(":feature:main"))
     implementation(project(":shared"))
     implementation(project(":core-ui"))
+    implementation(project(":core-data"))
     implementation(project(":navigator"))
 
     // Kotlin
@@ -118,7 +120,7 @@ dependencies {
     // Firebase
     implementation(platform(FirebaseDependency.firebaseBom))
     implementation(FirebaseDependency.analyticsKtx)
-    implementation(FirebaseDependency.crashlyticsKtx)
+    implementation(FirebaseDependency.firebaeMessaging)
 
     // Automatic Record OpenSource Library List
     implementation(ThirdPartyDependencies.ossLicense)

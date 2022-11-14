@@ -16,6 +16,7 @@ object UseCaseModule {
     @Provides
     fun provideLoginUseCases(repository: LoginRepository): LoginUseCases {
         return LoginUseCases(
+            getFcmToken = GetFcmToken(repository),
             getAccessToken = GetAccessToken(repository),
             saveAccessToken = SaveAccessToken(repository),
             getIsFirstVisited = GetIsFirstVisited(repository),

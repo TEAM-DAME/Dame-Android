@@ -3,6 +3,7 @@ package com.yangbong.auth.login
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.yangbong.auth.social_login_manager.KakaoLoginManager
 import com.yangbong.core_ui.base.BindingFragment
@@ -23,8 +24,10 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loginViewModel.getFcmToken()
         initClickEvent()
         initLoginObserver()
+        initLoginFailureMessageObserver()
         initMoveToHomeObserver()
         setLogoScaleAnimation()
     }
@@ -44,6 +47,12 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
     private fun initLoginObserver() {
         loginViewModel.socialToken.observe(viewLifecycleOwner) {
             navigateMainActivity()
+        }
+    }
+
+    private fun initLoginFailureMessageObserver() {
+        loginViewModel.loginFailureMessage.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), "로그인에 실패 하였습니다", Toast.LENGTH_SHORT).show()
         }
     }
 

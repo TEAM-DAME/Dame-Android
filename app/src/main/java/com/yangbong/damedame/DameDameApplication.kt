@@ -1,6 +1,7 @@
 package com.yangbong.damedame
 
 import android.app.Application
+import com.google.firebase.FirebaseApp
 import com.kakao.sdk.common.KakaoSdk
 import com.yangbong.core_ui.util.DameDameDebugTree
 import com.yangbong.damedame.BuildConfig.KAKAO_NATIVE_APP_KEY
@@ -15,5 +16,6 @@ class DameDameApplication : Application() {
             Timber.plant(DameDameDebugTree())
         }
         KakaoSdk.init(this, KAKAO_NATIVE_APP_KEY)
+        FirebaseApp.initializeApp(this)
     }
 }

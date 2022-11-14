@@ -37,7 +37,7 @@ object RetrofitModule {
                     request()
                         .newBuilder()
                         .addHeader(
-                            "Authorization",
+                            AUTHORIZATION,
                             localPreferenceUserDataSourceImpl.getAccessToken()
                         )
                         .build()
@@ -71,4 +71,6 @@ object RetrofitModule {
             .addCallAdapterFactory(CustomCallAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
+    const val AUTHORIZATION = "Authorization"
 }
