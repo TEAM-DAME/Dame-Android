@@ -57,6 +57,7 @@ dependencies {
     implementation(project(":feature:write-diary"))
     implementation(project(":feature:auth"))
     implementation(project(":feature:main"))
+    implementation(project(":feature:set-profile"))
     implementation(project(":shared"))
     implementation(project(":core-ui"))
     implementation(project(":core-data"))
