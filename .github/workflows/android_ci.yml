@@ -35,7 +35,7 @@ jobs:
             - name: set google-services.json
               env:
                 DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
-              run: touch ./app/google-services.json && echo $DATA | base64 -d > ./app/google-services.json
+              run: touch ./app/google-services.json && echo $DATA > ./app/google-services.json
 
             - name: Touch local properties
               run: touch local.properties
