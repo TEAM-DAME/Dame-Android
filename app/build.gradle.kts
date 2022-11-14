@@ -7,14 +7,34 @@ plugins {
     id("com.android.application")
     id("kotlin-parcelize")
     kotlin("android")
-    kotlin("kapt")
     kotlin("plugin.serialization") version Versions.kotlinVersion
+    id("com.google.gms.google-services")
     id("dagger.hilt.android.plugin")
+    kotlin("kapt")
 }
 
 android {
     buildFeatures {
         dataBinding = true
+    }
+    defaultConfig {
+        buildConfigField(
+            "String",
+            "DAME_DAME_SERVER_BASE_URL_DEBUG",
+            properties.getProperty("DAME_DAME_SERVER_BASE_URL_DEBUG")
+        )
+        buildConfigField(
+            "String",
+            "DAME_DAME_SERVER_BASE_URL_RELEASE",
+            properties.getProperty("DAME_DAME_SERVER_BASE_URL_RELEASE")
+        )
+        buildConfigField(
+            "String",
+            "KAKAO_NATIVE_APP_KEY",
+            properties.getProperty("KAKAO_NATIVE_APP_KEY")
+        )
+        manifestPlaceholders["NATIVE_APP_KEY"] =
+            properties.getProperty("KAKAO_NATIVE_APP_KEY_NO_QUOTES")
     }
     buildTypes {
         getByName("release") {
@@ -39,6 +59,7 @@ dependencies {
     implementation(project(":feature:main"))
     implementation(project(":shared"))
     implementation(project(":core-ui"))
+    implementation(project(":core-data"))
     implementation(project(":navigator"))
 
     // Kotlin
@@ -99,12 +120,15 @@ dependencies {
     // Firebase
     implementation(platform(FirebaseDependency.firebaseBom))
     implementation(FirebaseDependency.analyticsKtx)
-    implementation(FirebaseDependency.crashlyticsKtx)
+    implementation(FirebaseDependency.firebaeMessaging)
 
     // Automatic Record OpenSource Library List
     implementation(ThirdPartyDependencies.ossLicense)
 
     debugImplementation(ThirdPartyDependencies.leakCanary)
+
+    // Kakao Login
+    implementation(ThirdPartyDependencies.kakaoAuth)
 }
 
 

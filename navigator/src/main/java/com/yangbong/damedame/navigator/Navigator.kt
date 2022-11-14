@@ -6,15 +6,8 @@ interface MainNavigator {
     /** MainActivity로 이동 */
     fun navigateMain(context: Context)
 
-    /** FriendSearchActivity로 이동 */
-    fun navigateFriendSearch(context: Context)
-
-    /** SetProfileActivity로 이동 */
-    fun navigateSetProfile(
-        context: Context,
-        socialToken: Pair<String, String>,
-        platform: Pair<String, String>
-    )
+    /** AuthActivity로 이동 */
+    fun navigateAuth(context: Context)
 
     /** SettingsActivity로 이동 */
     fun navigateSettings(context: Context)

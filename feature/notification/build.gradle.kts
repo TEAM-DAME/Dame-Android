@@ -2,15 +2,15 @@ plugins {
     id("com.android.library")
     id("kotlin-parcelize")
     kotlin("android")
-    kotlin("kapt")
     id("dagger.hilt.android.plugin")
+    kotlin("kapt")
 }
 
 android {
     buildFeatures {
         dataBinding = true
     }
-    namespace = "com.yangbong.damedame.settings"
+    namespace = "com.yangbong.damedame.notification"
 }
 
 dependencies {

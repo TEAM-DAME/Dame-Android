@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_button_white_15_dp">
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="80dp"
+            android:background="@color/gray_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/item_diary_guideline"
+            app:layout_constraintStart_toStartOf="@id/item_diary_guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/item_diary_emotion_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/img_emotion_tmp_01"
+            app:layout_constraintBottom_toTopOf="@id/item_diary_emotion_layout"
+            app:layout_constraintEnd_toEndOf="@id/item_diary_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_diary_emotion_layout"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button_green_20_dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/item_diary_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_diary_emotion_image">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/item_diary_emotion_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_positive"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/item_diary_emotion_value"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/item_diary_emotion_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textAppearance="@style/TitleTextStyleNormal"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/item_diary_emotion_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="56%" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/item_diary_title"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="@style/TitleTextStyleBold"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@id/item_diary_emotion_image"
+            app:layout_constraintStart_toEndOf="@id/item_diary_guideline"
+            app:layout_constraintTop_toTopOf="@id/item_diary_emotion_image"
+            tools:text="썸녀 생김 두근" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_diary_date_layout"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/bg_button_gray_20_dp"
+            app:layout_constraintBottom_toBottomOf="@id/item_diary_emotion_layout"
+            app:layout_constraintStart_toEndOf="@id/item_diary_guideline"
+            app:layout_constraintTop_toTopOf="@id/item_diary_emotion_layout">
+
+            <TextView
+                android:id="@+id/item_diary_date_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textAppearance="@style/TitleTextStyleNormal"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="22.11.12 토" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/item_diary_date_layout"
+            app:layout_constraintStart_toEndOf="@id/item_diary_date_layout"
+            app:layout_constraintTop_toTopOf="@id/item_diary_date_layout"
+            tools:src="@drawable/ic_lock" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/item_diary_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

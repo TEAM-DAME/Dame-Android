@@ -7,7 +7,7 @@ defaults:
     run:
         shell: bash
         working-directory: .
-
+  
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -31,9 +31,34 @@ jobs:
 
             - name: Change gradlew permissions
               run: chmod +x ./gradlew
+  
+            - name: set google-services.json
+              env:
+                DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
+              run: touch ./app/google-services.json && echo $DATA > ./app/google-services.json
 
             - name: Touch local properties
               run: touch local.properties
-
+              
+            - name: Access KAKAO_NATIVE_APP_KEY
+              env:
+                  KAKAO_NATIVE_APP_KEY: ${{ secrets.KAKAO_NATIVE_APP_KEY }}
+              run: echo "KAKAO_NATIVE_APP_KEY=\"$KAKAO_NATIVE_APP_KEY\"" >> local.properties
+              
+            - name: Access KAKAO_NATIVE_APP_KEY_NO_QUOTES
+              env:
+                  KAKAO_NATIVE_APP_KEY_NO_QUOTES: ${{ secrets.KAKAO_NATIVE_APP_KEY_NO_QUOTES }}
+              run: echo "KAKAO_NATIVE_APP_KEY_NO_QUOTES=\"$KAKAO_NATIVE_APP_KEY_NO_QUOTES\"" >> local.properties
+              
+            - name: Access DAME_DAME_SERVER_BASE_URL_DEBUG
+              env:
+                  DAME_DAME_SERVER_BASE_URL_DEBUG: ${{ secrets.DAME_DAME_SERVER_BASE_URL_DEBUG }}
+              run: echo "DAME_DAME_SERVER_BASE_URL_DEBUG=\"$DAME_DAME_SERVER_BASE_URL_DEBUG\"" >> local.properties
+              
+            - name: Access DAME_DAME_SERVER_BASE_URL_RELEASE
+              env:
+                  DAME_DAME_SERVER_BASE_URL_RELEASE: ${{ secrets.DAME_DAME_SERVER_BASE_URL_RELEASE }}
+              run: echo "DAME_DAME_SERVER_BASE_URL_RELEASE=\"$DAME_DAME_SERVER_BASE_URL_RELEASE\"" >> local.properties              
+            
             - name: Build debug APK
               run: ./gradlew assembleDebug --stacktrace

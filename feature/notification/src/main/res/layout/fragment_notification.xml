@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f3f3ed">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="18dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="34dp"
+            android:src="@drawable/img_backbutton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/notificationMainText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="163dp"
+            android:fontFamily="@font/jua"
+            android:text="알림"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notificationRecycler"
+            android:layout_width="332dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="43dp"
+            android:layout_marginStart="19dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notificationMainText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
