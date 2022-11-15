@@ -12,6 +12,7 @@ class DameDameMessagingService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
         // TODO(채널 생성 등 로직 추가)
+        print("fortest")
     }
 
 
