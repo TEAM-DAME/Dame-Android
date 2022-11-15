@@ -21,11 +21,11 @@ class LocalPreferenceUserDataSourceImpl @Inject constructor(
         localPreferences.edit { putBoolean(IS_FIRST_VISITED, isFirstVisited) }
     }
 
-    override fun getUserNickname(): String =
+    override fun getUserProfileId(): String =
         localPreferences.getString(USER_NICKNAME, "") ?: ""
 
-    override fun saveUserNickname(userNickname: String) {
-        localPreferences.edit { putString(USER_NICKNAME, userNickname) }
+    override fun saveUserProfileId(profileId: String) {
+        localPreferences.edit { putString(USER_NICKNAME, profileId) }
     }
 
     override fun getUserProfileImageUrl(): String =
