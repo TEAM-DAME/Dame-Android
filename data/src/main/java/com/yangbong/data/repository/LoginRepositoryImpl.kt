@@ -37,8 +37,8 @@ class LoginRepositoryImpl @Inject constructor(
         localPreferenceUserDataSource.setIsFirstVisited(isFirstVisited)
     }
 
-    override fun saveUserNickname(userNickname: String) {
-        localPreferenceUserDataSource.saveUserNickname(userNickname)
+    override fun saveUserProfileId(userProfileId: String) {
+        localPreferenceUserDataSource.saveUserProfileId(userProfileId)
     }
 
     override fun saveUserProfileImageUrl(userProfileImageUrl: String) {

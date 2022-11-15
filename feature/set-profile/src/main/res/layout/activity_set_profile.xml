@@ -3,91 +3,103 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="setProfileConstant"
+            type="com.yangbong.core_ui.constant.SetProfileIdConstant" />
+
+        <variable
+            name="setProfileViewModel"
+            type="com.yangbong.set_profile.SetProfileViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/main_white">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btn_back_set_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="50dp"
             android:background="@color/transparent"
             android:src="@drawable/ic_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/fragment_set_profile_id_label_bold"
+            android:id="@+id/activity_set_profile_id_label_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="@string/id"
             android:textAppearance="@style/TitleTextStyleBold"
-            app:layout_constraintEnd_toStartOf="@id/fragment_set_profile_id_label_normal"
+            app:layout_constraintEnd_toStartOf="@id/activity_set_profile_id_label_normal"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/fragment_set_profile_id_label_normal"
+            android:id="@+id/activity_set_profile_id_label_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:text="@string/id_input"
             android:textAppearance="@style/TitleTextStyleNormal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/fragment_set_profile_id_label_bold"
-            app:layout_constraintTop_toTopOf="@id/fragment_set_profile_id_label_bold" />
+            app:layout_constraintStart_toEndOf="@id/activity_set_profile_id_label_bold"
+            app:layout_constraintTop_toTopOf="@id/activity_set_profile_id_label_bold" />
 
         <TextView
-            android:id="@+id/fragment_set_profile_image_label_bold"
+            android:id="@+id/activity_set_profile_image_label_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/profile_image"
             android:textAppearance="@style/TitleTextStyleBold"
-            app:layout_constraintEnd_toStartOf="@id/fragment_set_profile_image_label_normal"
+            app:layout_constraintEnd_toStartOf="@id/activity_set_profile_image_label_normal"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_set_profile_id_label_bold" />
+            app:layout_constraintTop_toBottomOf="@id/activity_set_profile_id_label_bold" />
 
         <TextView
-            android:id="@+id/fragment_set_profile_image_label_normal"
+            android:id="@+id/activity_set_profile_image_label_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:text="@string/profile_image_register"
             android:textAppearance="@style/TitleTextStyleNormal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/fragment_set_profile_image_label_bold"
-            app:layout_constraintTop_toTopOf="@id/fragment_set_profile_image_label_bold" />
+            app:layout_constraintStart_toEndOf="@id/activity_set_profile_image_label_bold"
+            app:layout_constraintTop_toTopOf="@id/activity_set_profile_image_label_bold" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/fragment_set_profile_image"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="60dp"
+            android:id="@+id/activity_set_profile_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="40dp"
             android:scaleType="centerCrop"
+            android:src="@drawable/img_profile_tmp_01"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_set_profile_image_label_bold"
-            tools:src="@drawable/img_profile_tmp_01" />
+            app:layout_constraintTop_toBottomOf="@id/activity_set_profile_image_label_bold" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_camera"
-            app:layout_constraintBottom_toBottomOf="@id/fragment_set_profile_image"
-            app:layout_constraintEnd_toEndOf="@id/fragment_set_profile_image" />
+            app:layout_constraintBottom_toBottomOf="@id/activity_set_profile_image"
+            app:layout_constraintEnd_toEndOf="@id/activity_set_profile_image" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/fragment_set_profile_edit_text"
+        <EditText
+            android:id="@+id/et_set_profile_id"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:background="@null"
-            android:layout_marginTop="60dp"
             android:fontFamily="@font/jua"
             android:hint="@string/id_input_hint"
             android:includeFontPadding="false"
@@ -96,11 +108,12 @@
             android:maxLines="1"
             android:paddingStart="19dp"
             android:privateImeOptions="defaultInputmode=english"
+            android:text="@={setProfileViewModel.profileId}"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
-            app:layout_constraintTop_toBottomOf="@id/fragment_set_profile_image"
+            app:layout_constraintTop_toBottomOf="@id/activity_set_profile_image"
             tools:ignore="RtlSymmetry" />
 
         <TextView
@@ -112,35 +125,51 @@
             android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="@id/fragment_set_profile_edit_text"
-            app:layout_constraintStart_toStartOf="@id/fragment_set_profile_edit_text"
-            app:layout_constraintTop_toTopOf="@id/fragment_set_profile_edit_text" />
+            app:layout_constraintBottom_toBottomOf="@id/et_set_profile_id"
+            app:layout_constraintStart_toStartOf="@id/et_set_profile_id"
+            app:layout_constraintTop_toTopOf="@id/et_set_profile_id" />
+
 
         <TextView
-            android:id="@+id/fragment_set_profile_current_length"
+            android:id="@+id/tv_profile_id_length"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/jua"
             android:includeFontPadding="false"
+            android:text="@{String.valueOf(setProfileViewModel.profileId.length())}"
             android:textColor="@color/black"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@id/fragment_set_profile_edit_text"
-            app:layout_constraintEnd_toEndOf="@id/fragment_set_profile_edit_text"
-            app:layout_constraintTop_toTopOf="@id/fragment_set_profile_edit_text"
-            tools:text="0/10" />
+            app:layout_constraintBottom_toBottomOf="@id/et_set_profile_id"
+            app:layout_constraintEnd_toStartOf="@id/tv_profile_id_length_limit"
+            app:layout_constraintTop_toTopOf="@id/et_set_profile_id"
+            tools:text="7" />
+
+        <TextView
+            android:id="@+id/tv_profile_id_length_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jua"
+            android:includeFontPadding="false"
+            android:text="@string/set_profile_id_length_limit"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/et_set_profile_id"
+            app:layout_constraintEnd_toEndOf="@id/et_set_profile_id"
+            app:layout_constraintTop_toTopOf="@id/et_set_profile_id" />
 
         <View
-            android:id="@+id/fragment_set_profile_edit_text_underscore_view"
+            android:id="@+id/activity_set_profile_edit_text_underscore_view"
             android:layout_width="0dp"
             android:layout_height="3dp"
             android:layout_marginTop="10dp"
             android:background="@color/gray_1"
-            app:layout_constraintEnd_toEndOf="@id/fragment_set_profile_edit_text"
-            app:layout_constraintStart_toStartOf="@id/fragment_set_profile_edit_text"
-            app:layout_constraintTop_toBottomOf="@id/fragment_set_profile_edit_text" />
+            app:layout_constraintEnd_toEndOf="@id/et_set_profile_id"
+            app:layout_constraintStart_toStartOf="@id/et_set_profile_id"
+            app:layout_constraintTop_toBottomOf="@id/et_set_profile_id"
+            app:setProfileUnderScoreViewBackGround="@{setProfileViewModel.profileIdState}" />
 
         <TextView
-            android:id="@+id/fragment_register_profile_alert_text_view"
+            android:id="@+id/activity_register_profile_alert_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -151,19 +180,20 @@
             android:textSize="12sp"
             android:textStyle="normal"
             android:visibility="invisible"
-            app:layout_constraintStart_toStartOf="@id/fragment_set_profile_edit_text"
-            app:layout_constraintTop_toBottomOf="@id/fragment_set_profile_edit_text_underscore_view"
+            app:layout_constraintStart_toStartOf="@id/et_set_profile_id"
+            app:layout_constraintTop_toBottomOf="@id/activity_set_profile_edit_text_underscore_view"
             tools:visibility="visible" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/fragment_set_profile_next_button"
+            android:id="@+id/btn_next"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/bg_button_pink_15_dp"
             android:elevation="0dp"
             android:fontFamily="@font/jua"
             android:gravity="center"
-            android:layout_marginBottom="60dp"
             android:text="@string/next"
             android:textColor="@color/white"
             android:textSize="14sp"

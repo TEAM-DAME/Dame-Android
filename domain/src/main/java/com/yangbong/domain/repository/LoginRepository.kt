@@ -15,7 +15,7 @@ interface LoginRepository {
 
     fun setIsFirstVisited(isFirstVisit: Boolean)
 
-    fun saveUserNickname(userNickname: String)
+    fun saveUserProfileId(userProfileId: String)
 
     fun saveUserProfileImageUrl(userProfileImageUrl: String)
 
