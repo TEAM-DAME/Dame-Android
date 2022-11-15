@@ -33,6 +33,7 @@
     <string name="profile_image_register">을 등록해주세요</string>
     <string name="id_input_hint">아이디를 입력해주세요.</string>
     <string name="id_is_duplicated">중복되는 아이디입니다.</string>
+    <string name="set_profile_id_length_limit">/10</string>
 
     <!-- 내 프로필 화면 -->
     <string name="diary">일기</string>
