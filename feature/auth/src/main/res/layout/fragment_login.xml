@@ -26,11 +26,11 @@
             android:scaleType="centerCrop"
             android:translationY="-15dp"
             android:visibility="visible"
-            app:setCharacterLogo="@{@drawable/img_character_01}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:setCharacterLogo="@{@drawable/img_character_01}" />
 
         <TextView
             android:id="@+id/my_diary_label"
@@ -93,7 +93,7 @@
             android:id="@+id/kakao_login_layout"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/bg_button_yellow_15_dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
