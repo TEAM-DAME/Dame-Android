@@ -28,6 +28,7 @@
             android:text="완료"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
+            android:fontFamily="@font/jua"
             app:iconTint="#CC5D5D"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +50,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="2022년 11월 8일"
-            android:textSize="8pt"
+            android:fontFamily="@font/jua"
+
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
@@ -61,8 +64,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
+            android:fontFamily="@font/jua"
+
             android:text="화요일"
-            android:textSize="8pt"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -79,6 +84,7 @@
             android:text="시험조졌다"
             android:textSize="30sp"
             android:textStyle="bold"
+            android:fontFamily="@font/jua"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -94,6 +100,7 @@
             android:inputType="textMultiLine"
             android:maxLength="1500"
             android:maxLines="10"
+            android:fontFamily="@font/jua"
             android:scrollbars="vertical"
             android:text="시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시
         험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다시험조졌다"
