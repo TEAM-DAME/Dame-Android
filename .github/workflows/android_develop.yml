@@ -33,12 +33,10 @@ jobs:
               run: chmod +x ./gradlew
               
             - name: Touch google-services.json
-              run: touch ./app/google-services.json          
-  
-            - name: Create google-services
-              run: |
-               mkdir ./app/src/debug
-               echo '${{ secrets.GOOGLE_SERVICES_JSON_DEBUG }}' > ./app/src/debug/google-services.json
+              run: touch ./app/src/debug/google-services.json
+              
+            - name: Access google-services.json
+              run: echo '${{ secrets.GOOGLE_SERVICES_JSON_DEBUG }}' > ./app/src/debug/google-services.json
 
             - name: Touch local properties
               run: touch local.properties
