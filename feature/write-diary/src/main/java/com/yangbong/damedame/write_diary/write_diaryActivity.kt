@@ -10,7 +10,6 @@ class write_diaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityWriteDiaryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val mainfrag=FriendsSearchFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.frag,mainfrag).commit()
+
     }
 }
