@@ -18,6 +18,7 @@ class ProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        println("test")
     }
 
 }
