@@ -18,15 +18,15 @@
             app:lottie_fileName="login_rainbow.json"
             app:lottie_loop="true" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/iv_logo"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_marginTop="30dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img_character_01"
             android:translationY="-15dp"
             android:visibility="visible"
+            app:setCharacterLogo="@{@drawable/img_character_01}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

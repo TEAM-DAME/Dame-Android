@@ -1,7 +1,12 @@
 package com.yangbong.core_ui.util
 
+import android.graphics.drawable.Drawable
 import android.view.View
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.yangbong.core_ui.constant.SetProfileIdConstant
 import com.yangbong.core_ui.constant.SetProfileIdConstant.*
 import com.yangbong.damedame.shared.R
@@ -21,3 +26,12 @@ fun View.setProfileUnderScoreViewBackGround(profileIdStateNumber: SetProfileIdCo
         )
     }
 }
+
+@BindingAdapter("setCharacterLogo")
+fun ImageView.setCharacterLogo(characterLogoStatic: Drawable) = Glide.with(this)
+    .load(R.drawable.login_character)
+    .placeholder(characterLogoStatic)
+    .error(characterLogoStatic)
+    .diskCacheStrategy(DiskCacheStrategy.NONE)
+    .apply(RequestOptions().centerCrop())
+    .into(this)
