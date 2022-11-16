@@ -26,7 +26,7 @@ class SetProfileActivity : BindingActivity<ActivitySetProfileBinding>(R.layout.a
             val message = when (binding.etSetProfileId.text.length) {
                 in 0..9 -> HAS_NO_STATE
                 10 -> OVER_TEXT_LIMIT
-                else -> throw IllegalStateException("Maximum nickname length is 7")
+                else -> throw IllegalStateException("Maximum nickname length is 10")
             }
             setProfileViewModel.updateProfileIdState(message)
         }

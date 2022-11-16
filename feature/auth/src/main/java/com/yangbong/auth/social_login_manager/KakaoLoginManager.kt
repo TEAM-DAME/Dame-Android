@@ -5,6 +5,7 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
+import com.yangbong.domain.use_case.login.SaveUserProfileImageUrl
 import dagger.hilt.android.qualifiers.ActivityContext
 import timber.log.Timber
 import javax.inject.Inject
@@ -57,6 +58,17 @@ class KakaoLoginManager @Inject constructor(
 
     private fun onKakaoAccountLogin() {
         UserApiClient.instance.loginWithKakaoAccount(context, callback = kakaoLoginCallback)
+    }
+
+    fun getKakaoUserInfo(updateProfileImageUrl: (String) -> Unit) {
+        UserApiClient.instance.me { user, error ->
+            if (error != null) {
+                Timber.d("${error.message} 사용자 정보 요청 실패")
+            }
+            else if (user != null) {
+                updateProfileImageUrl(user.kakaoAccount?.profile?.thumbnailImageUrl ?: "")
+            }
+        }
     }
 }
 

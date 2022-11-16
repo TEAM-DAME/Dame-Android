@@ -38,6 +38,9 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
                 kakaoLoginManager.startKakaoLogin {
                     loginViewModel.updateSocialToken(it)
                 }
+                kakaoLoginManager.getKakaoUserInfo {
+                    loginViewModel.updateProfileImageUrl(it)
+                }
             }
             // TODO("확장 가능성을 고려함. 추가 소셜 플랫폼 로그인 구현시 이곳에 구현")
         }

@@ -1,5 +1,6 @@
 package com.yangbong.auth.login
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,8 +8,10 @@ import androidx.lifecycle.viewModelScope
 import com.yangbong.core_ui.util.Event
 import com.yangbong.domain.entity.request.DomainLoginRequest
 import com.yangbong.domain.use_case.login.LoginUseCases
+import com.yangbong.domain.use_case.login.SaveUserProfileImageUrl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,6 +24,9 @@ class LoginViewModel @Inject constructor(
 
     private val _fcmToken = MutableLiveData<String>()
     val fcmToken: LiveData<String> = _fcmToken
+
+    private val _profileImageUrl = MutableLiveData<String>()
+    val profileImageUrl: LiveData<String> = _profileImageUrl
 
     private lateinit var platform: String
 
@@ -50,6 +56,7 @@ class LoginViewModel @Inject constructor(
                 }
             }.onFailure {
                 _loginFailureMessage.postValue(it.message)
+                Log.d("tagtag", profileImageUrl.value ?: "")
             }
         }
     }
@@ -64,6 +71,10 @@ class LoginViewModel @Inject constructor(
 
     fun updatePlatform(platform: String) {
         this.platform = platform
+    }
+
+    fun updateProfileImageUrl(profileImageUrl: String) {
+        _profileImageUrl.value = profileImageUrl
     }
 
     fun getFcmToken() {
