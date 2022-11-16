@@ -17,18 +17,60 @@
         android:theme="@style/Theme.DameDame"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <service
+            android:name=".DameDameMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+
+        </service>
+
+        <!--푸시 아이콘 지정-->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_launcher_foreground" />
+
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name="com.yangbong.auth.AuthActivity"
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false">
 
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+        </activity>
+
+        <activity
+            android:name="com.yangbong.set_profile.SetProfileActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Redirect URI: "kakao${NATIVE_APP_KEY}://oauth" -->
+                <data
+                    android:host="oauth"
+                    android:scheme="kakao${NATIVE_APP_KEY}" />
+            </intent-filter>
         </activity>
     </application>
 

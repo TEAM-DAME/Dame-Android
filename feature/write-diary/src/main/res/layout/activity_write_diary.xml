@@ -64,14 +64,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
             android:text="화요일"
+
             android:textSize="18sp"
             android:textStyle="bold"
             android:fontFamily="@font/jua"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/date" />
 
+
         <EditText
+
             android:id="@+id/diary_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,16 +83,20 @@
             android:layout_marginTop="51dp"
             android:layout_marginRight="15dp"
             android:inputType="text"
+
             android:hint="제목을 입력하세요"
             android:textSize="30sp"
             android:textStyle="bold"
             android:fontFamily="@font/jua"
 
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/day" />
 
+
         <EditText
+
             android:id="@+id/didary_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

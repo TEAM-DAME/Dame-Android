@@ -1,4 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- 공통 -->
     <string name="app_name">다메다메</string>
+    <string name="next">다음</string>
+    <string name="special_character_at">\ufeff@</string>
+
+    <!-- 로그인 화면 -->
+    <string name="my_diary">나만의 일기</string>
+    <string name="post_position">를</string>
+    <string name="raise">키워보아요</string>
+    <string name="kakao_login_text">카카오톡으로 1초만에 로그인</string>
+    <string name="login_explain"><b>간단한 회원가입</b>으로 <b>다메다메</b>를 시작해볼까요?</string>
+
+    <!-- 캐릭터 선택 화면 -->
+    <string name="character">캐릭터</string>
+    <string name="select_character">를 선택해주세요</string>
+    <string name="character_name_01">구름이</string>
+    <string name="character_name_02">몽실이</string>
+    <string name="character_name_03">솜사탕</string>
+    <string name="character_name_04">개나리</string>
+    <string name="character_name_05">까망이</string>
+    <string name="character_name_06">토순이</string>
+    <string name="character_name_07">뿡뿡이</string>
+    <string name="character_name_08">째깐이</string>
+    <string name="character_name_09">팬둥이</string>
+
+    <!-- 프로필 설정 화면 -->
+    <string name="id">아이디</string>
+    <string name="id_input">입력과</string>
+    <string name="profile_image">프로필 사진</string>
+    <string name="profile_image_register">을 등록해주세요</string>
+    <string name="id_input_hint">아이디를 입력해주세요.</string>
+    <string name="id_is_duplicated">중복되는 아이디입니다.</string>
+    <string name="set_profile_id_length_limit">/10</string>
+
+    <!-- 내 프로필 화면 -->
+    <string name="diary">일기</string>
+    <string name="pocket">도감</string>
+    <string name="friend">친구</string>
+    <string name="button_settings_description">설정 화면으로 넘어가는 버튼입니다.</string>
+    <string name="button_sort_description">다이어리 목록을 정렬하는 버튼입니다.</string>
+
 </resources>

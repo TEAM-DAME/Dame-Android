@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rowBackground"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/shape_rect_white_fill_10"
+            android:backgroundTint="#dc9b8c">
+
+            <ImageView
+                android:id="@+id/leftItemImage"
+                android:layout_width="20.3dp"
+                android:layout_height="18.8dp"
+                android:layout_marginStart="10.5dp"
+                android:layout_marginTop="17dp"
+                android:src="@drawable/img_friend_request"
+                app:layout_constraintLeft_toLeftOf="@+id/rowBackground"
+                app:layout_constraintTop_toTopOf="@id/rowBackground" />
+
+            <TextView
+                android:id="@+id/notificationText"
+                android:layout_width="wrap_content"
+                android:layout_height="23dp"
+                android:layout_marginStart="59dp"
+                android:layout_marginTop="19dp"
+                android:fontFamily="@font/jua"
+                android:text="홍길동님이 친구를 요청하였습니다."
+                android:textColor="#ffffff"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/rightItemImage"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="17dp"
+                android:src="@drawable/img_approve_friend_request"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+</layout>
