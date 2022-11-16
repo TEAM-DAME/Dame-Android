@@ -37,7 +37,7 @@
             android:layout_width="131dp"
             android:layout_height="110dp"
             android:layout_marginTop="40dp"
-            android:src="@drawable/img"
+            android:src="@drawable/img_character_01"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
