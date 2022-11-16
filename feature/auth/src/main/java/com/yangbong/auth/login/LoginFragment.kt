@@ -29,7 +29,6 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         initLoginFailureMessageObserver()
         initMoveToHomeObserver()
         initMoveToSetProfileObserver()
-        setLogoScaleAnimation()
     }
 
     private fun initClickEvent() {
@@ -79,12 +78,6 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
                 navigateMainActivity()
             }
         )
-    }
-
-    private fun setLogoScaleAnimation() {
-        AnimationUtils.loadAnimation(requireActivity(), R.anim.logo_scale).apply {
-            binding.ivLogo.startAnimation(this)
-        }
     }
 
     private fun navigateMainActivity() {
