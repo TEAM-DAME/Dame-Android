@@ -6,6 +6,9 @@ interface MainNavigator {
     /** MainActivity로 이동 */
     fun navigateMain(context: Context)
 
+    /** SetProfileActivity로 이동 */
+    fun navigateSetProfile(context: Context)
+
     /** AuthActivity로 이동 */
     fun navigateAuth(context: Context)
 

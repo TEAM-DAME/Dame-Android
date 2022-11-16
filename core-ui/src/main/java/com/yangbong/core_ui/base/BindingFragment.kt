@@ -1,5 +1,6 @@
 package com.yangbong.core_ui.base
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.yangbong.core_ui.util.EventObserver
 import com.yangbong.core_ui.util.Injector
 import com.yangbong.damedame.navigator.*
 import dagger.hilt.android.EntryPointAccessors
@@ -34,6 +36,21 @@ abstract class BindingFragment<T : ViewDataBinding>(
             requireActivity(),
             Injector.MainNavigatorInjector::class.java
         ).mainNavigator()
+    }
+
+    private val sharedPreferences: SharedPreferences by lazy {
+        EntryPointAccessors.fromActivity(
+            requireActivity(),
+            Injector.SharedPreferencesInjector::class.java
+        ).sharedPreferences()
+    }
+
+    fun terminationTokenHandling(viewModel: BaseViewModel) {
+        viewModel.moveToLogin.observe(viewLifecycleOwner, EventObserver {
+            mainNavigator.navigateAuth(requireActivity())
+            sharedPreferences.edit().remove("DAME_DAME_ACCESS_TOKEN").apply()
+            requireActivity().finish()
+        })
     }
 
     override fun onDestroyView() {

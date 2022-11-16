@@ -7,6 +7,6 @@ class SaveUserNickname(
 ) {
 
     operator fun invoke(userNickname: String) {
-        repository.saveUserNickname(userNickname)
+        repository.saveUserProfileId(userNickname)
     }
 }

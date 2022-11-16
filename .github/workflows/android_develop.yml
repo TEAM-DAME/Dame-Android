@@ -31,11 +31,12 @@ jobs:
 
             - name: Change gradlew permissions
               run: chmod +x ./gradlew
-  
-            - name: set google-services.json
-              env:
-                DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
-              run: touch ./app/google-services.json && echo $DATA > ./app/google-services.json
+              
+            - name: Touch google-services.json
+              run: touch ./app/google-services.json
+              
+            - name: Access google-services.json
+              run: echo '${{ secrets.GOOGLE_SERVICES_JSON_DEBUG }}' > ./app/google-services.json
 
             - name: Touch local properties
               run: touch local.properties

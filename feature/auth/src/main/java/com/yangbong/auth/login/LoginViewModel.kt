@@ -37,6 +37,7 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             loginUseCases.postLogin(
                 DomainLoginRequest(
+                    platform = platform,
                     socialToken = socialToken.value ?: "",
                     fcmToken = fcmToken.value ?: ""
                 )
