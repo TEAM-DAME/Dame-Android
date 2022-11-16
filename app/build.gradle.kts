@@ -103,6 +103,7 @@ dependencies {
     // Glide for general
     // Coil for compose
     implementation(ThirdPartyDependencies.coil)
+    implementation(ThirdPartyDependencies.glide)
 
     // Http Client Library
     implementation(ThirdPartyDependencies.retrofit)

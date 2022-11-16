@@ -36,4 +36,5 @@ dependencies {
 
     // ImageLoading Library
     implementation(ThirdPartyDependencies.coil)
+    implementation(ThirdPartyDependencies.glide)
 }
