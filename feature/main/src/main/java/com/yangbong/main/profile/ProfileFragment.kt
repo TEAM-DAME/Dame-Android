@@ -20,4 +20,5 @@ class ProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
         super.onViewCreated(view, savedInstanceState)
     }
     // test
+    //test2
 }
