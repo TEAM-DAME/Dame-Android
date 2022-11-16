@@ -13,6 +13,7 @@ class DameDameMessagingService : FirebaseMessagingService() {
         super.onMessageReceived(remoteMessage)
         // TODO(채널 생성 등 로직 추가)
         print("fortest")
+        print("fortest2")
     }
 
 
