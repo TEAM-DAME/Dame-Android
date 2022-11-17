@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.app.ActivityCompat
 import androidx.databinding.BindingAdapter
@@ -16,6 +17,34 @@ import com.yangbong.core_ui.constant.SetProfileIdConstant
 import com.yangbong.core_ui.constant.SetProfileIdConstant.*
 import com.yangbong.damedame.shared.R
 
+@BindingAdapter("profileIdStateNumber")
+fun TextView.setProfileIdState(profileIdStateNumber: SetProfileIdConstant?) {
+    val context = this.context
+
+    if (profileIdStateNumber != null) {
+        when (profileIdStateNumber) {
+            OVER_TEXT_LIMIT -> {
+                setTextColor(context.getColor(R.color.pink_ff6161))
+                setText(R.string.set_profile_id_over_text_limit)
+            }
+            NO_SPECIAL_CHARACTER -> {
+                setTextColor(context.getColor(R.color.pink_ff6161))
+                setText(R.string.set_profile_id_no_special_character)
+            }
+            DUPLICATE_NICKNAME -> {
+                setTextColor(context.getColor(R.color.pink_ff6161))
+                setText(R.string.set_profile_id_duplicate_nickname)
+            }
+            ALLOWED_NICKNAME -> {
+                setTextColor(context.getColor(R.color.main_blue))
+                setText(R.string.set_profile_id_allowed_nickname)
+            }
+            HAS_NO_STATE -> {
+                text = ""
+            }
+        }
+    }
+}
 
 @BindingAdapter("setProfileUnderScoreViewBackGround")
 fun View.setProfileUnderScoreViewBackGround(profileIdStateNumber: SetProfileIdConstant?) {
