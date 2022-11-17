@@ -63,6 +63,14 @@
             tools:itemCount="9"
             tools:listitem="@layout/item_character" />
 
+        <FrameLayout
+            android:id="@+id/infoCharacterFramLayout"
+            android:layout_width="match_parent"
+            android:layout_height="620dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -12,32 +12,16 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SetProfileActivity : BindingActivity<ActivitySetProfileBinding>(R.layout.activity_set_profile) {
-    private val setProfileViewModel by viewModels<SetProfileViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.setProfileViewModel = setProfileViewModel
-        initProfileIdLengthMessage()
-        initNextButtonClickListener()
+        initLayout()
     }
 
-    private fun initProfileIdLengthMessage() {
-        binding.etSetProfileId.addTextChangedListener {
-            val message = when (binding.etSetProfileId.text.length) {
-                in 0..9 -> HAS_NO_STATE
-                10 -> OVER_TEXT_LIMIT
-                else -> throw IllegalStateException("Maximum nickname length is 7")
-            }
-            setProfileViewModel.updateProfileIdState(message)
-        }
-    }
-
-    private fun initNextButtonClickListener() {
-        binding.btnNext.setOnSingleClickListener {
-            setProfileViewModel.postSetProfile()
-        }
-        val fragment = supportFragmentManager.beginTransaction()
-        fragment.replace(R.id.select)
+    private fun initLayout() {
+        val setProfileFragment = SetProfileFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.setProfileFrameLayout,setProfileFragment).commit()
     }
 
 }
