@@ -1,6 +1,5 @@
 package com.yangbong.set_profile
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,8 +9,9 @@ import com.yangbong.core_ui.constant.SetProfileIdConstant.*
 import com.yangbong.core_ui.util.Event
 import com.yangbong.domain.entity.request.DomainSetProfileRequest
 import com.yangbong.domain.repository.SetProfileRepository
-import com.yangbong.domain.use_case.login.SaveUserProfileImageUrl
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -20,6 +20,10 @@ import javax.inject.Inject
 class SetProfileViewModel @Inject constructor(
     private val setProfileRepository: SetProfileRepository
 ) : ViewModel() {
+
+    protected val disposables by lazy {
+        CompositeDisposable()
+    }
 
     var profileId = MutableLiveData("")
 
@@ -40,6 +44,10 @@ class SetProfileViewModel @Inject constructor(
         _profileImageUrl.postValue(setProfileRepository.getUserProfileImageUrl())
     }
 
+    fun addDisposable(disposable: Disposable) {
+        disposables.add(disposable)
+    }
+
     fun checkDuplicateNickName() {
         viewModelScope.launch {
             setProfileRepository.checkDuplicateProfileId(profileId.value ?: throw IllegalStateException())
@@ -52,6 +60,8 @@ class SetProfileViewModel @Inject constructor(
                 }
                 .onFailure {
                     Timber.d(it)
+                    // TODO("서버 연동 후 실패 했을 시 로직 삭제")
+                    _profileIdState.postValue(ALLOWED_NICKNAME)
                 }
         }
     }
@@ -75,5 +85,10 @@ class SetProfileViewModel @Inject constructor(
                 Timber.d(it)
             }
         }
+    }
+
+    override fun onCleared() {
+        disposables.clear()
+        super.onCleared()
     }
 }
