@@ -1,8 +1,10 @@
 package com.yangbong.set_profile
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.yangbong.core_ui.base.BindingFragment
 import com.yangbong.damedame.set_profile.databinding.FragmentSelectCharacterBinding
@@ -11,7 +13,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SelectCharacterFragment : BindingFragment<FragmentSelectCharacterBinding>(R.layout.fragment_select_character) {
-    private val selectCharacterViewModel by viewModels<SelectCharacterViewModel>()
 
     lateinit var adapter: SelectCharacterAdapter
     val characterData: ArrayList<CharacterData> = ArrayList()
@@ -26,7 +27,11 @@ class SelectCharacterFragment : BindingFragment<FragmentSelectCharacterBinding>(
         adapter.itemClickListener = object : SelectCharacterAdapter.OnItemClickListener
         {
             override fun OnItemClick(data: CharacterData, imageView: ImageView) {
-                //팝업 화면 전환
+                //TODO:: 캐릭터 정보(캐릭터 id, 해당 캐릭터 설명) 넘겨주어 해당 캐릭터 팝업창으로 띄우기 필요.
+                // 현재 구름이만 뜨도록 되어 있음
+                val characterInfoFragment = CharacterInfoFragment()
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.infoCharacterFramLayout, characterInfoFragment).commit()
             }
 
         }

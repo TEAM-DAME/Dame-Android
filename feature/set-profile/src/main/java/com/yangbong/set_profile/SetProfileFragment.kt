@@ -34,6 +34,7 @@ class SetProfileFragment: BindingFragment<FragmentSetProfileBinding>(R.layout.fr
 
     private fun initProfileIdLengthMessage() {
         binding.btnNext.setOnSingleClickListener {
+            //TODO:: postSetProfile() 수정 필요. 알 수 없는 오류로 인해 주석 처리함
 //            setProfileViewModel.postSetProfile()
             val selectCharacterFragment = SelectCharacterFragment()
             replaceFragment(selectCharacterFragment)
