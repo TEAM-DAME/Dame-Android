@@ -34,6 +34,11 @@
     <string name="id_input_hint">아이디를 입력해주세요.</string>
     <string name="id_is_duplicated">중복되는 아이디입니다.</string>
     <string name="set_profile_id_length_limit">/10</string>
+    <string name="set_profile_id_over_text_limit">아이디는 10자를 초과 할 수 없습니다.</string>
+    <string name="set_profile_id_no_special_character">특수문자 및 공백은 사용할 수 없습니다.</string>
+    <string name="set_profile_id_duplicate_nickname">중복된 아이디입니다.</string>
+    <string name="set_profile_id_allowed_nickname">사용 가능한 아이디입니다.</string>
+
 
     <!-- 내 프로필 화면 -->
     <string name="diary">일기</string>

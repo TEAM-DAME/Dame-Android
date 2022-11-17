@@ -15,29 +15,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:lottie_autoPlay="true"
-            app:lottie_fileName="login_planet.json"
+            app:lottie_fileName="login_rainbow.json"
             app:lottie_loop="true" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/iv_logo"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_marginTop="30dp"
-            android:visibility="visible"
             android:scaleType="centerCrop"
+            android:translationY="-15dp"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/img_character_01"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:setCharacterLogo="@{@drawable/img_character_01}" />
 
         <TextView
             android:id="@+id/my_diary_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
             android:fontFamily="@font/jua"
             android:text="@string/my_diary"
-            android:layout_marginTop="60dp"
             android:textAppearance="@style/TitleTextStyleBold"
             android:textColor="@color/main_blue"
             android:textSize="32sp"
@@ -92,7 +93,7 @@
             android:id="@+id/kakao_login_layout"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/bg_button_yellow_15_dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"

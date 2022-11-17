@@ -58,6 +58,17 @@ class KakaoLoginManager @Inject constructor(
     private fun onKakaoAccountLogin() {
         UserApiClient.instance.loginWithKakaoAccount(context, callback = kakaoLoginCallback)
     }
+
+    fun getKakaoUserInfo(updateProfileImageUrl: (String) -> Unit) {
+        UserApiClient.instance.me { user, error ->
+            if (error != null) {
+                Timber.d("${error.message} 사용자 정보 요청 실패")
+            }
+            else if (user != null) {
+                updateProfileImageUrl(user.kakaoAccount?.profile?.thumbnailImageUrl ?: "")
+            }
+        }
+    }
 }
 
 enum class KaKaoLoginState {

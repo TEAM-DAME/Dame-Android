@@ -103,6 +103,7 @@ dependencies {
     // Glide for general
     // Coil for compose
     implementation(ThirdPartyDependencies.coil)
+    implementation(ThirdPartyDependencies.glide)
 
     // Http Client Library
     implementation(ThirdPartyDependencies.retrofit)
@@ -130,6 +131,12 @@ dependencies {
 
     // Kakao Login
     implementation(ThirdPartyDependencies.kakaoAuth)
+
+    // RxBinding
+    implementation(ThirdPartyDependencies.rxBinding)
+
+    // RxKotlin
+    implementation(ThirdPartyDependencies.rxKotlin)
 }
 
 

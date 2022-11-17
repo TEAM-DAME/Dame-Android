@@ -67,6 +67,7 @@ dependencies {
 
     // ImageLoading Library
     implementation(ThirdPartyDependencies.coil)
+    implementation(ThirdPartyDependencies.glide)
 
     // Kakao Login
     implementation(ThirdPartyDependencies.kakaoAuth)

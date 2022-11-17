@@ -38,4 +38,10 @@ dependencies {
 
     // Logger - Timber
     implementation(ThirdPartyDependencies.timber)
+
+    // RxBinding
+    implementation(ThirdPartyDependencies.rxBinding)
+
+    // RxKotlin
+    implementation(ThirdPartyDependencies.rxKotlin)
 }
