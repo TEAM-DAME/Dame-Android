@@ -1,5 +1,5 @@
 package com.yangbong.set_profile
 
-data class SelectCharacterData(
+data class CharacterData(
     val characterName: String
 )

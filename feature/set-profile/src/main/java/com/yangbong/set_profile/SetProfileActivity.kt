@@ -36,6 +36,8 @@ class SetProfileActivity : BindingActivity<ActivitySetProfileBinding>(R.layout.a
         binding.btnNext.setOnSingleClickListener {
             setProfileViewModel.postSetProfile()
         }
+        val fragment = supportFragmentManager.beginTransaction()
+        fragment.replace(R.id.select)
     }
 
 }

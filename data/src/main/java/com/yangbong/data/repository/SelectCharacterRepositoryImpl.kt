@@ -12,11 +12,11 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class SelectCharacterRepositoryImpl @Inject constructor(
-    private val selectCharacterDataSource: RemoteSelectCharacterDataSource,
+    private val selectCharacterRemoteDataSource: RemoteSelectCharacterDataSource,
     private val localPreferenceUserDataSource: LocalPreferenceUserDataSource
 ) : SelectCharacterRepository {
     override suspend fun putInitCharacter(selectCharacterRequest: DomainSelectCharacterRequest): Result<DomainSelectCharacterResponse> {
-        val response = selectCharacterDataSource.putInitCharacter(
+        val response = selectCharacterRemoteDataSource.putInitCharacter(
             SelectCharacterRequest(
                 userid = selectCharacterRequest.userid,
                 minion = selectCharacterRequest.minion

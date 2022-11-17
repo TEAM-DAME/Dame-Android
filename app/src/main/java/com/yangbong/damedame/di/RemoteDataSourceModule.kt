@@ -1,9 +1,6 @@
 package com.yangbong.damedame.di
 
-import com.yangbong.data.remote.data_source.RemoteLoginDataSource
-import com.yangbong.data.remote.data_source.RemoteLoginDataSourceImpl
-import com.yangbong.data.remote.data_source.RemoteSetProfileDataSource
-import com.yangbong.data.remote.data_source.RemoteSetProfileDataSourceImpl
+import com.yangbong.data.remote.data_source.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -21,6 +18,10 @@ interface RemoteDataSourceModule {
     @Binds
     @Singleton
     fun bindsRemoteCheckDuplicateProfileIdDataSource(source: RemoteSetProfileDataSourceImpl): RemoteSetProfileDataSource
+
+    @Binds
+    @Singleton
+    fun bindsRemotePutInitCharacterDataSource(source: RemoteSelectCharacterDataSourceImpl): RemoteSelectCharacterDataSource
 
 
 
