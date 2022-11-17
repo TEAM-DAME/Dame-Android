@@ -17,7 +17,7 @@ class CharacterInfoFragment : BindingFragment<FragmentCharacterInfoBinding>(R.la
     }
 
     private fun initCharacter() {
-        //TODO:: 캐릭터 id 값 받아와 minion 값 변경 필요.
+        //TODO:: 캐릭터 id 값 받아와 minion 값 변경 필요함.
 //        selectCharacterViewModel.minion.value = 1
     }
 
