@@ -5,11 +5,17 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.google.firebase.remoteconfig.ktx.remoteConfig
+import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import com.yangbong.damedame.notification.databinding.ActivitySettingBinding
 
 class SettingActivity : AppCompatActivity() {
-    lateinit var adapter: SettingRecyclerViewAdapter
-    lateinit var binding: ActivitySettingBinding
+
+    private lateinit var adapter: SettingRecyclerViewAdapter
+    private lateinit var binding: ActivitySettingBinding
+    private lateinit var remoteConfig: FirebaseRemoteConfig
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +27,15 @@ class SettingActivity : AppCompatActivity() {
         binding.settingRecycler.layoutManager=
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.settingRecycler.adapter = adapter
+    }
+
+    private fun initRemoteConfig() {
+        remoteConfig = Firebase.remoteConfig
+        remoteConfig.setConfigSettingsAsync(
+            remoteConfigSettings {
+                minimumFetchIntervalInSeconds = 0
+            }
+        )
     }
 
     private fun getCurrentAppVersion(context: Context): String {
