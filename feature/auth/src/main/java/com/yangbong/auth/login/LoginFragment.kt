@@ -35,11 +35,11 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         with(binding) {
             kakaoLoginLayout.setOnSingleClickListener {
                 loginViewModel.updatePlatform(KAKAO)
-                kakaoLoginManager.startKakaoLogin {
-                    loginViewModel.updateSocialToken(it)
-                }
                 kakaoLoginManager.getKakaoUserInfo {
                     loginViewModel.updateProfileImageUrl(it)
+                }
+                kakaoLoginManager.startKakaoLogin {
+                    loginViewModel.updateSocialToken(it)
                 }
             }
             // TODO("확장 가능성을 고려함. 추가 소셜 플랫폼 로그인 구현시 이곳에 구현")
@@ -92,11 +92,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         mainNavigator.navigateSetProfile(
             context = requireContext()
         )
-        /**
-         * @author onseok
-         * 뒤로가기를 허용하기 위해 아래의 코드를 주석 처리 하였습니다.
-         */
-        //  requireActivity().finish()
+        requireActivity().finish()
     }
 
     companion object {

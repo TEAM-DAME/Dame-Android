@@ -3,6 +3,7 @@ package com.yangbong.set_profile
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.MutableLiveData
 import com.yangbong.core_ui.base.BindingActivity
 import com.yangbong.core_ui.constant.SetProfileIdConstant.*
 import com.yangbong.core_ui.extension.setOnSingleClickListener
@@ -17,6 +18,7 @@ class SetProfileActivity : BindingActivity<ActivitySetProfileBinding>(R.layout.a
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.setProfileViewModel = setProfileViewModel
+        setProfileViewModel.getProfileImage()
         initProfileIdLengthMessage()
         initNextButtonClickListener()
     }

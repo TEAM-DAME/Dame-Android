@@ -1,5 +1,6 @@
 package com.yangbong.set_profile
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +10,7 @@ import com.yangbong.core_ui.constant.SetProfileIdConstant.*
 import com.yangbong.core_ui.util.Event
 import com.yangbong.domain.entity.request.DomainSetProfileRequest
 import com.yangbong.domain.repository.SetProfileRepository
+import com.yangbong.domain.use_case.login.SaveUserProfileImageUrl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -20,16 +22,22 @@ class SetProfileViewModel @Inject constructor(
 ) : ViewModel() {
 
     var profileId = MutableLiveData("")
-    var profileImageUrl = MutableLiveData("")
 
     private val _profileIdState = MutableLiveData<SetProfileIdConstant>()
     val profileIdState: LiveData<SetProfileIdConstant> = _profileIdState
+
+    private val _profileImageUrl = MutableLiveData<String>()
+    val profileImageUrl: LiveData<String> = _profileImageUrl
 
     private val _navigateToSetCharacter = MutableLiveData<Event<Boolean>>()
     val navigateToSetCharacter: LiveData<Event<Boolean>> = _navigateToSetCharacter
 
     fun updateProfileIdState(state: SetProfileIdConstant) {
         _profileIdState.value = state
+    }
+
+    fun getProfileImage() {
+        _profileImageUrl.postValue(setProfileRepository.getUserProfileImageUrl())
     }
 
     fun checkDuplicateNickName() {

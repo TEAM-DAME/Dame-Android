@@ -19,17 +19,6 @@
         android:layout_height="match_parent"
         android:background="@color/main_white">
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_back_set_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/activity_set_profile_id_label_bold"
             android:layout_width="wrap_content"
@@ -78,6 +67,7 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/activity_set_profile_image"
+            setProfileImage="@{setProfileViewModel.profileImageUrl}"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginTop="40dp"
@@ -103,14 +93,14 @@
             android:fontFamily="@font/jua"
             android:hint="@string/id_input_hint"
             android:includeFontPadding="false"
-            android:inputType="text|textEmailAddress"
+            android:inputType="text"
             android:maxLength="10"
             android:maxLines="1"
             android:paddingStart="19dp"
             android:privateImeOptions="defaultInputmode=english"
             android:text="@={setProfileViewModel.profileId}"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
             app:layout_constraintTop_toBottomOf="@id/activity_set_profile_image"
@@ -190,7 +180,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="60dp"
             android:layout_marginBottom="40dp"
-            android:background="@drawable/bg_button_pink_15_dp"
+            android:background="@drawable/bg_button_gray_15_dp"
             android:elevation="0dp"
             android:fontFamily="@font/jua"
             android:gravity="center"
@@ -200,7 +190,8 @@
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
-            app:layout_constraintStart_toStartOf="@id/guideline_left" />
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:setProfileButtonBackground="@{setProfileViewModel.profileIdState}" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_left"
