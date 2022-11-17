@@ -21,4 +21,6 @@ interface RemoteDataSourceModule {
     @Binds
     @Singleton
     fun bindsRemoteCheckDuplicateProfileIdDataSource(source: RemoteSetProfileDataSourceImpl): RemoteSetProfileDataSource
+
+
 }

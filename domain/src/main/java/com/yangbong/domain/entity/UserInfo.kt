@@ -5,3 +5,6 @@ data class UserInfo(
     val profileId: String?,
     val profileImageUrl: String?
 )
+
+
+

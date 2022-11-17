@@ -44,6 +44,8 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         }
     }
 
+
+
     private fun initLoginObserver() {
         loginViewModel.socialToken.observe(viewLifecycleOwner) {
             loginViewModel.postLogin()

@@ -22,4 +22,8 @@ interface LocalPreferenceUserDataSource {
     fun removeUserNickname()
 
     fun clearUserInfo()
+
+    fun saveUserId(userid: Int)
+
+    fun saveInitCharacter(minion: Int)
 }

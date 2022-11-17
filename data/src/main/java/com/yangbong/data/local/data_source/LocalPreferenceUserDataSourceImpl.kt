@@ -47,10 +47,20 @@ class LocalPreferenceUserDataSourceImpl @Inject constructor(
         localPreferences.edit { clear() }
     }
 
+    override fun saveUserId(userid: Int) {
+        localPreferences.edit{ putInt(USER_ID,userid)}
+    }
+
+    override fun saveInitCharacter(minion: Int) {
+        localPreferences.edit{ putInt(INIT_CHARACTER,minion)}
+    }
+
     companion object {
         const val DAME_DAME_ACCESS_TOKEN = "DAME_DAME_ACCESS_TOKEN"
         const val USER_NICKNAME = "USER_NICKNAME"
         const val USER_PROFILE_IMAGE_URL = "USER_PROFILE_IMAGE_URL"
         const val IS_FIRST_VISITED = "IS_FIRST_VISITED"
+        const val USER_ID = "USER_ID"
+        const val INIT_CHARACTER = "INIT_CHARACTER"
     }
 }
