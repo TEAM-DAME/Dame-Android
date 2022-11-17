@@ -55,4 +55,18 @@ class SettingActivity : AppCompatActivity() {
 
         return appVersion
     }
+
+    private fun checkVersion() {
+        val remoteConfig = FirebaseRemoteConfig.getInstance()
+        val latestVersion = remoteConfig.getString("app_version")
+        Log.e("RemoteConfig", latestVersion)
+        val currentVersion = getCurrentAppVersion(this)
+
+//        binding.currentAppVersionText.text = currentVersion
+//        binding.latestAppVersionText.text = latestVersion
+
+//        if (currentVersion != latestVersion) {
+//            showUpdateDialog()
+//        }
+    }
 }
