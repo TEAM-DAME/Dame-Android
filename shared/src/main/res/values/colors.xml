@@ -25,6 +25,8 @@
     <color name="crimson">#FB7979</color>
     <color name="kakao_yellow">#E9D647</color>
     <color name="naver_green">#03C75A</color>
+    <color name="able_btn">#CC5D5D</color>
+    <color name="disable_btn">#D3D3D3</color>
 
     <color name="main_white">#F3F3ED</color>
     <color name="write_feed_gray">#eeeeee</color>
