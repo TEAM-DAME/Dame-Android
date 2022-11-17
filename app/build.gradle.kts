@@ -123,6 +123,7 @@ dependencies {
     implementation(platform(FirebaseDependency.firebaseBom))
     implementation(FirebaseDependency.analyticsKtx)
     implementation(FirebaseDependency.firebaeMessaging)
+    implementation(FirebaseDependency.configKtx)
 
     // Automatic Record OpenSource Library List
     implementation(ThirdPartyDependencies.ossLicense)
