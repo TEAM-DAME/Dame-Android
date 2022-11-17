@@ -12,4 +12,6 @@ interface SetProfileRepository {
     fun saveUserProfileId(profileId: String)
 
     fun saveUserProfileImageUrl(profileImageUrl: String)
+
+    fun getUserProfileImageUrl(): String
 }

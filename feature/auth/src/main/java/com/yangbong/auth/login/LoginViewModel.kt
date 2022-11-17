@@ -8,10 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.yangbong.core_ui.util.Event
 import com.yangbong.domain.entity.request.DomainLoginRequest
 import com.yangbong.domain.use_case.login.LoginUseCases
-import com.yangbong.domain.use_case.login.SaveUserProfileImageUrl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -48,6 +46,7 @@ class LoginViewModel @Inject constructor(
                     fcmToken = fcmToken.value ?: ""
                 )
             ).onSuccess {
+                Log.d("onseok", "로그인 성공")
                 if (it.isNewUser) {
                     _navigateToSetProfile.postValue(Event(platform))
                 } else {
@@ -55,8 +54,10 @@ class LoginViewModel @Inject constructor(
                     _navigateToHome.postValue(Event(true))
                 }
             }.onFailure {
+                Log.d("onseok", "로그인 실패")
+                loginUseCases.saveUserProfileImageUrl(profileImageUrl.value ?: "")
                 _loginFailureMessage.postValue(it.message)
-                Log.d("tagtag", profileImageUrl.value ?: "")
+                // TODO("서버 연동이 완료되면 아래의 로직은 onSuccess로 이동하기")
             }
         }
     }
@@ -86,4 +87,5 @@ class LoginViewModel @Inject constructor(
     private fun updateFcmToken(fcmToken: String) {
         _fcmToken.value = fcmToken
     }
+
 }

@@ -5,7 +5,6 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
-import com.yangbong.domain.use_case.login.SaveUserProfileImageUrl
 import dagger.hilt.android.qualifiers.ActivityContext
 import timber.log.Timber
 import javax.inject.Inject
