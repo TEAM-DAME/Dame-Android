@@ -131,6 +131,12 @@ dependencies {
 
     // Kakao Login
     implementation(ThirdPartyDependencies.kakaoAuth)
+
+    // RxBinding
+    implementation(ThirdPartyDependencies.rxBinding)
+
+    // RxKotlin
+    implementation(ThirdPartyDependencies.rxKotlin)
 }
 
 
