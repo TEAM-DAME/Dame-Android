@@ -91,6 +91,7 @@ object FirebaseDependency {
     const val firebaseBom = "com.google.firebase:firebase-bom:${Versions.firebaseBomVersion}"
     const val analyticsKtx = "com.google.firebase:firebase-analytics-ktx"
     const val crashlyticsKtx = "com.google.firebase:firebase-crashlytics-ktx"
+    const val configKtx = "com.google.firebase:firebase-config-ktx"
     const val firebaeMessaging =
         "com.google.firebase:firebase-messaging:${Versions.firebaseMessagingVersion}"
 }
