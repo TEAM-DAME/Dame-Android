@@ -1,8 +1,10 @@
 package com.yangbong.damedame.di
 
 import com.yangbong.data.repository.LoginRepositoryImpl
+import com.yangbong.data.repository.MyProfileRepositoryImpl
 import com.yangbong.data.repository.SetProfileRepositoryImpl
 import com.yangbong.domain.repository.LoginRepository
+import com.yangbong.domain.repository.MyProfileRepository
 import com.yangbong.domain.repository.SetProfileRepository
 import dagger.Binds
 import dagger.Module
@@ -21,4 +23,9 @@ interface RepositoryModule {
     @Binds
     @Singleton
     fun bindsSetProfileRepository(repository: SetProfileRepositoryImpl): SetProfileRepository
+
+    @Binds
+    @Singleton
+    fun bindsMyProfileRepository(repository: MyProfileRepositoryImpl): MyProfileRepository
+
 }

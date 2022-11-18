@@ -3,6 +3,7 @@ package com.yangbong.damedame.di
 import com.yangbong.damedame.di.annotations.DameDameServer
 import com.yangbong.data.remote.service.CheckDuplicateProfileIdService
 import com.yangbong.data.remote.service.LoginService
+import com.yangbong.data.remote.service.MyProfileService
 import com.yangbong.data.remote.service.SetProfileService
 import dagger.Module
 import dagger.Provides
@@ -30,4 +31,8 @@ object RetrofitServiceModule {
     fun providesSetProfileService(@DameDameServer retrofit: Retrofit): SetProfileService =
         retrofit.create(SetProfileService::class.java)
 
+    @Provides
+    @Singleton
+    fun provideMyProfileService(@DameDameServer retrofit: Retrofit): MyProfileService =
+        retrofit.create(MyProfileService::class.java)
 }

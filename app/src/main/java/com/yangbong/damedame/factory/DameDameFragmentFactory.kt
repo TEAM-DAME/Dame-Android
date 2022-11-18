@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentFactory
 import com.yangbong.core_ui.util.Injector
 import com.yangbong.core_ui.util.ResolutionMetrics
 import com.yangbong.main.home.HomeFragment
-import com.yangbong.main.profile.ProfileFragment
+import com.yangbong.main.my_profile.MyProfileFragment
 import com.yangbong.main.search.SearchFragment
 import dagger.hilt.android.EntryPointAccessors
 
@@ -22,7 +22,7 @@ class DameDameFragmentFactory(activity: AppCompatActivity) : FragmentFactory() {
         return when (className) {
             HomeFragment::class.java.name -> HomeFragment(resolutionMetrics)
             SearchFragment::class.java.name -> SearchFragment(resolutionMetrics)
-            ProfileFragment::class.java.name -> ProfileFragment(resolutionMetrics)
+            MyProfileFragment::class.java.name -> MyProfileFragment(resolutionMetrics)
             else -> super.instantiate(classLoader, className)
         }
     }
