@@ -21,9 +21,7 @@ BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
         init()
         textcheck()
         //naver clova api 이용하기위한 링크들 . .
-        val client_id="vxmvxrdz0q"
-        val client_secret="qX8x0uLeJbanGCTvWggjFDHDXA39x8rFzdYdK3uS"
-        val apiURL="https://naveropenapi.apigw.ntruss.com/sentiment-analysis/v1/analyze"
+        
     }
     fun emotion(){
 
