@@ -67,7 +67,6 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/activity_set_profile_image"
-            setProfileImage="@{setProfileViewModel.profileImageUrl}"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginTop="40dp"
@@ -75,7 +74,8 @@
             android:src="@drawable/img_profile_tmp_01"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_set_profile_image_label_bold" />
+            app:layout_constraintTop_toBottomOf="@id/activity_set_profile_image_label_bold"
+            app:setProfileImage="@{setProfileViewModel.profileImageUrl}" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
