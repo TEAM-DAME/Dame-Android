@@ -1,5 +1,6 @@
 package com.yangbong.auth.login
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,6 +23,9 @@ class LoginViewModel @Inject constructor(
     private val _fcmToken = MutableLiveData<String>()
     val fcmToken: LiveData<String> = _fcmToken
 
+    private val _profileImageUrl = MutableLiveData<String>()
+    val profileImageUrl: LiveData<String> = _profileImageUrl
+
     private lateinit var platform: String
 
     private val _navigateToSetProfile = MutableLiveData<Event<String>>()
@@ -42,6 +46,7 @@ class LoginViewModel @Inject constructor(
                     fcmToken = fcmToken.value ?: ""
                 )
             ).onSuccess {
+                Log.d("onseok", "로그인 성공")
                 if (it.isNewUser) {
                     _navigateToSetProfile.postValue(Event(platform))
                 } else {
@@ -49,7 +54,10 @@ class LoginViewModel @Inject constructor(
                     _navigateToHome.postValue(Event(true))
                 }
             }.onFailure {
+                Log.d("onseok", "로그인 실패")
+                loginUseCases.saveUserProfileImageUrl(profileImageUrl.value ?: "")
                 _loginFailureMessage.postValue(it.message)
+                // TODO("서버 연동이 완료되면 아래의 로직은 onSuccess로 이동하기")
             }
         }
     }
@@ -66,6 +74,10 @@ class LoginViewModel @Inject constructor(
         this.platform = platform
     }
 
+    fun updateProfileImageUrl(profileImageUrl: String) {
+        _profileImageUrl.value = profileImageUrl
+    }
+
     fun getFcmToken() {
         loginUseCases.getFcmToken {
             updateFcmToken(it)
@@ -75,4 +87,5 @@ class LoginViewModel @Inject constructor(
     private fun updateFcmToken(fcmToken: String) {
         _fcmToken.value = fcmToken
     }
+
 }

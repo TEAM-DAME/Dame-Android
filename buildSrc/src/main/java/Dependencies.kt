@@ -83,12 +83,15 @@ object ThirdPartyDependencies {
     const val naverAuth = "com.navercorp.nid:oauth:${Versions.naverAuth}"
     const val kakaoAuth = "com.kakao.sdk:v2-user:${Versions.kakaoAuth}"
     const val dotsIndicator = "com.tbuonomo:dotsindicator:${Versions.dotsIndicatorVersion}"
+    const val rxBinding = "com.jakewharton.rxbinding4:rxbinding:${Versions.rxBindingVersion}"
+    const val rxKotlin = "io.reactivex.rxjava3:rxkotlin:${Versions.rxKotlinVersion}"
 }
 
 object FirebaseDependency {
     const val firebaseBom = "com.google.firebase:firebase-bom:${Versions.firebaseBomVersion}"
     const val analyticsKtx = "com.google.firebase:firebase-analytics-ktx"
     const val crashlyticsKtx = "com.google.firebase:firebase-crashlytics-ktx"
+    const val configKtx = "com.google.firebase:firebase-config-ktx"
     const val firebaeMessaging =
         "com.google.firebase:firebase-messaging:${Versions.firebaseMessagingVersion}"
 }

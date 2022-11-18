@@ -76,4 +76,8 @@ class SetProfileRepositoryImpl @Inject constructor(
         localPreferenceUserDataSource.saveUserProfileImageUrl(profileImageUrl)
     }
 
+    override fun getUserProfileImageUrl(): String {
+        return localPreferenceUserDataSource.getUserProfileImageUrl()
+    }
+
 }

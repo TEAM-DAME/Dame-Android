@@ -29,13 +29,15 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         initLoginFailureMessageObserver()
         initMoveToHomeObserver()
         initMoveToSetProfileObserver()
-        setLogoScaleAnimation()
     }
 
     private fun initClickEvent() {
         with(binding) {
             kakaoLoginLayout.setOnSingleClickListener {
                 loginViewModel.updatePlatform(KAKAO)
+                kakaoLoginManager.getKakaoUserInfo {
+                    loginViewModel.updateProfileImageUrl(it)
+                }
                 kakaoLoginManager.startKakaoLogin {
                     loginViewModel.updateSocialToken(it)
                 }
@@ -83,12 +85,6 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         )
     }
 
-    private fun setLogoScaleAnimation() {
-        AnimationUtils.loadAnimation(requireActivity(), R.anim.logo_scale).apply {
-            binding.ivLogo.startAnimation(this)
-        }
-    }
-
     private fun navigateMainActivity() {
         mainNavigator.navigateMain(requireActivity())
         requireActivity().finish()
@@ -98,11 +94,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         mainNavigator.navigateSetProfile(
             context = requireContext()
         )
-        /**
-         * @author onseok
-         * 뒤로가기를 허용하기 위해 아래의 코드를 주석 처리 하였습니다.
-         */
-        //  requireActivity().finish()
+        requireActivity().finish()
     }
 
     companion object {

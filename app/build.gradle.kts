@@ -103,6 +103,7 @@ dependencies {
     // Glide for general
     // Coil for compose
     implementation(ThirdPartyDependencies.coil)
+    implementation(ThirdPartyDependencies.glide)
 
     // Http Client Library
     implementation(ThirdPartyDependencies.retrofit)
@@ -122,6 +123,7 @@ dependencies {
     implementation(platform(FirebaseDependency.firebaseBom))
     implementation(FirebaseDependency.analyticsKtx)
     implementation(FirebaseDependency.firebaeMessaging)
+    implementation(FirebaseDependency.configKtx)
 
     // Automatic Record OpenSource Library List
     implementation(ThirdPartyDependencies.ossLicense)
@@ -130,6 +132,12 @@ dependencies {
 
     // Kakao Login
     implementation(ThirdPartyDependencies.kakaoAuth)
+
+    // RxBinding
+    implementation(ThirdPartyDependencies.rxBinding)
+
+    // RxKotlin
+    implementation(ThirdPartyDependencies.rxKotlin)
 }
 
 

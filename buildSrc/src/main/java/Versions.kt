@@ -49,6 +49,8 @@ object Versions {
     const val naverAuth = "5.1.0"
     const val kakaoAuth = "2.11.2"
     const val dotsIndicatorVersion = "4.3"
+    const val rxBindingVersion = "4.0.0"
+    const val rxKotlinVersion = "3.0.1"
 
     val javaVersion = JavaVersion.VERSION_11
     const val jvmVersion = "11"
