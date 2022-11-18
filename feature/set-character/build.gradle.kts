@@ -10,22 +10,21 @@ android {
     buildFeatures {
         dataBinding = true
     }
-    namespace = "com.yangbong.damedame.main"
+    namespace = "com.yangbong.damedame.set_character"
 }
 
 dependencies {
     implementation(project(":core-ui"))
     implementation(project(":domain"))
-    implementation(project(":navigator"))
     implementation(project(":shared"))
-    implementation(project(":feature:notification"))
+    implementation(project(":navigator"))
 
     // Android Core
     implementation(AndroidXDependencies.coreKtx)
     implementation(AndroidXDependencies.appCompat)
     implementation(AndroidXDependencies.constraintLayout)
     implementation(AndroidXDependencies.coroutines)
-    implementation(AndroidXDependencies.recyclerView)
+    implementation(AndroidXDependencies.splashScreen)
 
     // Material Design
     implementation(MaterialDesignDependencies.materialDesign)
@@ -34,21 +33,9 @@ dependencies {
     implementation(AndroidXDependencies.hilt)
     kapt(KaptDependencies.hiltCompiler)
 
-    // Jetpack Lifecycle
-    implementation(AndroidXDependencies.coroutines)
-    implementation(AndroidXDependencies.lifeCycleKtx)
-    implementation(AndroidXDependencies.lifecycleJava8)
-
     // Jetpack Fragment
     implementation(AndroidXDependencies.fragment)
 
     // Logger - Timber
     implementation(ThirdPartyDependencies.timber)
-
-    // test
-    implementation(AndroidXDependencies.junit)
-    androidTestImplementation(TestDependencies.androidTest)
-
-    // ImageLoading Library
-    implementation(ThirdPartyDependencies.coil)
 }
