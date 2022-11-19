@@ -5,6 +5,7 @@
     <string name="app_name">다메다메</string>
     <string name="next">다음</string>
     <string name="special_character_at">\ufeff@</string>
+    <string name="count">%d</string>
 
     <!-- 로그인 화면 -->
     <string name="my_diary">나만의 일기</string>

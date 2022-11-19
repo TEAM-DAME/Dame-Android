@@ -83,6 +83,9 @@ class SetProfileViewModel @Inject constructor(
                 _navigateToSetCharacter.postValue(Event(true))
             }.onFailure {
                 Timber.d(it)
+                // TODO("서버 연동 후 실패 했을 시 로직 삭제")
+                _profileIdState.postValue(ALLOWED_NICKNAME)
+                _navigateToSetCharacter.postValue(Event(true))
             }
         }
     }

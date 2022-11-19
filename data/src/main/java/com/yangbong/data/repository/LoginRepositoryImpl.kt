@@ -56,7 +56,7 @@ class LoginRepositoryImpl @Inject constructor(
         when (response) {
             is NetworkState.Success -> return Result.success(
                 DomainLoginResponse(
-                    accessToken = response.body.data.accessToken,
+                    accessToken = response.body.data.jwtToken,
                     isNewUser = response.body.data.isNewUser
                 )
             )

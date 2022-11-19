@@ -18,6 +18,12 @@ android {
         dataBinding = true
     }
     defaultConfig {
+        buildConfigField("String", "X_NAVER_CLIENT_ID", properties.getProperty("X_NAVER_CLIENT_ID"))
+        buildConfigField(
+            "String",
+            "X_NAVER_CLIENT_SECRET",
+            properties.getProperty("X_NAVER_CLIENT_SECRET")
+        )
         buildConfigField(
             "String",
             "DAME_DAME_SERVER_BASE_URL_DEBUG",

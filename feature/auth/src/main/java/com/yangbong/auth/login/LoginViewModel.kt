@@ -46,7 +46,6 @@ class LoginViewModel @Inject constructor(
                     fcmToken = fcmToken.value ?: ""
                 )
             ).onSuccess {
-                Log.d("onseok", "로그인 성공")
                 if (it.isNewUser) {
                     _navigateToSetProfile.postValue(Event(platform))
                 } else {
@@ -54,14 +53,12 @@ class LoginViewModel @Inject constructor(
                     _navigateToHome.postValue(Event(true))
                 }
             }.onFailure {
-                Log.d("onseok", "로그인 실패")
                 loginUseCases.saveUserProfileImageUrl(profileImageUrl.value ?: "")
                 _loginFailureMessage.postValue(it.message)
                 // TODO("서버 연동이 완료되면 아래의 로직은 onSuccess로 이동하기")
             }
         }
     }
-
 
     fun getAccessToken(): String =
         loginUseCases.getAccessToken()

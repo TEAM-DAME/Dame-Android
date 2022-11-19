@@ -8,6 +8,7 @@ import com.yangbong.core_ui.base.BindingActivity
 import com.yangbong.core_ui.constant.SetProfileIdConstant.*
 import com.yangbong.core_ui.extension.setOnSingleClickListener
 import com.yangbong.core_ui.extension.setQueryDebounce
+import com.yangbong.core_ui.util.EventObserver
 import com.yangbong.damedame.set_profile.R
 import com.yangbong.damedame.set_profile.databinding.ActivitySetProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,8 +26,9 @@ class SetProfileActivity :
         setProfileViewModel.getProfileImage()
         initEditTextFilter()
         initDuplicateProfileId()
-        initProfileIdLengthMessage()
         initNextButtonClickListener()
+        initNavigateToSetCharacterObserver()
+        initProfileIdLengthMessage()
     }
 
     private fun initEditTextFilter() {
@@ -69,6 +71,22 @@ class SetProfileActivity :
         binding.btnNext.setOnSingleClickListener {
             setProfileViewModel.postSetProfile()
         }
+    }
+
+    private fun navigateSetCharacterActivity() {
+        // TODO("추후 서버 연동 후 캐릭터 설정화면으로 이동하도록 수정")
+        // TODO("현재는 우선 메인으로 이동하도록 구현")
+        mainNavigator.navigateMain(this)
+        finish()
+    }
+
+    private fun initNavigateToSetCharacterObserver() {
+        setProfileViewModel.navigateToSetCharacter.observe(
+            this,
+            EventObserver {
+                navigateSetCharacterActivity()
+            }
+        )
     }
 
 }
