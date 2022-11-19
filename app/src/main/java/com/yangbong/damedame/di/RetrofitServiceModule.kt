@@ -1,10 +1,8 @@
 package com.yangbong.damedame.di
 
 import com.yangbong.damedame.di.annotations.DameDameServer
-import com.yangbong.data.remote.service.CheckDuplicateProfileIdService
-import com.yangbong.data.remote.service.LoginService
-import com.yangbong.data.remote.service.MyProfileService
-import com.yangbong.data.remote.service.SetProfileService
+import com.yangbong.damedame.di.annotations.NaverClovaSentimentServer
+import com.yangbong.data.remote.service.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,6 +13,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitServiceModule {
+
+    @Provides
+    @Singleton
+    fun providesNaverClovaSentimentService(@NaverClovaSentimentServer retrofit: Retrofit): NaverClovaSentimentService =
+        retrofit.create(NaverClovaSentimentService::class.java)
 
     @Provides
     @Singleton

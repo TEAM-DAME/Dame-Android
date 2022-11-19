@@ -2,6 +2,7 @@ package com.yangbong.damedame.di
 
 import com.yangbong.damedame.BuildConfig.*
 import com.yangbong.damedame.di.annotations.DameDameServer
+import com.yangbong.damedame.di.annotations.NaverClovaSentimentServer
 import com.yangbong.data.local.data_source.LocalPreferenceUserDataSource
 import com.yangbong.data.remote.call_adapter.CustomCallAdapterFactory
 import dagger.Module
@@ -26,6 +27,49 @@ object RetrofitModule {
         HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
+
+    @Provides
+    @Singleton
+    @NaverClovaSentimentServer
+    fun providesNaverInterceptor(): Interceptor =
+        Interceptor { chain ->
+            with(chain) {
+                proceed(
+                    request()
+                        .newBuilder()
+                        .addHeader("X-NCP-APIGW-API-KEY-ID", X_NAVER_CLIENT_ID)
+                        .addHeader("X-NCP-APIGW-API-KEY", X_NAVER_CLIENT_SECRET)
+                        .addHeader("Content-Type", APPLICATION_JSON)
+                        .build()
+                )
+            }
+        }
+
+    @Provides
+    @Singleton
+    @NaverClovaSentimentServer
+    fun providesNaverOkHttpClient(
+        @NaverClovaSentimentServer interceptor: Interceptor,
+        httpLoggingInterceptor: HttpLoggingInterceptor
+    ): OkHttpClient =
+        OkHttpClient.Builder()
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .writeTimeout(20, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
+            .addInterceptor(interceptor)
+            .addInterceptor(httpLoggingInterceptor)
+            .build()
+
+    @Provides
+    @Singleton
+    @NaverClovaSentimentServer
+    fun providesNaverRetrofit(@NaverClovaSentimentServer okHttpClient: OkHttpClient): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(NAVER_CLOVA_SENTIMENT_BASE_URL)
+            .client(okHttpClient)
+            .addCallAdapterFactory(CustomCallAdapterFactory())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
     @Provides
     @Singleton
@@ -73,4 +117,6 @@ object RetrofitModule {
             .build()
 
     const val AUTHORIZATION = "Authorization"
+    const val APPLICATION_JSON = "application/json"
+    const val NAVER_CLOVA_SENTIMENT_BASE_URL = "https://naveropenapi.apigw.ntruss.com/sentiment-analysis/v1/analyze"
 }
