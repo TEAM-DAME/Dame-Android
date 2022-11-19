@@ -2,7 +2,7 @@ package com.yangbong.data.remote.model.response
 
 import com.google.gson.annotations.SerializedName
 
-data class NaverClovaSentimentResponse(
+data class SentimentAnalyzeResponse(
     @SerializedName("document")
     val document: Document,
     @SerializedName("sentences")

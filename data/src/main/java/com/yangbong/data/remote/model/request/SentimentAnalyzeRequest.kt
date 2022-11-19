@@ -2,7 +2,7 @@ package com.yangbong.data.remote.model.request
 
 import com.google.gson.annotations.SerializedName
 
-data class NaverClovaSentimentRequest(
+data class SentimentAnalyzeRequest(
     @SerializedName("content")
     val content: String
 )
