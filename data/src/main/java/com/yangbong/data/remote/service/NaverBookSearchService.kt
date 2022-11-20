@@ -10,6 +10,7 @@ interface NaverClovaSentimentService {
 
     @POST
     suspend fun postSentimentAnalyze(
-        @Body body: SentimentAnalyzeRequest
+        @Body body: String,
+        NETWORK_STATS_SERVICE: String
     ): NetworkState<SentimentAnalyzeResponse>
 }

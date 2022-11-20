@@ -15,7 +15,7 @@
             android:id="@+id/rowBackground"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/edittext"
+            android:background="@drawable/bg_radius_button"
             android:backgroundTint="#FFFFFF">
 
             <ImageView
@@ -24,7 +24,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/img_1"
+                android:src="@drawable/img_profile_tmp_01"
                 app:layout_constraintLeft_toLeftOf="@+id/rowBackground"
                 app:layout_constraintTop_toTopOf="@id/rowBackground" />
 

@@ -100,7 +100,7 @@
             android:fontFamily="@font/jua"
             android:hint="내용을 입력하세요"
             android:inputType="textMultiLine"
-            android:maxLength="1500"
+            android:maxLength="1000"
             android:maxLines="10"
             android:scrollbars="vertical"
             android:textSize="14sp"

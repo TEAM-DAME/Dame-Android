@@ -1,20 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#F3F3ED"
+        tools:context=".FriendSearchFragment">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="검색"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <View
+            android:layout_width="315dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_radius_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/Search_txt"
+            android:layout_width="315dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_radius_button"
+            android:fontFamily="@font/jua"
+            android:hint="친구 닉네임을 검색하세요"
+            android:paddingLeft="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/Search_btn"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="16.8dp"
+            android:layout_marginEnd="13.2dp"
+            android:src="@drawable/ic_search"
+            app:layout_constraintTop_toTopOf="@id/Search_txt"
+            app:layout_constraintEnd_toEndOf="@id/Search_txt"/>
 
+        <TextView
+            android:id="@+id/recent_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="43dp"
+            android:fontFamily="@font/jua"
+            android:text="최근검색어"
+            android:textSize="5pt"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Search_txt" />
+
+        <TextView
+            android:id="@+id/delete_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="43dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/jua"
+            android:text="모두지우기"
+
+            android:textColor="#ADADAD"
+
+            android:textSize="5pt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Search_txt" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/FS_recyclerVIew"
+            android:layout_width="409dp"
+            android:layout_height="638dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recent_search" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
