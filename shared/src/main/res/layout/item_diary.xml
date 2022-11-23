@@ -3,10 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="diaryData"
+            type="com.yangbong.domain.entity.DiaryInfo" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="15dp"
         android:background="@drawable/bg_button_white_15_dp">
 
         <View
@@ -56,6 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:text="@{diaryData.emotion.emotionValue}"
                 android:textAppearance="@style/TitleTextStyleNormal"
                 android:textColor="@color/white"
                 android:textSize="12sp"
@@ -74,6 +81,7 @@
             android:layout_marginStart="20dp"
             android:ellipsize="end"
             android:maxLines="1"
+            android:text="@{diaryData.title}"
             android:textAppearance="@style/TitleTextStyleBold"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="@id/item_diary_emotion_image"
@@ -96,6 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:text="@{diaryData.date}"
                 android:textAppearance="@style/TitleTextStyleNormal"
                 android:textColor="@color/white"
                 android:textSize="11sp"

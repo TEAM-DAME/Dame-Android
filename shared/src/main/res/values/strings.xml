@@ -5,6 +5,7 @@
     <string name="app_name">다메다메</string>
     <string name="next">다음</string>
     <string name="special_character_at">\ufeff@</string>
+    <string name="count">%d</string>
 
     <!-- 로그인 화면 -->
     <string name="my_diary">나만의 일기</string>
@@ -39,12 +40,14 @@
     <string name="set_profile_id_duplicate_nickname">중복된 아이디입니다.</string>
     <string name="set_profile_id_allowed_nickname">사용 가능한 아이디입니다.</string>
 
-
     <!-- 내 프로필 화면 -->
     <string name="diary">일기</string>
     <string name="pocket">도감</string>
     <string name="friend">친구</string>
     <string name="button_settings_description">설정 화면으로 넘어가는 버튼입니다.</string>
     <string name="button_sort_description">다이어리 목록을 정렬하는 버튼입니다.</string>
+
+    <!-- 친구 목록 화면 -->
+    <string name="whose_friends_list">님의 친구 목록</string>
 
 </resources>

@@ -8,7 +8,7 @@ import com.yangbong.damedame.adapter.MainViewPagerAdapter
 import com.yangbong.damedame.databinding.ActivityMainBinding
 import com.yangbong.damedame.factory.DameDameFragmentFactory
 import com.yangbong.main.home.HomeFragment
-import com.yangbong.main.profile.ProfileFragment
+import com.yangbong.main.my_profile.MyProfileFragment
 import com.yangbong.main.search.SearchFragment
 import com.yangbong.write_diary.WriteDiaryActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,7 +40,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
             ),
             supportFragmentManager.fragmentFactory.instantiate(
                 classLoader,
-                ProfileFragment::class.java.name
+                MyProfileFragment::class.java.name
             )
         )
     }

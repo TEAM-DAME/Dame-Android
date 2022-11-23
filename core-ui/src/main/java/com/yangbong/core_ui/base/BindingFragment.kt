@@ -49,6 +49,7 @@ abstract class BindingFragment<T : ViewDataBinding>(
         viewModel.moveToLogin.observe(viewLifecycleOwner, EventObserver {
             mainNavigator.navigateAuth(requireActivity())
             sharedPreferences.edit().remove("DAME_DAME_ACCESS_TOKEN").apply()
+            sharedPreferences.edit().remove("USER_PROFILE_IMAGE_URL").apply()
             requireActivity().finish()
         })
     }
