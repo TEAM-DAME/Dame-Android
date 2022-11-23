@@ -40,12 +40,16 @@ class SettingActivity : AppCompatActivity() {
     }
 
     private fun initRemoteConfig() {
-        remoteConfig = Firebase.remoteConfig
-        remoteConfig.setConfigSettingsAsync(
-            remoteConfigSettings {
-                minimumFetchIntervalInSeconds = 0
-            }
-        )
+        remoteConfig = FirebaseRemoteConfig.getInstance()
+        val configSettings = remoteConfigSettings {
+            minimumFetchIntervalInSeconds = 100
+            mapOf(
+                "fortesting" to "xxx",
+                "app_version" to "0.0.0"
+            )
+        }
+
+        remoteConfig.setConfigSettingsAsync(configSettings)
     }
 
     private fun getCurrentAppVersion(context: Context): String {
@@ -56,7 +60,9 @@ class SettingActivity : AppCompatActivity() {
                 .getPackageInfo(context.packageName, 0)
                 .versionName
         }.onFailure { e ->
-           Timber.d("getAppVersion: $e")
+            Timber.d("getAppVersion: $e")
+        }.onSuccess { v ->
+            Timber.d("getAppVersion: $v")
         }
 
         // 문자를 제거하고 버전 숫자만 리턴하기 위해서
@@ -66,13 +72,26 @@ class SettingActivity : AppCompatActivity() {
         return appVersion
     }
 
+    private fun activateRemoteConfig() {
+        remoteConfig.fetchAndActivate()
+            .addOnCompleteListener { task ->
+                val result = task.result
+
+                if (task.isSuccessful) {
+                    Timber.d("activateRemoteConfig: $result")
+                } else {
+                    Timber.d("activateRemoteConfig: $result")
+                }
+            }
+    }
+
     private fun checkVersion() {
-        val remoteConfig = FirebaseRemoteConfig.getInstance()
         val latestVersion = remoteConfig.getString("app_version")
+        activateRemoteConfig()
         Timber.d("getAppVersion: $latestVersion")
         val currentVersion = getCurrentAppVersion(this)
 
-//        binding.currentAppVersionText.text = currentVersion
+//      ㄱ binding.currentAppVersionText.text = currentVersion
 //        binding.latestAppVersionText.text = latestVersion
 
 //        if (currentVersion != latestVersion) {
