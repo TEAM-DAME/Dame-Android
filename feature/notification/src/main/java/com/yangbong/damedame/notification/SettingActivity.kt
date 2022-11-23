@@ -26,7 +26,13 @@ class SettingActivity : AppCompatActivity() {
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = SettingRecyclerViewAdapter(listOf("알림", "정책 및 보안", "앱 버전"))
+        adapter = SettingRecyclerViewAdapter(
+            listOf(
+                getString(com.yangbong.damedame.shared.R.string.notification),
+                getString(com.yangbong.damedame.shared.R.string.policy_security),
+                getString(com.yangbong.damedame.shared.R.string.app_version),
+            )
+        )
 
         binding.settingRecycler.layoutManager=
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
