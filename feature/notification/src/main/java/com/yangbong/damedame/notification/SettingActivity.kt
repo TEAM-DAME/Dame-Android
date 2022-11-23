@@ -10,6 +10,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import com.yangbong.damedame.notification.databinding.ActivitySettingBinding
+import timber.log.Timber
 
 class SettingActivity : AppCompatActivity() {
 
@@ -19,6 +20,9 @@ class SettingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //timber 초기화
+        Timber.plant(Timber.DebugTree())
+
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -46,7 +50,7 @@ class SettingActivity : AppCompatActivity() {
                 .getPackageInfo(context.packageName, 0)
                 .versionName
         }.onFailure { e ->
-            Log.e("getAppVersion", e.toString())
+           Timber.d("getAppVersion: $e")
         }
 
         // 문자를 제거하고 버전 숫자만 리턴하기 위해서
@@ -59,7 +63,7 @@ class SettingActivity : AppCompatActivity() {
     private fun checkVersion() {
         val remoteConfig = FirebaseRemoteConfig.getInstance()
         val latestVersion = remoteConfig.getString("app_version")
-        Log.e("RemoteConfig", latestVersion)
+        Timber.d("getAppVersion: $latestVersion")
         val currentVersion = getCurrentAppVersion(this)
 
 //        binding.currentAppVersionText.text = currentVersion
