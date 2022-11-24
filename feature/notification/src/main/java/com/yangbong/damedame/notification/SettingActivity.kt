@@ -13,8 +13,6 @@ import com.yangbong.damedame.notification.databinding.ActivitySettingBinding
 import timber.log.Timber
 
 class SettingActivity : AppCompatActivity() {
-
-    private lateinit var adapter: SettingRecyclerViewAdapter
     private lateinit var binding: ActivitySettingBinding
     private lateinit var remoteConfig: FirebaseRemoteConfig
 
@@ -22,21 +20,14 @@ class SettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //timber 초기화
         Timber.plant(Timber.DebugTree())
-
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = SettingRecyclerViewAdapter(
-            listOf(
-                getString(com.yangbong.damedame.shared.R.string.notification),
-                getString(com.yangbong.damedame.shared.R.string.policy_security),
-                getString(com.yangbong.damedame.shared.R.string.app_version),
-            )
-        )
+        //remoteConfig 초기화
+        initRemoteConfig()
 
-        binding.settingRecycler.layoutManager=
-            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.settingRecycler.adapter = adapter
+        //remoteConfig를 활용해 최신 버전 가져오기
+        initLatestVersion()
     }
 
     private fun initRemoteConfig() {
@@ -85,15 +76,15 @@ class SettingActivity : AppCompatActivity() {
             }
     }
 
-    private fun checkVersion() {
-        val latestVersion = remoteConfig.getString("app_version")
+    private fun initLatestVersion() {
         activateRemoteConfig()
-        Timber.d("getAppVersion: $latestVersion")
-        val currentVersion = getCurrentAppVersion(this)
+        binding.latestAppVersionText.text = remoteConfig.getString("app_version")
+//        Timber.d("getAppVersion: $latestVersion")
+//        val currentVersion = getCurrentAppVersion(this)
 
-//      ㄱ binding.currentAppVersionText.text = currentVersion
+//        binding.currentAppVersionText.text = currentVersion
 //        binding.latestAppVersionText.text = latestVersion
-
+//
 //        if (currentVersion != latestVersion) {
 //            showUpdateDialog()
 //        }

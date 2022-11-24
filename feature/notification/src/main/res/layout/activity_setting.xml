@@ -66,6 +66,16 @@
                 android:src="@drawable/img_bell"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/enterNotificationImg"
+                android:layout_width="10dp"
+                android:layout_height="23dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/img_leftarrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -100,6 +110,16 @@
                 android:layout_marginTop="19dp"
                 android:src="@drawable/img_security_policy"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/enterPolicySecurityImg"
+                android:layout_width="10dp"
+                android:layout_height="23dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/img_leftarrow"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -136,8 +156,21 @@
                 android:src="@drawable/img_app_version"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <TextView
+                android:id="@+id/latestAppVersionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect_white_fill_10"
+                android:fontFamily="@font/jua"
+                android:text="0.0.0"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
