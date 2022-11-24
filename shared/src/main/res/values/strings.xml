@@ -54,6 +54,7 @@
     <string name="notification">알림</string>
     <string name="policy_security">정책 및 보안</string>
     <string name="app_version">앱 버전</string>
+    <string name="app_version_check">앱 버전</string>
     <string name="setting">설정</string>
 
 </resources>
