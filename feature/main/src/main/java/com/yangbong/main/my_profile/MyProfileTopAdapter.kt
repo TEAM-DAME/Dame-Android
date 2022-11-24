@@ -4,11 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yangbong.core_ui.extension.navigateActivity
+import com.yangbong.core_ui.extension.setOnSingleClickListener
 import com.yangbong.damedame.main.databinding.LayoutMyProfileTopBinding
 import com.yangbong.damedame.notification.SettingActivity
 import com.yangbong.domain.entity.MyProfileUser
 
-class MyProfileTopAdapter : RecyclerView.Adapter<MyProfileTopAdapter.MyProfileTopViewHolder>() {
+class MyProfileTopAdapter(
+    private val onPocketClick: (Int) -> Unit,
+    private val onFriendsClick: (Int) -> Unit
+) : RecyclerView.Adapter<MyProfileTopAdapter.MyProfileTopViewHolder>() {
     var myProfileUser: MyProfileUser? = null
         set(value) {
             field = value
@@ -22,7 +26,7 @@ class MyProfileTopAdapter : RecyclerView.Adapter<MyProfileTopAdapter.MyProfileTo
     }
 
     override fun onBindViewHolder(holder: MyProfileTopViewHolder, position: Int) {
-        holder.onBind(myProfileUser)
+        holder.onBind(myProfileUser, onPocketClick, onFriendsClick)
     }
 
     override fun getItemCount() = 1
@@ -30,7 +34,11 @@ class MyProfileTopAdapter : RecyclerView.Adapter<MyProfileTopAdapter.MyProfileTo
     class MyProfileTopViewHolder(
         private val binding: LayoutMyProfileTopBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(myProfileUser: MyProfileUser?) {
+        fun onBind(
+            myProfileUser: MyProfileUser?,
+            onPocketClick: (Int) -> Unit,
+            onFriendsClick: (Int) -> Unit
+        ) {
             myProfileUser?.let {
                 binding.userData = it
 
@@ -38,6 +46,16 @@ class MyProfileTopAdapter : RecyclerView.Adapter<MyProfileTopAdapter.MyProfileTo
                     with(itemView.context) {
                         navigateActivity<SettingActivity>()
                     }
+                }
+
+                binding.pocketLayout.setOnSingleClickListener {
+                    // TODO("MyProfileUser 데이터 구조 변경해야함!")
+                    onPocketClick(myProfileUser.profileId.toInt())
+                }
+
+                binding.friendLayout.setOnSingleClickListener {
+                    // TODO("MyProfileUser 데이터 구조 변경해야함!")
+                    onFriendsClick(myProfileUser.profileId.toInt())
                 }
             }
         }

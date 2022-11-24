@@ -21,7 +21,7 @@ import kotlinx.coroutines.flow.onEach
 class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
     BindingFragment<FragmentMyProfileBinding>(R.layout.fragment_my_profile) {
     private val viewModel: MyProfileViewModel by activityViewModels()
-    private val myProfileTopAdapter = MyProfileTopAdapter()
+    private val myProfileTopAdapter = MyProfileTopAdapter(::onPocketClick, ::onFriendsClick)
     private val diaryAdapter = DiaryAdapter(::onLockClick, ::onDiaryClick)
     private val concatAdapter = ConcatAdapter(myProfileTopAdapter, diaryAdapter)
 
@@ -85,6 +85,14 @@ class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
 //            putExtra(DIARY_ID, id)
 //        }
 //        startActivity(intent)
+    }
+
+    private fun onPocketClick(id: Int) {
+        
+    }
+
+    private fun onFriendsClick(id: Int) {
+
     }
 
 }
