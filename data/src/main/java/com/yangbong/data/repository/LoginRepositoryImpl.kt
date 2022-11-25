@@ -48,8 +48,8 @@ class LoginRepositoryImpl @Inject constructor(
     override suspend fun postLogin(loginRequest: DomainLoginRequest): Result<DomainLoginResponse> {
         val response = remoteLoginDataSource.postLogin(
             LoginRequest(
-                socialToken = loginRequest.socialToken,
-                fcmToken = loginRequest.fcmToken
+                platform = loginRequest.platform,
+                socialToken = loginRequest.socialToken
             )
         )
 

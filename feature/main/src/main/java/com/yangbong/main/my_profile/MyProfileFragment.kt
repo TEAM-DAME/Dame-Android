@@ -2,7 +2,7 @@ package com.yangbong.main.my_profile
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
@@ -20,8 +20,8 @@ import kotlinx.coroutines.flow.onEach
 @AndroidEntryPoint
 class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
     BindingFragment<FragmentMyProfileBinding>(R.layout.fragment_my_profile) {
-    private val viewModel: MyProfileViewModel by viewModels()
-    private val myProfileTopAdapter = MyProfileTopAdapter()
+    private val viewModel: MyProfileViewModel by activityViewModels()
+    private val myProfileTopAdapter = MyProfileTopAdapter(::onPocketClick, ::onFriendsClick)
     private val diaryAdapter = DiaryAdapter(::onLockClick, ::onDiaryClick)
     private val concatAdapter = ConcatAdapter(myProfileTopAdapter, diaryAdapter)
 
@@ -85,6 +85,14 @@ class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
 //            putExtra(DIARY_ID, id)
 //        }
 //        startActivity(intent)
+    }
+
+    private fun onPocketClick(id: Int) {
+        
+    }
+
+    private fun onFriendsClick(id: Int) {
+
     }
 
 }

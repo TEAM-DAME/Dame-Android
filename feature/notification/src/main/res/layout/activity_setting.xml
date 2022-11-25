@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -11,39 +10,168 @@
 
         <ImageView
             android:id="@+id/backButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="26dp"
-            android:layout_marginStart="29dp"
-            android:src="@drawable/img_backbutton"
+            android:layout_width="14dp"
             android:layout_height="18dp"
-            android:layout_width="14dp">
-        </ImageView>
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="26dp"
+            android:src="@drawable/img_backbutton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/settingText"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="23dp"
-            android:layout_marginStart="168dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="normal"
-            android:textSize="16sp"
-            android:textColor="#000000"
-            android:gravity="center_horizontal"
+            android:layout_marginTop="23dp"
             android:fontFamily="@font/jua"
-            android:text="설정"/>
+            android:gravity="center_horizontal"
+            android:text="@string/setting"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/settingRecycler"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="97dp"
-            android:layout_marginStart="30dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/settingNotification"
             android:layout_width="300dp"
-            android:layout_height="wrap_content">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="60dp"
+            android:layout_marginTop="97dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/settingNotificationText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_rect_white_fill_10"
+                android:fontFamily="@font/jua"
+                android:paddingStart="59dp"
+                android:paddingTop="19dp"
+                android:text="@string/setting"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/settingNotificationImg"
+                android:layout_width="22dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="19dp"
+                android:src="@drawable/img_bell"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/enterNotificationImg"
+                android:layout_width="10dp"
+                android:layout_height="23dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/img_leftarrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/policySecurity"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="23dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settingNotification">
+
+            <TextView
+                android:id="@+id/policySecurityText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_rect_white_fill_10"
+                android:fontFamily="@font/jua"
+                android:paddingStart="59dp"
+                android:paddingTop="19dp"
+                android:text="@string/policy_security"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/policySecurityImg"
+                android:layout_width="22dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="19dp"
+                android:src="@drawable/img_security_policy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/enterPolicySecurityImg"
+                android:layout_width="10dp"
+                android:layout_height="23dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/img_leftarrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/appVersion"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="23dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/policySecurity">
+
+            <TextView
+                android:id="@+id/appVersionText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_rect_white_fill_10"
+                android:fontFamily="@font/jua"
+                android:paddingStart="59dp"
+                android:paddingTop="19dp"
+                android:text="@string/app_version"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/appVersionImg"
+                android:layout_width="22dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="19dp"
+                android:src="@drawable/img_app_version"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/latestAppVersionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect_white_fill_10"
+                android:fontFamily="@font/jua"
+                android:text="0.0.0"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

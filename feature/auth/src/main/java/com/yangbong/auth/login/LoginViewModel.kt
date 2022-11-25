@@ -20,8 +20,8 @@ class LoginViewModel @Inject constructor(
     private val _socialToken = MutableLiveData<String>()
     val socialToken: LiveData<String> = _socialToken
 
-    private val _fcmToken = MutableLiveData<String>()
-    val fcmToken: LiveData<String> = _fcmToken
+//    private val _fcmToken = MutableLiveData<String>()
+//    val fcmToken: LiveData<String> = _fcmToken
 
     private val _profileImageUrl = MutableLiveData<String>()
     val profileImageUrl: LiveData<String> = _profileImageUrl
@@ -42,20 +42,18 @@ class LoginViewModel @Inject constructor(
             loginUseCases.postLogin(
                 DomainLoginRequest(
                     platform = platform,
-                    socialToken = socialToken.value ?: "",
-                    fcmToken = fcmToken.value ?: ""
+                    socialToken = socialToken.value ?: ""
                 )
             ).onSuccess {
                 if (it.isNewUser) {
                     _navigateToSetProfile.postValue(Event(platform))
+                    loginUseCases.saveUserProfileImageUrl(profileImageUrl.value ?: "")
                 } else {
                     loginUseCases.saveAccessToken(it.accessToken ?: "")
                     _navigateToHome.postValue(Event(true))
                 }
             }.onFailure {
-                loginUseCases.saveUserProfileImageUrl(profileImageUrl.value ?: "")
                 _loginFailureMessage.postValue(it.message)
-                // TODO("서버 연동이 완료되면 아래의 로직은 onSuccess로 이동하기")
             }
         }
     }
@@ -75,14 +73,14 @@ class LoginViewModel @Inject constructor(
         _profileImageUrl.value = profileImageUrl
     }
 
-    fun getFcmToken() {
-        loginUseCases.getFcmToken {
-            updateFcmToken(it)
-        }
-    }
+//    fun getFcmToken() {
+//        loginUseCases.getFcmToken {
+//            updateFcmToken(it)
+//        }
+//    }
 
-    private fun updateFcmToken(fcmToken: String) {
-        _fcmToken.value = fcmToken
-    }
+//    private fun updateFcmToken(fcmToken: String) {
+//        _fcmToken.value = fcmToken
+//    }
 
 }
