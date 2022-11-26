@@ -52,9 +52,15 @@
 
     <!-- 환경 설정 화면-->
     <string name="notification">알림</string>
+
     <string name="policy_security">정책 및 보안</string>
     <string name="app_version">앱 버전</string>
     <string name="app_version_check">앱 버전</string>
     <string name="setting">설정</string>
+
+
+    <!-- 알림 확인 화면-->
+    <string name="friend_request_msg">"%s님이 친구 요청을 보냈습니다."</string>
+    <string name="writing_request_msg">오늘의 일기를 작성해주세요!</string>
 
 </resources>
