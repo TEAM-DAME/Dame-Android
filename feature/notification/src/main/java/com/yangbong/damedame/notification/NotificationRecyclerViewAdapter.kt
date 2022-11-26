@@ -14,8 +14,8 @@ class NotificationRecyclerViewAdapter(private val notifications: List<Notificati
         val binding: RecyclerItemNotificationBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(eachNotification : NotificationData){
-            binding.notificationData
+        fun bind(eachNotification: NotificationData) {
+            binding.notificationData = eachNotification
         }
     }
 
