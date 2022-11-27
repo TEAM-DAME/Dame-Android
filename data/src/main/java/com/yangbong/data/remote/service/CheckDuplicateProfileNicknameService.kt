@@ -5,9 +5,8 @@ import com.yangbong.data.remote.model.response.BaseResponse
 import com.yangbong.data.remote.model.response.CheckDuplicateProfileNicknameResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
-interface CheckDuplicateProfileIdService {
+interface CheckDuplicateProfileNicknameService {
 
     @GET("v1/auth/validate/{profileName}")
     suspend fun checkDuplicateProfileNickname(
