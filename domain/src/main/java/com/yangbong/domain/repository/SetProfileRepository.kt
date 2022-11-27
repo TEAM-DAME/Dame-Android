@@ -5,7 +5,7 @@ import com.yangbong.domain.entity.response.DomainSetProfileResponse
 
 interface SetProfileRepository {
 
-    suspend fun checkDuplicateProfileId(profileId: String): Result<Boolean>
+    suspend fun checkDuplicateProfileNickname(profileNickname: String): Result<Boolean>
 
     suspend fun postUserProfile(setProfileRequest: DomainSetProfileRequest): Result<DomainSetProfileResponse>
 
