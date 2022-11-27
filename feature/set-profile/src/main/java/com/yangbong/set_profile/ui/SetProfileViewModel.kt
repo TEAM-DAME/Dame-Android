@@ -1,9 +1,9 @@
-package com.yangbong.set_profile
+package com.yangbong.set_profile.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.yangbong.core_ui.base.BaseViewModel
 import com.yangbong.core_ui.constant.SetProfileNicknameConstant
 import com.yangbong.core_ui.constant.SetProfileNicknameConstant.*
 import com.yangbong.core_ui.util.Event
@@ -19,11 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SetProfileViewModel @Inject constructor(
     private val setProfileRepository: SetProfileRepository
-) : ViewModel() {
-
-    private val disposables by lazy {
-        CompositeDisposable()
-    }
+) : BaseViewModel() {
 
     var profileNickname = MutableLiveData("")
 
@@ -42,10 +38,6 @@ class SetProfileViewModel @Inject constructor(
 
     fun getProfileImage() {
         _profileImageUrl.postValue(setProfileRepository.getUserProfileImageUrl())
-    }
-
-    fun addDisposable(disposable: Disposable) {
-        disposables.add(disposable)
     }
 
     fun checkDuplicateNickName() {
@@ -85,8 +77,15 @@ class SetProfileViewModel @Inject constructor(
         }
     }
 
-    override fun onCleared() {
-        disposables.clear()
-        super.onCleared()
+    fun getImageFromGallery() {
+        viewModelScope.launch(exceptionHandler) {
+            
+        }
+    }
+
+    fun getImageFromCamera() {
+        viewModelScope.launch(exceptionHandler) {
+
+        }
     }
 }

@@ -11,7 +11,7 @@
 
         <variable
             name="setProfileViewModel"
-            type="com.yangbong.set_profile.SetProfileViewModel" />
+            type="com.yangbong.set_profile.ui.SetProfileViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

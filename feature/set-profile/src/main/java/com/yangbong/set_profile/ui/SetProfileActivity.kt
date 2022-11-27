@@ -1,4 +1,4 @@
-package com.yangbong.set_profile
+package com.yangbong.set_profile.ui
 
 import android.os.Bundle
 import android.text.InputFilter
@@ -11,6 +11,7 @@ import com.yangbong.core_ui.extension.setQueryDebounce
 import com.yangbong.core_ui.util.EventObserver
 import com.yangbong.damedame.set_profile.R
 import com.yangbong.damedame.set_profile.databinding.ActivitySetProfileBinding
+import com.yangbong.set_profile.view.ImageBottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.disposables.Disposable
 import java.util.regex.Pattern
@@ -30,6 +31,7 @@ class SetProfileActivity :
         initExtraData()
         initEditTextFilter()
         initDuplicateProfileId()
+        initProfileImageClickListener()
         initNextButtonClickListener()
         initNavigateToSetCharacterObserver()
         initProfileIdLengthMessage()
@@ -74,6 +76,18 @@ class SetProfileActivity :
                 else -> throw IllegalStateException("Maximum nickname length is 10")
             }
             setProfileViewModel.updateProfileIdState(message)
+        }
+    }
+
+    private fun initProfileImageClickListener() {
+        binding.activitySetProfileImage.setOnSingleClickListener {
+            ImageBottomSheetDialog(
+                onGalleryClick = setProfileViewModel::getImageFromGallery,
+                onCameraClick = setProfileViewModel::getImageFromCamera
+            ).show(
+                supportFragmentManager,
+                this.javaClass.name
+            )
         }
     }
 
