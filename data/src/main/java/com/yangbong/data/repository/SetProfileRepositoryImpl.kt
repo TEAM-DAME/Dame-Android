@@ -16,11 +16,11 @@ class SetProfileRepositoryImpl @Inject constructor(
     private val setProfileDataSource: RemoteSetProfileDataSource,
     private val localPreferenceUserDataSource: LocalPreferenceUserDataSource
 ) : SetProfileRepository {
-    override suspend fun checkDuplicateProfileId(profileId: String): Result<Boolean> {
+    override suspend fun checkDuplicateProfileNickname(profileNickname: String): Result<Boolean> {
 
-        when (val response = setProfileDataSource.checkDuplicateProfileId(profileId)) {
+        when (val response = setProfileDataSource.checkDuplicateProfileNickname(profileNickname)) {
             is NetworkState.Success -> return Result.success(
-                response.body.data.available ?: throw IllegalStateException()
+                response.body.data.available
             )
             is NetworkState.Failure -> return Result.failure(
                 RetrofitFailureStateException(
@@ -28,9 +28,9 @@ class SetProfileRepositoryImpl @Inject constructor(
                     response.code
                 )
             )
-            is NetworkState.NetworkError -> Timber.tag("${this.javaClass.name}_postKakaoLogin")
+            is NetworkState.NetworkError -> Timber.tag("${this.javaClass.name}_checkDuplicateNickname")
                 .d(response.error)
-            is NetworkState.UnknownError -> Timber.tag("${this.javaClass.name}_postKakaoLogin")
+            is NetworkState.UnknownError -> Timber.tag("${this.javaClass.name}_checkDuplicateNickname")
                 .d(response.t)
         }
         return Result.failure(IllegalStateException("NetworkError or UnKnownError please check timber"))
