@@ -5,16 +5,16 @@ import com.yangbong.data.remote.model.request.SignUpRequest
 import com.yangbong.data.remote.model.response.BaseResponse
 import com.yangbong.data.remote.model.response.CheckDuplicateProfileNicknameResponse
 import com.yangbong.data.remote.model.response.SignUpResponse
-import com.yangbong.data.remote.service.CheckDuplicateProfileIdService
+import com.yangbong.data.remote.service.CheckDuplicateProfileNicknameService
 import com.yangbong.data.remote.service.SignUpService
 import javax.inject.Inject
 
 class RemoteSetProfileDataSourceImpl @Inject constructor(
-    private val checkDuplicateProfileIdService: CheckDuplicateProfileIdService,
+    private val checkDuplicateProfileNicknameService: CheckDuplicateProfileNicknameService,
     private val signUpService: SignUpService
 ) : RemoteSetProfileDataSource {
     override suspend fun checkDuplicateProfileNickname(profileNickname: String): NetworkState<BaseResponse<CheckDuplicateProfileNicknameResponse>> =
-        checkDuplicateProfileIdService.checkDuplicateProfileNickname(profileNickname)
+        checkDuplicateProfileNicknameService.checkDuplicateProfileNickname(profileNickname)
 
 
     override suspend fun postSignUp(signUpRequest: SignUpRequest): NetworkState<BaseResponse<SignUpResponse>> =

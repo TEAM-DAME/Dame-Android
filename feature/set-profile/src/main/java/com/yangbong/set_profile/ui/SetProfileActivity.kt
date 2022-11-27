@@ -1,16 +1,22 @@
-package com.yangbong.set_profile
+package com.yangbong.set_profile.ui
 
+import android.Manifest
+import android.net.Uri
 import android.os.Bundle
 import android.text.InputFilter
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.core.net.toUri
 import androidx.core.widget.addTextChangedListener
 import com.yangbong.core_ui.base.BindingActivity
 import com.yangbong.core_ui.constant.SetProfileNicknameConstant.*
 import com.yangbong.core_ui.extension.setOnSingleClickListener
 import com.yangbong.core_ui.extension.setQueryDebounce
+import com.yangbong.core_ui.extension.shortToast
 import com.yangbong.core_ui.util.EventObserver
 import com.yangbong.damedame.set_profile.R
 import com.yangbong.damedame.set_profile.databinding.ActivitySetProfileBinding
+import com.yangbong.set_profile.view.ImageBottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.disposables.Disposable
 import java.util.regex.Pattern
@@ -30,9 +36,11 @@ class SetProfileActivity :
         initExtraData()
         initEditTextFilter()
         initDuplicateProfileId()
+        initProfileImageClickListener()
         initNextButtonClickListener()
         initNavigateToSetCharacterObserver()
         initProfileIdLengthMessage()
+        initPermissionErrorMessage()
     }
 
     private fun initExtraData() {
@@ -77,6 +85,18 @@ class SetProfileActivity :
         }
     }
 
+    private fun initProfileImageClickListener() {
+        binding.activitySetProfileImage.setOnSingleClickListener {
+            ImageBottomSheetDialog(
+                onGalleryClick = ::getImageFromGallery,
+                onCameraClick = ::getImageFromGallery
+            ).show(
+                supportFragmentManager,
+                this.javaClass.name
+            )
+        }
+    }
+
     private fun initNextButtonClickListener() {
         binding.btnNext.setOnSingleClickListener {
             setProfileViewModel.postSignUp(platform, socialToken, fcmToken)
@@ -97,4 +117,48 @@ class SetProfileActivity :
         )
     }
 
+    private fun initPermissionErrorMessage() {
+        setProfileViewModel.errorMessage.observe(
+            this,
+            EventObserver {
+                shortToast(it)
+            }
+        )
+    }
+
+    private fun getImageFromGallery() {
+        galleryResult.launch("image/*")
+    }
+
+    private val galleryResult = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let {
+            setProfileViewModel.updateProfileImage(it)
+        }
+    }
+
+    // TODO("비트맵 -> 파일로 변경하고 AWS Storage에 업로드 후 url 받아오는 로직 추가해야함")
+    private fun getImageFromCamera() {
+        try {
+            getCameraResult.launch(null)
+        } catch (e: RuntimeException) {
+            cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
+        }
+    }
+
+    private val getCameraResult = registerForActivityResult(
+        ActivityResultContracts.TakePicturePreview()
+    ) {
+        setProfileViewModel.updateProfileImage(it.toString().toUri())
+    }
+
+    private val cameraPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) { /* 카메라 권한 허용 */
+                getCameraResult.launch(null)
+            } else { /* 카메라 권한 허용 안함 */
+                shortToast("")
+            }
+        }
 }
