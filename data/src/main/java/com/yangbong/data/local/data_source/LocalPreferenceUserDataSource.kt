@@ -9,9 +9,13 @@ interface LocalPreferenceUserDataSource {
 
     fun setIsFirstVisited(isFirstVisited: Boolean)
 
-    fun saveUserProfileId(profileId: String)
+    fun saveUserId(userId: Int)
 
-    fun getUserProfileId(): String
+    fun getUserId(): Int
+
+    fun saveUserProfileNickname(profileNickname: String)
+
+    fun getUserProfileNickname(): String
 
     fun saveUserProfileImageUrl(userProfileImageUrl: String)
 

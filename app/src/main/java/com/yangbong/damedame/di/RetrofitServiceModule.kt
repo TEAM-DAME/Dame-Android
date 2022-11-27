@@ -31,8 +31,8 @@ object RetrofitServiceModule {
 
     @Provides
     @Singleton
-    fun providesSetProfileService(@DameDameServer retrofit: Retrofit): SetProfileService =
-        retrofit.create(SetProfileService::class.java)
+    fun providesSetProfileService(@DameDameServer retrofit: Retrofit): SignUpService =
+        retrofit.create(SignUpService::class.java)
 
     @Provides
     @Singleton

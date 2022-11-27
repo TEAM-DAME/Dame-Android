@@ -2,23 +2,21 @@ package com.yangbong.core_ui.util
 
 import android.graphics.drawable.Drawable
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.app.ActivityCompat
 import androidx.databinding.BindingAdapter
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.yangbong.core_ui.constant.SetProfileIdConstant
-import com.yangbong.core_ui.constant.SetProfileIdConstant.*
+import com.yangbong.core_ui.constant.SetProfileNicknameConstant
+import com.yangbong.core_ui.constant.SetProfileNicknameConstant.*
 import com.yangbong.damedame.shared.R
 
 @BindingAdapter("profileIdStateNumber")
-fun TextView.setProfileIdState(profileIdStateNumber: SetProfileIdConstant?) {
+fun TextView.setProfileIdState(profileIdStateNumber: SetProfileNicknameConstant?) {
     val context = this.context
 
     if (profileIdStateNumber != null) {
@@ -47,7 +45,7 @@ fun TextView.setProfileIdState(profileIdStateNumber: SetProfileIdConstant?) {
 }
 
 @BindingAdapter("setProfileUnderScoreViewBackGround")
-fun View.setProfileUnderScoreViewBackGround(profileIdStateNumber: SetProfileIdConstant?) {
+fun View.setProfileUnderScoreViewBackGround(profileIdStateNumber: SetProfileNicknameConstant?) {
     if (profileIdStateNumber != null) {
         this.setBackgroundResource(
             when (profileIdStateNumber) {
@@ -62,7 +60,7 @@ fun View.setProfileUnderScoreViewBackGround(profileIdStateNumber: SetProfileIdCo
 }
 
 @BindingAdapter("setProfileButtonBackground")
-fun AppCompatButton.setProfileButtonBackground(profileIdStateNumber: SetProfileIdConstant?) {
+fun AppCompatButton.setProfileButtonBackground(profileIdStateNumber: SetProfileNicknameConstant?) {
     if (profileIdStateNumber != null) {
         this.setBackgroundResource(
             when (profileIdStateNumber) {
