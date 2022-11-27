@@ -131,6 +131,11 @@ dependencies {
     implementation(FirebaseDependency.firebaeMessaging)
     implementation(FirebaseDependency.configKtx)
 
+    // AWS Amplify
+    implementation(AmplifyDependency.amplifyCore)
+    implementation(AmplifyDependency.amplifyStorage)
+    implementation(AmplifyDependency.amplifyAuth)
+
     // Automatic Record OpenSource Library List
     implementation(ThirdPartyDependencies.ossLicense)
 
