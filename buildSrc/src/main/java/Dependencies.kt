@@ -96,6 +96,12 @@ object FirebaseDependency {
         "com.google.firebase:firebase-messaging:${Versions.firebaseMessagingVersion}"
 }
 
+object AmplifyDependency {
+    const val amplifyCore = "com.amplifyframework:core:${Versions.amplifyCoreVersion}"
+    const val amplifyStorage = "com.amplifyframework:aws-storage-s3:${Versions.amplifyStorageVersion}"
+    const val amplifyAuth = "com.amplifyframework:aws-auth-cognito:${Versions.amplifyAuthVersion}"
+}
+
 object ClassPathPlugins {
     const val hilt = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltVersion}"
     const val oss = "com.google.android.gms:oss-licenses-plugin:${Versions.ossPluginVersion}"
