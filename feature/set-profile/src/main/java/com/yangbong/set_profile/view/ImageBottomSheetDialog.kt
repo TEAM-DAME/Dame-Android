@@ -50,6 +50,4 @@ class ImageBottomSheetDialog(
         super.onDestroyView()
         _binding = null
     }
-
-
 }

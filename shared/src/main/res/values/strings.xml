@@ -57,4 +57,8 @@
     <string name="app_version_check">앱 버전</string>
     <string name="setting">설정</string>
 
+    <!-- 이미지 바텀 시트 다이얼로그 -->
+    <string name="select_image_from_gallery">갤러리에서 사진 선택</string>
+    <string name="select_image_from_camera">사진 촬영</string>
+
 </resources>

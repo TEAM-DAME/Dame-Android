@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/tv_select_image_from_gallery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:paddingVertical="10dp"
+            android:text="@string/select_image_from_gallery"
+            android:textAppearance="@style/ProfileIdTextStyleBold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/gl_image_bottom_sheet_vertical"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_select_image_from_camera"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:paddingVertical="10dp"
+            android:text="@string/select_image_from_camera"
+            android:textAppearance="@style/ProfileIdTextStyleBold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/gl_image_bottom_sheet_vertical"
+            app:layout_constraintTop_toBottomOf="@id/tv_select_image_from_gallery" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_image_bottom_sheet_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.064" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
