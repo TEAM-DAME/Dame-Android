@@ -1,5 +1,5 @@
 package com.yangbong.domain.entity.response
 
-data class DomainSetProfileResponse(
+data class DomainSignUpResponse(
     val userId: Int
 )

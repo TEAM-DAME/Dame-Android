@@ -7,9 +7,9 @@ import com.yangbong.data.remote.model.response.SignUpResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface SetProfileService {
+interface SignUpService {
 
-    @POST("user/signup")
+    @POST("v1/auth/sign-up")
     suspend fun postSetProfile(
         @Body body: SignUpRequest
     ): NetworkState<BaseResponse<SignUpResponse>>
