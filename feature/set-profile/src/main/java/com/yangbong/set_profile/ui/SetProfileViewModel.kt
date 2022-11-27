@@ -1,5 +1,7 @@
 package com.yangbong.set_profile.ui
 
+import android.net.Uri
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -40,6 +42,10 @@ class SetProfileViewModel @Inject constructor(
         _profileImageUrl.postValue(setProfileRepository.getUserProfileImageUrl())
     }
 
+    fun updateProfileImage(profileImageUri: Uri) {
+        _profileImageUrl.postValue(profileImageUri.toString())
+    }
+
     fun checkDuplicateNickName() {
         viewModelScope.launch {
             setProfileRepository.checkDuplicateProfileNickname(
@@ -77,15 +83,17 @@ class SetProfileViewModel @Inject constructor(
         }
     }
 
-    fun getImageFromGallery() {
-        viewModelScope.launch(exceptionHandler) {
-            
-        }
-    }
+//    fun getImageFromGallery() {
+//        viewModelScope.launch(exceptionHandler) {
+//            this.galleryResult.launch("image/*")
+//        }
+//    }
 
-    fun getImageFromCamera() {
-        viewModelScope.launch(exceptionHandler) {
+//    fun getImageFromCamera() {
+//        viewModelScope.launch(exceptionHandler) {
+//            getCameraResult.launch(null)
+//        }
+//    }
 
-        }
-    }
+
 }

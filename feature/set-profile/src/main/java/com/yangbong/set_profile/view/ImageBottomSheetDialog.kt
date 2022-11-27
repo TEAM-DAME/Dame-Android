@@ -38,9 +38,11 @@ class ImageBottomSheetDialog(
     private fun onTvActionClickListener() {
         binding.tvSelectImageFromGallery.setOnSingleClickListener {
             onGalleryClick.invoke()
+            dismiss()
         }
         binding.tvSelectImageFromCamera.setOnSingleClickListener {
             onCameraClick.invoke()
+            dismiss()
         }
     }
 
