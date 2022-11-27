@@ -7,7 +7,7 @@
 
         <variable
             name="setProfileConstant"
-            type="com.yangbong.core_ui.constant.SetProfileIdConstant" />
+            type="com.yangbong.core_ui.constant.SetProfileNicknameConstant" />
 
         <variable
             name="setProfileViewModel"
@@ -98,7 +98,7 @@
             android:maxLines="1"
             android:paddingStart="19dp"
             android:privateImeOptions="defaultInputmode=english"
-            android:text="@={setProfileViewModel.profileId}"
+            android:text="@={setProfileViewModel.profileNickname}"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
@@ -126,7 +126,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/jua"
             android:includeFontPadding="false"
-            android:text="@{String.valueOf(setProfileViewModel.profileId.length())}"
+            android:text="@{String.valueOf(setProfileViewModel.profileNickname.length())}"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@id/et_set_profile_id"
