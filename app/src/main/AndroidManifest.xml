@@ -4,6 +4,12 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".DameDameApplication"
@@ -53,9 +59,9 @@
         </activity>
 
         <activity
-            android:name="com.yangbong.set_profile.SetProfileActivity"
+            android:name="com.yangbong.set_profile.ui.SetProfileActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"/>
 
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"

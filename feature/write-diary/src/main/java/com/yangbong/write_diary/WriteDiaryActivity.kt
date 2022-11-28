@@ -3,7 +3,9 @@ package com.yangbong.write_diary
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+
 import android.util.Log
+
 import com.yangbong.core_ui.base.BindingActivity
 import com.yangbong.core_ui.util.ResolutionMetrics
 import com.yangbong.damedame.write_diary.R
@@ -29,6 +31,7 @@ BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
 
     @Inject
     lateinit var resolutionMetrics: ResolutionMetrics
+
     lateinit var NaverService: NaverClovaSentimentService
     lateinit var SAR_res:NetworkState<SentimentAnalyzeResponse>
 
@@ -83,6 +86,7 @@ BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
                     }
                 }
             })
+
         }
 
     }
