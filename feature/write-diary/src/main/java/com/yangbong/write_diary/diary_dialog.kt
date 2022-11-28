@@ -10,6 +10,7 @@ import com.yangbong.damedame.write_diary.databinding.DiaryDialogBinding
 class diary_dialog (private val context:AppCompatActivity){
     lateinit var  binding:DiaryDialogBinding
     private val dlg= Dialog(context)
+
     interface ButtonClickListener{
         fun onClicked(isok:Boolean)
     }
@@ -17,6 +18,7 @@ class diary_dialog (private val context:AppCompatActivity){
     fun setOnClickedListener(listener: ButtonClickListener){
         onClickListener=listener
     }
+
     fun show(){
         binding= DiaryDialogBinding.inflate(context.layoutInflater)
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -24,11 +26,13 @@ class diary_dialog (private val context:AppCompatActivity){
         dlg.setCancelable(false)
         dlg.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         binding.okBtn.setOnClickListener {
+
             onClickListener.onClicked(true)
             dlg.dismiss()
         }
         binding.noBtn.setOnClickListener{
             onClickListener.onClicked(false)
+
             dlg.dismiss()
         }
         dlg.show()
