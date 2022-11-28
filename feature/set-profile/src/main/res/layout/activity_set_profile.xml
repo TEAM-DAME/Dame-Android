@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="setProfileConstant"
             type="com.yangbong.core_ui.constant.SetProfileNicknameConstant" />
@@ -71,7 +70,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="40dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img_profile_tmp_01"
+            tools:src="@drawable/img_profile_tmp_01"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/activity_set_profile_image_label_bold"
