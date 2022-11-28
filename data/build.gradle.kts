@@ -40,6 +40,11 @@ dependencies {
     implementation(ThirdPartyDependencies.gson)
     implementation(ThirdPartyDependencies.gsonConverter)
 
+    // AWS Amplify
+    implementation(AmplifyDependency.amplifyCore)
+    implementation(AmplifyDependency.amplifyStorage)
+    implementation(AmplifyDependency.amplifyAuth)
+
 }
 android {
     namespace = "com.yangbong.damedame.data"
