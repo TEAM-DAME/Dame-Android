@@ -87,7 +87,7 @@ fun ImageView.setCharacterLogo(characterLogoStatic: Drawable) = Glide.with(this)
 fun ImageView.setProfileImage(profileImageUrl: String?) {
     this.load(profileImageUrl) {
         transformations(CircleCropTransformation())
-        error(R.drawable.img_profile_tmp_01)
-        placeholder(R.drawable.img_profile_tmp_01)
+        error(R.color.transparent)
+        placeholder(R.color.transparent)
     }
 }
