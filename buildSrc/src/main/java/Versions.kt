@@ -51,9 +51,7 @@ object Versions {
     const val dotsIndicatorVersion = "4.3"
     const val rxBindingVersion = "4.0.0"
     const val rxKotlinVersion = "3.0.1"
-    const val amplifyCoreVersion = "2.0.0"
-    const val amplifyStorageVersion = "2.0.0"
-    const val amplifyAuthVersion = "2.0.0"
+    const val amplifyVersion = "2.0.0"
 
     val javaVersion = JavaVersion.VERSION_11
     const val jvmVersion = "11"

@@ -1,5 +1,6 @@
 package com.yangbong.data.repository
 
+import com.amplifyframework.core.Amplify
 import com.yangbong.core_data.exception.RetrofitFailureStateException
 import com.yangbong.data.local.data_source.LocalPreferenceUserDataSource
 import com.yangbong.data.remote.call_adapter.NetworkState
@@ -9,6 +10,7 @@ import com.yangbong.domain.entity.request.DomainSignUpRequest
 import com.yangbong.domain.entity.response.DomainSignUpResponse
 import com.yangbong.domain.repository.SetProfileRepository
 import timber.log.Timber
+import java.io.File
 import javax.inject.Inject
 
 class SetProfileRepositoryImpl @Inject constructor(
@@ -82,4 +84,36 @@ class SetProfileRepositoryImpl @Inject constructor(
         return localPreferenceUserDataSource.getUserProfileImageUrl()
     }
 
+
+    /**
+     * AWS S3 버킷에 파일을 업로드하고
+     * 성공한다면 업로드된 파일의 URL 을 콜백으로 받아오기 위한 메소드
+     * 실패한다면 `StorageException` 예외를 던진다.
+     *
+     * @author onseok
+     * @param file = 업로드하고자 하는 파일
+     * @param onResult = 업로드 후 callback function
+     */
+    override suspend fun uploadAndDownloadFile(file: File, onResult: (String) -> Unit) {
+        Amplify.Storage.uploadFile(file.name, file,
+            { storageUploadFileResult ->
+                Timber.tag("${this.javaClass.name}_Amplify").d("Successfully uploaded: ${storageUploadFileResult.key}")
+                Amplify.Storage.getUrl(
+                    file.name,
+                    {
+                        Timber.tag("${this.javaClass.name}_Amplify").d("Successfully generated: ${it.url}")
+                        onResult(it.url.toString())
+                    },
+                    {
+                        Timber.tag("${this.javaClass.name}_Amplify").d("URL generation failure $it")
+                        onResult("")
+                    }
+                )
+            },
+            {
+                Timber.tag("${this.javaClass.name}_Amplify").d("Upload failed : $it")
+                onResult("")
+            }
+        )
+    }
 }

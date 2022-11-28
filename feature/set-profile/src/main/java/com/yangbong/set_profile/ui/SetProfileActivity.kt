@@ -1,6 +1,8 @@
 package com.yangbong.set_profile.ui
 
 import android.Manifest
+import android.content.Context
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.text.InputFilter
@@ -19,6 +21,10 @@ import com.yangbong.damedame.set_profile.databinding.ActivitySetProfileBinding
 import com.yangbong.set_profile.view.ImageBottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.disposables.Disposable
+import timber.log.Timber
+import java.io.File
+import java.io.FileOutputStream
+import java.util.*
 import java.util.regex.Pattern
 
 @AndroidEntryPoint
@@ -89,7 +95,7 @@ class SetProfileActivity :
         binding.activitySetProfileImage.setOnSingleClickListener {
             ImageBottomSheetDialog(
                 onGalleryClick = ::getImageFromGallery,
-                onCameraClick = ::getImageFromGallery
+                onCameraClick = ::getImageFromCamera
             ).show(
                 supportFragmentManager,
                 this.javaClass.name
@@ -134,23 +140,27 @@ class SetProfileActivity :
         ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         uri?.let {
-            setProfileViewModel.updateProfileImage(it)
+            setProfileViewModel.uploadAndDownloadFile(
+                File(
+                    createCopyAndReturnRealPath(
+                        this,
+                        it
+                    ).toString()
+                )
+            )
         }
     }
 
-    // TODO("비트맵 -> 파일로 변경하고 AWS Storage에 업로드 후 url 받아오는 로직 추가해야함")
     private fun getImageFromCamera() {
-        try {
-            getCameraResult.launch(null)
-        } catch (e: RuntimeException) {
-            cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
-        }
+        cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
     }
 
     private val getCameraResult = registerForActivityResult(
         ActivityResultContracts.TakePicturePreview()
     ) {
-        setProfileViewModel.updateProfileImage(it.toString().toUri())
+        setProfileViewModel.uploadAndDownloadFile(
+            bitmapToFile(this, it)
+        )
     }
 
     private val cameraPermissionLauncher =
@@ -158,7 +168,7 @@ class SetProfileActivity :
             if (isGranted) { /* 카메라 권한 허용 */
                 getCameraResult.launch(null)
             } else { /* 카메라 권한 허용 안함 */
-                shortToast("")
+                shortToast("카메라 권한을 허용해야 합니다!")
             }
         }
 }

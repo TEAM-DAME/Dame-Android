@@ -1,7 +1,5 @@
 package com.yangbong.set_profile.ui
 
-import android.net.Uri
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -12,10 +10,9 @@ import com.yangbong.core_ui.util.Event
 import com.yangbong.domain.entity.request.DomainSignUpRequest
 import com.yangbong.domain.repository.SetProfileRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.rxjava3.disposables.CompositeDisposable
-import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
@@ -40,10 +37,6 @@ class SetProfileViewModel @Inject constructor(
 
     fun getProfileImage() {
         _profileImageUrl.postValue(setProfileRepository.getUserProfileImageUrl())
-    }
-
-    fun updateProfileImage(profileImageUri: Uri) {
-        _profileImageUrl.postValue(profileImageUri.toString())
     }
 
     fun checkDuplicateNickName() {
@@ -83,17 +76,11 @@ class SetProfileViewModel @Inject constructor(
         }
     }
 
-//    fun getImageFromGallery() {
-//        viewModelScope.launch(exceptionHandler) {
-//            this.galleryResult.launch("image/*")
-//        }
-//    }
-
-//    fun getImageFromCamera() {
-//        viewModelScope.launch(exceptionHandler) {
-//            getCameraResult.launch(null)
-//        }
-//    }
-
-
+    fun uploadAndDownloadFile(file: File) {
+        viewModelScope.launch(exceptionHandler) {
+            setProfileRepository.uploadAndDownloadFile(file) {
+                if (it.isNotEmpty()) _profileImageUrl.postValue(it)
+            }
+        }
+    }
 }

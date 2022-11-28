@@ -97,9 +97,9 @@ object FirebaseDependency {
 }
 
 object AmplifyDependency {
-    const val amplifyCore = "com.amplifyframework:core:${Versions.amplifyCoreVersion}"
-    const val amplifyStorage = "com.amplifyframework:aws-storage-s3:${Versions.amplifyStorageVersion}"
-    const val amplifyAuth = "com.amplifyframework:aws-auth-cognito:${Versions.amplifyAuthVersion}"
+    const val amplifyCore = "com.amplifyframework:core:${Versions.amplifyVersion}"
+    const val amplifyStorage = "com.amplifyframework:aws-storage-s3:${Versions.amplifyVersion}"
+    const val amplifyAuth = "com.amplifyframework:aws-auth-cognito:${Versions.amplifyVersion}"
 }
 
 object ClassPathPlugins {
