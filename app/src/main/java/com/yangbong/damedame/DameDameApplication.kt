@@ -13,6 +13,7 @@ import com.yangbong.damedame.BuildConfig.KAKAO_NATIVE_APP_KEY
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
+
 @HiltAndroidApp
 class DameDameApplication : Application() {
     override fun onCreate() {
