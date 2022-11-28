@@ -18,6 +18,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.*
 
 import javax.inject.Inject
 
@@ -28,16 +30,24 @@ BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
     @Inject
     lateinit var resolutionMetrics: ResolutionMetrics
     lateinit var NaverService: NaverClovaSentimentService
-    lateinit var SAR_res:SentimentAnalyzeResponse
+    lateinit var SAR_res:NetworkState<SentimentAnalyzeResponse>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setDate()
         init()
         textcheck()
         //naver clova api 이용하기위한 링크들 . .
 
     }
+    fun setDate(){
+        val curdata= Date(System.currentTimeMillis())
+        val date= SimpleDateFormat("yyyy년 MM월 dd일", Locale("ko","KR"))
+        val day= SimpleDateFormat("E요일", Locale("ko","KR"))
+        binding.date.text=date.format(curdata)
+        binding.day.text=day.format(curdata)
+    }
+
     fun emotion(){
         val title=binding.diaryTitle.text.toString()
         val content=binding.diaryText.text.toString()
@@ -47,8 +57,7 @@ BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.IO){
                 SAR_res=NaverService.postSentimentAnalyze(
-                    body=content,
-                    NetworkState<String>
+                    body=binding.diaryTitle.text.toString()+binding.diaryText.text.toString()
                 )
 
 
@@ -58,6 +67,7 @@ BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
         }
     }
     fun init(){
+
         binding.completeBtn.setOnClickListener{  // 완료 버튼시 dialog
             val dlg=diary_dialog(this)
             var check=false

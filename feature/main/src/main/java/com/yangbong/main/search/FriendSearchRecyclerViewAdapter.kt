@@ -22,6 +22,8 @@ class FriendSearchRecyclerViewAdapter(val items:ArrayList<String>):RecyclerView.
         fun onItemClick(position: Int){}
     }
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding:SearchRowBinding= SearchRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(binding)

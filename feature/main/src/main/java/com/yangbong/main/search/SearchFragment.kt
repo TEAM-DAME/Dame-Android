@@ -23,6 +23,7 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
     }
     fun init(){
         val fragm= SearchResultFragment()
+
         binding.SearchBtn.setOnClickListener {
             //    parentFragmentManager.beginTransaction().replace(R.id.frag,fragm).commit()
         }
@@ -38,6 +39,10 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
             }
         }
         binding.FSRecyclerVIew.adapter=myFSadapter
+        binding.deleteAll.setOnClickListener {
+            myFSadapter.items.clear()
+            myFSadapter.notifyDataSetChanged()
+        }
 
     }
 

@@ -23,6 +23,7 @@ class SearchResultFragment : Fragment() {
         return binding.root
     }
     fun init(){
+        //val fragm=친구 프로필 fragment
         var A= arrayListOf(SearchData("dd","dd"), SearchData("bb","bb")) //TODO GLide 이용해서 url 데이터로
         binding.RSRecyclerView.layoutManager=
             LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
@@ -31,6 +32,7 @@ class SearchResultFragment : Fragment() {
             SearchResultRecyclerViewAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
                 super.onItemClick(position) // 이제 해당 프로필로 넘어감
+                //    parentFragmentManager.beginTransaction().replace(R.id.frag,fragm).commit()
             }
         }
 
