@@ -23,7 +23,7 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        loginViewModel.getFcmToken()
+        loginViewModel.getFcmToken()
         initClickEvent()
         initLoginObserver()
         initLoginFailureMessageObserver()
@@ -62,7 +62,11 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         loginViewModel.navigateToSetProfile.observe(
             viewLifecycleOwner,
             EventObserver {
-                navigateSetProfileActivity()
+                navigateSetProfileActivity(
+                    it,
+                    loginViewModel.socialToken.value ?: "",
+                    loginViewModel.fcmToken.value ?: ""
+                )
             }
         )
     }
@@ -81,9 +85,16 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         requireActivity().finish()
     }
 
-    private fun navigateSetProfileActivity() {
+    private fun navigateSetProfileActivity(
+        platform: String,
+        socialToken: String,
+        fcmToken: String
+    ) {
         mainNavigator.navigateSetProfile(
-            context = requireContext()
+            context = requireContext(),
+            platform = Pair("platform", platform),
+            socialToken = Pair("socialToken", socialToken),
+            fcmToken = Pair("fcmToken", fcmToken)
         )
         requireActivity().finish()
     }

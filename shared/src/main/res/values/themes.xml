@@ -73,4 +73,13 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- 상단 둥근 모서리의 바텀 시트 다이얼로그 테마 -->
+    <style name="AppBottomSheetDialogTheme" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_round_white_top_20_dp</item>
+    </style>
+
 </resources>

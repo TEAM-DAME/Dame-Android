@@ -4,7 +4,7 @@ import android.content.Context
 import com.yangbong.auth.AuthActivity
 import com.yangbong.core_ui.extension.navigateActivity
 import com.yangbong.damedame.MainActivity
-import com.yangbong.set_profile.SetProfileActivity
+import com.yangbong.set_profile.ui.SetProfileActivity
 import com.yangbong.write_diary.WriteDiaryActivity
 import javax.inject.Inject
 
@@ -13,16 +13,25 @@ internal class MainNavigatorImpl @Inject constructor() : MainNavigator {
         context.navigateActivity<MainActivity>()
     }
 
-    override fun navigateSetProfile(context: Context) {
-        context.navigateActivity<SetProfileActivity>()
+    override fun navigateSetProfile(
+        context: Context,
+        platform: Pair<String, String>,
+        socialToken: Pair<String, String>,
+        fcmToken: Pair<String, String>
+    ) {
+        context.navigateActivity<SetProfileActivity>(platform, socialToken, fcmToken)
+    }
+
+    override fun navigateSetCharacter(context: Context) {
+        // TODO ("SetCharacterActivity 추가")
     }
 
     override fun navigateAuth(context: Context) {
         context.navigateActivity<AuthActivity>()
     }
 
-    override fun navigateSettings(context: Context) {
-//        context.navigateActivity<>()
+    override fun navigateSetting(context: Context) {
+        // TODO ("SettingActivity 추가")
     }
 
     override fun navigateWriteDiary(context: Context) {

@@ -7,13 +7,21 @@ interface MainNavigator {
     fun navigateMain(context: Context)
 
     /** SetProfileActivity로 이동 */
-    fun navigateSetProfile(context: Context)
+    fun navigateSetProfile(
+        context: Context,
+        platform: Pair<String, String>,
+        socialToken: Pair<String, String>,
+        fcmToken: Pair<String, String>
+    )
+
+    /** SetCharacterActivity로 이동 */
+    fun navigateSetCharacter(context: Context)
 
     /** AuthActivity로 이동 */
     fun navigateAuth(context: Context)
 
-    /** SettingsActivity로 이동 */
-    fun navigateSettings(context: Context)
+    /** SettingActivity로 이동 */
+    fun navigateSetting(context: Context)
 
     /** WriteDiaryActivity로 이동 */
     fun navigateWriteDiary(context: Context)
