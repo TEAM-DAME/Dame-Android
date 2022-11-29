@@ -4,6 +4,7 @@ import android.content.Context
 import com.yangbong.auth.AuthActivity
 import com.yangbong.core_ui.extension.navigateActivity
 import com.yangbong.damedame.MainActivity
+import com.yangbong.set_character.SetCharacterActivity
 import com.yangbong.set_profile.ui.SetProfileActivity
 import com.yangbong.write_diary.WriteDiaryActivity
 import javax.inject.Inject
@@ -22,8 +23,11 @@ internal class MainNavigatorImpl @Inject constructor() : MainNavigator {
         context.navigateActivity<SetProfileActivity>(platform, socialToken, fcmToken)
     }
 
-    override fun navigateSetCharacter(context: Context) {
-        // TODO ("SetCharacterActivity 추가")
+    override fun navigateSetCharacter(
+        context: Context,
+        userId: Pair<String, Int>
+    ) {
+        context.navigateActivity<SetCharacterActivity>(userId)
     }
 
     override fun navigateAuth(context: Context) {
