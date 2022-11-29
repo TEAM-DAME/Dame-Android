@@ -7,6 +7,6 @@ enum class EmotionType(
     val emotionImgSrc: Int
 ) {
     POSITIVE("긍정", com.yangbong.damedame.shared.R.drawable.img_emotion_positive),
-    NEGATIVE("부정", com.yangbong.damedame.shared.R.drawable.img_emotion_positive),
+    NEGATIVE("부정", com.yangbong.damedame.shared.R.drawable.ic_negative),
     NEUTRAL("중립", com.yangbong.damedame.shared.R.drawable.ic_neutral)
 }

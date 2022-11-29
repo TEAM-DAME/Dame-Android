@@ -41,8 +41,8 @@
                 android:layout_marginTop="19dp"
                 android:fontFamily="@font/jua"
                 android:textColor="#ffffff"
+                android:text="@{notificationData.notificationMsg}"
                 android:textSize="14dp"
-                app:setNotificationText="@{notificationData}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
