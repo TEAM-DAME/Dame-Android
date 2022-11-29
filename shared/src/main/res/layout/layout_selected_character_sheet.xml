@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/character_popup_image"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="46dp"
+            android:src="@drawable/img_character_01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/character_popup_characterName"
+            android:layout_width="85dp"
+            android:layout_height="19dp"
+            android:layout_marginLeft="25dp"
+            android:fontFamily="@font/jua"
+            android:gravity="center"
+            android:text="구름이"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/character_popup_image" />
+
+        <TextView
+            android:id="@+id/character_popup_explanation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="42dp"
+            android:fontFamily="@font/jua"
+            android:text="구름이는 착한 친구다.\n\n구름이는 귀엽다\n\n선택하길 바란다.\n\n자주 밥을 먹어야 한다.\n\n조용한 곳을 좋아한다."
+            android:textColor="#808080"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/character_popup_characterName" />
+
+        <Button
+            android:id="@+id/selectBtn"
+            android:layout_width="335dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="12dp"
+            android:fontFamily="@font/jua"
+            android:text="선택"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/character_popup_explanation" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
