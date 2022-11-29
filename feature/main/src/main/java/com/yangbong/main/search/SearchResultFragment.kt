@@ -6,22 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.yangbong.core_ui.base.BindingFragment
+import com.yangbong.core_ui.util.ResolutionMetrics
+import com.yangbong.damedame.main.R
+import com.yangbong.damedame.main.databinding.FragmentSearchBinding
 import com.yangbong.damedame.main.databinding.FragmentSearchResultBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
-class SearchResultFragment : Fragment() {
-    lateinit var binding: FragmentSearchResultBinding
+@AndroidEntryPoint
+class SearchResultFragment(private val resolutionMetrics: ResolutionMetrics) :
+    BindingFragment<FragmentSearchResultBinding>(R.layout.fragment_search_result){
     lateinit var mySRadapter: SearchResultRecyclerViewAdapter
+    private val Number.dp get() = resolutionMetrics.toPixel(this.toInt())
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding= FragmentSearchResultBinding.inflate(inflater,container,false)
-        init()
-        return binding.root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
+
     fun init(){
         //val fragm=친구 프로필 fragment
         var A= arrayListOf(SearchData("dd","dd"), SearchData("bb","bb")) //TODO GLide 이용해서 url 데이터로

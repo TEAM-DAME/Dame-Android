@@ -30,7 +30,6 @@ dependencies {
 
     // Dagger-Hilt
     implementation(AndroidXDependencies.hilt)
-    implementation(project(mapOf("path" to ":data")))
     kapt(KaptDependencies.hiltCompiler)
 
     // Jetpack Fragment

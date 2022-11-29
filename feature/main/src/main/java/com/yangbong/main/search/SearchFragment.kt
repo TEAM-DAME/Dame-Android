@@ -22,7 +22,6 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
         init()
     }
     fun init(){
-        val fragm= SearchResultFragment()
 
         binding.SearchBtn.setOnClickListener {
             //    parentFragmentManager.beginTransaction().replace(R.id.frag,fragm).commit()

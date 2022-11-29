@@ -30,8 +30,7 @@ BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
 
     @Inject
     lateinit var resolutionMetrics: ResolutionMetrics
-    lateinit var NaverService: NaverClovaSentimentService
-    lateinit var SAR_res:NetworkState<SentimentAnalyzeResponse>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,17 +51,11 @@ BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
     fun emotion(){
         val title=binding.diaryTitle.text.toString()
         val content=binding.diaryText.text.toString()
-        var doc_res:Document
-        var sen_res: Sentence
-        val sen_req= SentimentAnalyzeRequest(title+content)
+
 
         // 감정 분석 api 쏘고 결과값 받아오고 저장
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.IO){
-                SAR_res=NaverService.postSentimentAnalyze(
-                    body=sen_req
-                )
-
 
             }
         }
