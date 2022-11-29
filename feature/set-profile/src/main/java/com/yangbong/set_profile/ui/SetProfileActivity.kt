@@ -1,14 +1,11 @@
 package com.yangbong.set_profile.ui
 
 import android.Manifest
-import android.content.Context
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.text.InputFilter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.core.net.toUri
 import androidx.core.widget.addTextChangedListener
 import com.yangbong.core_ui.base.BindingActivity
 import com.yangbong.core_ui.constant.SetProfileNicknameConstant.*
@@ -21,10 +18,7 @@ import com.yangbong.damedame.set_profile.databinding.ActivitySetProfileBinding
 import com.yangbong.set_profile.view.ImageBottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.disposables.Disposable
-import timber.log.Timber
 import java.io.File
-import java.io.FileOutputStream
-import java.util.*
 import java.util.regex.Pattern
 
 @AndroidEntryPoint
@@ -109,8 +103,11 @@ class SetProfileActivity :
         }
     }
 
-    private fun navigateSetCharacterActivity() {
-        mainNavigator.navigateSetCharacter(this)
+    private fun navigateSetCharacterActivity(userId: Int) {
+        mainNavigator.navigateSetCharacter(
+            context = this,
+            userId = Pair("userId", userId)
+        )
         finish()
     }
 
@@ -118,7 +115,7 @@ class SetProfileActivity :
         setProfileViewModel.navigateToSetCharacter.observe(
             this,
             EventObserver {
-                navigateSetCharacterActivity()
+                navigateSetCharacterActivity(setProfileViewModel.userId.value ?: -1)
             }
         )
     }

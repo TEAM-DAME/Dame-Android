@@ -22,4 +22,8 @@ interface RemoteDataSourceModule {
     @Binds
     @Singleton
     fun bindsRemoteMyProfileDataSource(source: RemoteMyProfileDataSourceImpl): RemoteMyProfileDataSource
+
+    @Binds
+    @Singleton
+    fun bindsRemoteSetCharacterSource(source: RemoteSetCharacterDataSourceImpl): RemoteSetCharacterDataSource
 }

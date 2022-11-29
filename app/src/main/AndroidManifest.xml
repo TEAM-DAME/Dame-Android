@@ -64,6 +64,10 @@
             android:windowSoftInputMode="adjustResize"/>
 
         <activity
+            android:name="com.yangbong.set_character.SetCharacterActivity"
+            android:exported="false" />
+
+        <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
             <intent-filter>
