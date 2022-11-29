@@ -11,8 +11,9 @@ import javax.inject.Inject
 class SetCharacterViewModel @Inject constructor(
     private val setCharacterRepository: SetCharacterRepository
 ) : BaseViewModel() {
+
     private val _minionId = MutableLiveData<Int>()
     val minionId: LiveData<Int> = _minionId
 
-    
+
 }
