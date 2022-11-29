@@ -9,8 +9,6 @@ import com.yangbong.damedame.databinding.ActivityMainBinding
 import com.yangbong.damedame.factory.DameDameFragmentFactory
 import com.yangbong.main.home.HomeFragment
 import com.yangbong.main.my_profile.MyProfileFragment
-import com.yangbong.main.search.SearchFragment
-import com.yangbong.write_diary.WriteDiaryActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

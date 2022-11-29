@@ -5,7 +5,6 @@ import com.yangbong.auth.AuthActivity
 import com.yangbong.core_ui.extension.navigateActivity
 import com.yangbong.damedame.MainActivity
 import com.yangbong.set_profile.ui.SetProfileActivity
-import com.yangbong.write_diary.WriteDiaryActivity
 import javax.inject.Inject
 
 internal class MainNavigatorImpl @Inject constructor() : MainNavigator {

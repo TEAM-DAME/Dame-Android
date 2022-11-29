@@ -16,7 +16,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="21dp"
             android:paddingLeft="5dp"
-            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:src="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,7 +27,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/edittext"
+            android:background="@drawable/bg_radius_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/back_btn"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginRight="20dp"
             android:fontFamily="@font/jua"
-            android:background="@drawable/edittext"
+            android:background="@drawable/bg_radius_button"
             android:hint="친구 닉네임을 검색하세요"
             android:paddingLeft="20dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +52,7 @@
             android:layout_height="21dp"
             android:layout_marginTop="16.8dp"
             android:layout_marginEnd="13.2dp"
-            android:src="@drawable/img_2"
+            android:src="@drawable/ic_search"
             app:layout_constraintTop_toTopOf="@id/Search_txt"
             app:layout_constraintEnd_toEndOf="@id/Search_txt"/>
         <androidx.recyclerview.widget.RecyclerView

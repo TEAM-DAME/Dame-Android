@@ -1,10 +1,9 @@
-package com.yangbong.write_diary
+package com.yangbong.main.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.RecyclerView
-import com.yangbong.damedame.write_diary.databinding.SearchRowBinding
+import com.yangbong.damedame.main.databinding.SearchRowBinding
 
 class FriendSearchRecyclerViewAdapter(val items:ArrayList<String>):RecyclerView.Adapter<FriendSearchRecyclerViewAdapter.ViewHolder>(){
     inner class ViewHolder(val binding: SearchRowBinding):RecyclerView.ViewHolder(binding.root){
@@ -18,10 +17,12 @@ class FriendSearchRecyclerViewAdapter(val items:ArrayList<String>):RecyclerView.
             }
         }
     }
-    var FSitemClickListner:OnItemClickListener?=null
+    var FSitemClickListner: OnItemClickListener?=null
     interface OnItemClickListener{
         fun onItemClick(position: Int){}
     }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding:SearchRowBinding= SearchRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)

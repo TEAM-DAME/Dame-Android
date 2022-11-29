@@ -10,7 +10,13 @@ import com.yangbong.damedame.write_diary.databinding.DiaryDialogBinding
 class diary_dialog (private val context:AppCompatActivity){
     lateinit var  binding:DiaryDialogBinding
     private val dlg= Dialog(context)
-
+    interface ButtonClickListener{
+        fun onClicked(isok:Boolean)
+    }
+    lateinit var onClickListener: ButtonClickListener
+    fun setOnClickedListener(listener: ButtonClickListener){
+        onClickListener=listener
+    }
     fun show(){
         binding= DiaryDialogBinding.inflate(context.layoutInflater)
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -18,10 +24,11 @@ class diary_dialog (private val context:AppCompatActivity){
         dlg.setCancelable(false)
         dlg.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         binding.okBtn.setOnClickListener {
-            //여기서 다른 activity 로 이동해야함
+            onClickListener.onClicked(true)
             dlg.dismiss()
         }
         binding.noBtn.setOnClickListener{
+            onClickListener.onClicked(false)
             dlg.dismiss()
         }
         dlg.show()
