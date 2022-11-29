@@ -1,5 +1,6 @@
 package com.yangbong.main.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -13,19 +14,18 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
     BindingFragment<FragmentSearchBinding>(R.layout.fragment_search) {
-    lateinit var myFSadapter: FriendSearchRecyclerViewAdapter
     private val viewModel: SearchViewModel by activityViewModels()
+    lateinit var myFSadapter: FriendSearchRecyclerViewAdapter
     private val Number.dp get() = resolutionMetrics.toPixel(this.toInt())
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         init()
+        super.onViewCreated(view, savedInstanceState)
     }
     fun init(){
-
         binding.SearchBtn.setOnClickListener {
-            //    parentFragmentManager.beginTransaction().replace(R.id.frag,fragm).commit()
-        }
+            val intent=Intent(activity,SearchActivity::class.java)
+            startActivity(intent)
+            }
         var A = arrayListOf("이지환짱","지구야그럼목성")
         binding.FSRecyclerVIew.layoutManager=
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)

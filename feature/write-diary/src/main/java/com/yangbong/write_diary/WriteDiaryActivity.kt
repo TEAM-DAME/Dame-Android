@@ -4,16 +4,11 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import androidx.activity.viewModels
 import com.yangbong.core_ui.base.BindingActivity
 import com.yangbong.core_ui.util.ResolutionMetrics
 import com.yangbong.damedame.write_diary.R
 import com.yangbong.damedame.write_diary.databinding.ActivityWriteDiaryBinding
-import com.yangbong.data.remote.call_adapter.NetworkState
-import com.yangbong.data.remote.model.request.SentimentAnalyzeRequest
-import com.yangbong.data.remote.model.response.Document
-import com.yangbong.data.remote.model.response.Sentence
-import com.yangbong.data.remote.model.response.SentimentAnalyzeResponse
-import com.yangbong.data.remote.service.NaverClovaSentimentService
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -27,9 +22,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class WriteDiaryActivity:
 BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
-
     @Inject
     lateinit var resolutionMetrics: ResolutionMetrics
+    private val setProfileViewModel by viewModels<WriteDiaryViewModel>()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
