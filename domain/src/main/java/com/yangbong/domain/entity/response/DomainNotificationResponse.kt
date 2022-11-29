@@ -1,8 +1,7 @@
 package com.yangbong.domain.entity.response
 
-import com.yangbong.domain.entity.UserInfo
+import com.yangbong.domain.entity.NotificationInfo
 
 data class DomainNotificationResponse (
-    val msg: String,
-    val userInfo: List<UserInfo>
+    val notifications: List<NotificationInfo>
 )
