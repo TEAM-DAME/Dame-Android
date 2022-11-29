@@ -1,6 +1,5 @@
 package com.yangbong.auth.login
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,8 +19,8 @@ class LoginViewModel @Inject constructor(
     private val _socialToken = MutableLiveData<String>()
     val socialToken: LiveData<String> = _socialToken
 
-//    private val _fcmToken = MutableLiveData<String>()
-//    val fcmToken: LiveData<String> = _fcmToken
+    private val _fcmToken = MutableLiveData<String>()
+    val fcmToken: LiveData<String> = _fcmToken
 
     private val _profileImageUrl = MutableLiveData<String>()
     val profileImageUrl: LiveData<String> = _profileImageUrl
@@ -73,14 +72,14 @@ class LoginViewModel @Inject constructor(
         _profileImageUrl.value = profileImageUrl
     }
 
-//    fun getFcmToken() {
-//        loginUseCases.getFcmToken {
-//            updateFcmToken(it)
-//        }
-//    }
+    fun getFcmToken() {
+        loginUseCases.getFcmToken {
+            updateFcmToken(it)
+        }
+    }
 
-//    private fun updateFcmToken(fcmToken: String) {
-//        _fcmToken.value = fcmToken
-//    }
+    private fun updateFcmToken(fcmToken: String) {
+        _fcmToken.value = fcmToken
+    }
 
 }

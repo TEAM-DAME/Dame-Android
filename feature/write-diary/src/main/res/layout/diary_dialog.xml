@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frame"
+        android:layout_width="263dp"
+        android:layout_height="190dp">
+        <View
+            android:layout_width="263dp"
+            android:layout_height="190dp"
+            android:background="@drawable/dialog"/>
+
+        <TextView
+            android:id="@+id/popup_txt"
+            android:layout_width="187dp"
+            android:layout_height="78dp"
+            android:fontFamily="@font/jua"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="27.7sp"
+            android:text="한번 일기를 작성 하시면
+        수정이 불가능 합니다."
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="33dp"
+            app:layout_constraintStart_toStartOf="@+id/frame"
+            app:layout_constraintTop_toTopOf="@+id/frame"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ok_btn"
+            android:layout_width="52dp"
+            android:layout_height="30dp"
+            android:background="@color/able_btn"
+            android:text="확인"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:paddingTop="6dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="31dp"
+            android:fontFamily="@font/jua"
+            android:gravity="center_horizontal"
+            app:layout_constraintStart_toStartOf="@id/frame"
+            app:layout_constraintTop_toBottomOf="@+id/popup_txt"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/no_btn"
+            android:layout_width="52dp"
+            android:layout_height="30dp"
+            android:background="@color/able_btn"
+            android:text="취소"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:paddingTop="6dp"
+            android:layout_marginEnd="53dp"
+            android:layout_marginTop="31dp"
+            android:fontFamily="@font/jua"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="@id/frame"
+            app:layout_constraintTop_toBottomOf="@+id/popup_txt"
+             />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

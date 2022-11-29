@@ -21,11 +21,19 @@ class LocalPreferenceUserDataSourceImpl @Inject constructor(
         localPreferences.edit { putBoolean(IS_FIRST_VISITED, isFirstVisited) }
     }
 
-    override fun getUserProfileId(): String =
+    override fun saveUserId(userId: Int) {
+        localPreferences.edit { putInt(USER_ID, userId) }
+    }
+
+    override fun getUserId(): Int =
+        localPreferences.getInt(USER_ID, -1)
+    
+
+    override fun getUserProfileNickname(): String =
         localPreferences.getString(USER_NICKNAME, "") ?: ""
 
-    override fun saveUserProfileId(profileId: String) {
-        localPreferences.edit { putString(USER_NICKNAME, profileId) }
+    override fun saveUserProfileNickname(profileNickname: String) {
+        localPreferences.edit { putString(USER_NICKNAME, profileNickname) }
     }
 
     override fun getUserProfileImageUrl(): String =
@@ -49,6 +57,7 @@ class LocalPreferenceUserDataSourceImpl @Inject constructor(
 
     companion object {
         const val DAME_DAME_ACCESS_TOKEN = "DAME_DAME_ACCESS_TOKEN"
+        const val USER_ID = "USER_ID"
         const val USER_NICKNAME = "USER_NICKNAME"
         const val USER_PROFILE_IMAGE_URL = "USER_PROFILE_IMAGE_URL"
         const val IS_FIRST_VISITED = "IS_FIRST_VISITED"

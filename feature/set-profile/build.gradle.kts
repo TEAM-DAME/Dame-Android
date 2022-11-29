@@ -44,4 +44,9 @@ dependencies {
 
     // RxKotlin
     implementation(ThirdPartyDependencies.rxKotlin)
+
+    // AWS Amplify
+    implementation(AmplifyDependency.amplifyCore)
+    implementation(AmplifyDependency.amplifyStorage)
+    implementation(AmplifyDependency.amplifyAuth)
 }

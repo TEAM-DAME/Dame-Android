@@ -58,7 +58,6 @@
     <string name="app_version_check">앱 버전</string>
     <string name="setting">설정</string>
 
-
     <!-- 알림 확인 화면-->
     <string name="friend_request_msg">%s님이 친구 요청을 보냈습니다.</string>
     <string name="writing_request_msg">오늘의 일기를 작성해주세요!</string>
@@ -67,5 +66,9 @@
     <string name="positive">긍정</string>
     <string name="neutral">중립</string>
     <string name="negative">부정</string>
+
+    <!-- 이미지 바텀 시트 다이얼로그 -->
+    <string name="select_image_from_gallery">갤러리에서 사진 선택</string>
+    <string name="select_image_from_camera">사진 촬영</string>
 
 </resources>

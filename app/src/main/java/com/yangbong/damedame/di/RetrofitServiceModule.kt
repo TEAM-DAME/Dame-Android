@@ -26,13 +26,13 @@ object RetrofitServiceModule {
 
     @Provides
     @Singleton
-    fun providesCheckDuplicateProfileIdService(@DameDameServer retrofit: Retrofit): CheckDuplicateProfileIdService =
-        retrofit.create(CheckDuplicateProfileIdService::class.java)
+    fun providesCheckDuplicateProfileIdService(@DameDameServer retrofit: Retrofit): CheckDuplicateProfileNicknameService =
+        retrofit.create(CheckDuplicateProfileNicknameService::class.java)
 
     @Provides
     @Singleton
-    fun providesSetProfileService(@DameDameServer retrofit: Retrofit): SetProfileService =
-        retrofit.create(SetProfileService::class.java)
+    fun providesSetProfileService(@DameDameServer retrofit: Retrofit): SignUpService =
+        retrofit.create(SignUpService::class.java)
 
     @Provides
     @Singleton

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/item_character_image"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/img_character_01" />
+
+        <TextView
+            android:id="@+id/item_character_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAppearance="@style/CharacterTextStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_character_image"
+            tools:text="@string/character_name_01" />
+
+    </LinearLayout>
+</layout>

@@ -1,34 +1,58 @@
-package com.yangbong.set_profile
+package com.yangbong.set_profile.ui
 
+import android.Manifest
+import android.content.Context
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.text.InputFilter
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.core.net.toUri
 import androidx.core.widget.addTextChangedListener
 import com.yangbong.core_ui.base.BindingActivity
-import com.yangbong.core_ui.constant.SetProfileIdConstant.*
+import com.yangbong.core_ui.constant.SetProfileNicknameConstant.*
 import com.yangbong.core_ui.extension.setOnSingleClickListener
 import com.yangbong.core_ui.extension.setQueryDebounce
+import com.yangbong.core_ui.extension.shortToast
 import com.yangbong.core_ui.util.EventObserver
 import com.yangbong.damedame.set_profile.R
 import com.yangbong.damedame.set_profile.databinding.ActivitySetProfileBinding
+import com.yangbong.set_profile.view.ImageBottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.disposables.Disposable
+import timber.log.Timber
+import java.io.File
+import java.io.FileOutputStream
+import java.util.*
 import java.util.regex.Pattern
 
 @AndroidEntryPoint
 class SetProfileActivity :
     BindingActivity<ActivitySetProfileBinding>(R.layout.activity_set_profile) {
     private val setProfileViewModel by viewModels<SetProfileViewModel>()
+    private lateinit var platform: String
+    private lateinit var socialToken: String
+    private lateinit var fcmToken: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.setProfileViewModel = setProfileViewModel
         setProfileViewModel.getProfileImage()
+        initExtraData()
         initEditTextFilter()
         initDuplicateProfileId()
+        initProfileImageClickListener()
         initNextButtonClickListener()
         initNavigateToSetCharacterObserver()
         initProfileIdLengthMessage()
+        initPermissionErrorMessage()
+    }
+
+    private fun initExtraData() {
+        platform = intent.getStringExtra("platform") ?: ""
+        socialToken = intent.getStringExtra("socialToken") ?: ""
+        fcmToken = intent.getStringExtra("fcmToken") ?: ""
     }
 
     private fun initEditTextFilter() {
@@ -67,16 +91,26 @@ class SetProfileActivity :
         }
     }
 
+    private fun initProfileImageClickListener() {
+        binding.activitySetProfileImage.setOnSingleClickListener {
+            ImageBottomSheetDialog(
+                onGalleryClick = ::getImageFromGallery,
+                onCameraClick = ::getImageFromCamera
+            ).show(
+                supportFragmentManager,
+                this.javaClass.name
+            )
+        }
+    }
+
     private fun initNextButtonClickListener() {
         binding.btnNext.setOnSingleClickListener {
-            setProfileViewModel.postSetProfile()
+            setProfileViewModel.postSignUp(platform, socialToken, fcmToken)
         }
     }
 
     private fun navigateSetCharacterActivity() {
-        // TODO("추후 서버 연동 후 캐릭터 설정화면으로 이동하도록 수정")
-        // TODO("현재는 우선 메인으로 이동하도록 구현")
-        mainNavigator.navigateMain(this)
+        mainNavigator.navigateSetCharacter(this)
         finish()
     }
 
@@ -89,4 +123,52 @@ class SetProfileActivity :
         )
     }
 
+    private fun initPermissionErrorMessage() {
+        setProfileViewModel.errorMessage.observe(
+            this,
+            EventObserver {
+                shortToast(it)
+            }
+        )
+    }
+
+    private fun getImageFromGallery() {
+        galleryResult.launch("image/*")
+    }
+
+    private val galleryResult = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let {
+            setProfileViewModel.uploadAndDownloadFile(
+                File(
+                    createCopyAndReturnRealPath(
+                        this,
+                        it
+                    ).toString()
+                )
+            )
+        }
+    }
+
+    private fun getImageFromCamera() {
+        cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
+    }
+
+    private val getCameraResult = registerForActivityResult(
+        ActivityResultContracts.TakePicturePreview()
+    ) {
+        setProfileViewModel.uploadAndDownloadFile(
+            bitmapToFile(this, it)
+        )
+    }
+
+    private val cameraPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) { /* 카메라 권한 허용 */
+                getCameraResult.launch(null)
+            } else { /* 카메라 권한 허용 안함 */
+                shortToast("카메라 권한을 허용해야 합니다!")
+            }
+        }
 }

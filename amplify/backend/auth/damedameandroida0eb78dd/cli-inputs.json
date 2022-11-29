@@ -1,0 +1,59 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "damedameandroida0eb78dd_identitypool_a0eb78dd",
+    "allowUnauthenticatedIdentities": true,
+    "resourceNameTruncated": "damedaa0eb78dd",
+    "userPoolName": "damedameandroida0eb78dd_userpool_a0eb78dd",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+      "email"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+      "email"
+    ],
+    "userpoolClientReadAttributes": [
+      "email"
+    ],
+    "userpoolClientLambdaRole": "damedaa0eb78dd_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "a0eb78dd",
+    "resourceName": "damedameandroida0eb78dd",
+    "authSelections": "identityPoolAndUserPool",
+    "useDefault": "default",
+    "userPoolGroupList": [],
+    "serviceName": "Cognito",
+    "usernameCaseSensitive": false,
+    "useEnabledMfas": true,
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
+    "dependsOn": []
+  }
+} 

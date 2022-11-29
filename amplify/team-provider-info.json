@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-damedameandroid-dev-21913-authRole",
+      "UnauthRoleArn": "arn:aws:iam::759287675788:role/amplify-damedameandroid-dev-21913-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::759287675788:role/amplify-damedameandroid-dev-21913-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-damedameandroid-dev-21913-deployment",
+      "UnauthRoleName": "amplify-damedameandroid-dev-21913-unauthRole",
+      "StackName": "amplify-damedameandroid-dev-21913",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:759287675788:stack/amplify-damedameandroid-dev-21913/9e6eab90-6e77-11ed-9cb1-0af43bb8f51c",
+      "AmplifyAppId": "d38ws8xa0vjxmf"
+    },
+    "categories": {
+      "auth": {
+        "damedameandroida0eb78dd": {}
+      },
+      "storage": {
+        "S3DameDame": {}
+      }
+    }
+  }
+}
