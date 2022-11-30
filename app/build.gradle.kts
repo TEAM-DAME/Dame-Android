@@ -64,6 +64,7 @@ dependencies {
     implementation(project(":feature:auth"))
     implementation(project(":feature:main"))
     implementation(project(":feature:set-profile"))
+    implementation(project(":feature:set-character"))
     implementation(project(":shared"))
     implementation(project(":core-ui"))
     implementation(project(":core-data"))

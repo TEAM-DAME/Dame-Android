@@ -1,4 +1,4 @@
-package com.yangbong.damedame.notification.notification_data
+package com.yangbong.damedame.notification.data
 
 enum class NotificationType(
     val notificationTypeNumber: Int

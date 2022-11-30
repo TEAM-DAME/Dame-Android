@@ -14,12 +14,11 @@ import com.yangbong.domain.repository.NotificationRepository
 import javax.inject.Inject
 
 class NotificationRepositoryImpl @Inject constructor(
-    private val localPreferenceUserDataSource: LocalPreferenceUserDataSource,
     private val notificationDataSource: RemoteNotificationDataSource,
     private val notificationMapper: NotificationMapper
 ) : NotificationRepository {
 
-    override fun getUserId(): Int = localPreferenceUserDataSource.getUserId()
+    override fun getUserId(): Int = notificationMapper.localPreferenceUserDataSource.getUserId()
 
 
     override suspend fun getNotification(

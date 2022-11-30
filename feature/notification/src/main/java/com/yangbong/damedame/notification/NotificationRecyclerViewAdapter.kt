@@ -1,13 +1,12 @@
 package com.yangbong.damedame.notification
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yangbong.damedame.notification.databinding.RecyclerItemNotificationBinding
-import com.yangbong.damedame.notification.notification_data.NotificationData
+import com.yangbong.damedame.notification.data.NotificationData
 
-class NotificationRecyclerViewAdapter(private val notifications: List<NotificationData>) :
+class NotificationRecyclerViewAdapter(var notifications: List<NotificationData>?) :
     RecyclerView.Adapter<NotificationRecyclerViewAdapter.ViewHolder>() {
 
     inner class ViewHolder(
@@ -28,10 +27,10 @@ class NotificationRecyclerViewAdapter(private val notifications: List<Notificati
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(notifications[position])
+        notifications?.get(position)?.let { holder.bind(it) }
     }
 
     override fun getItemCount(): Int {
-        return notifications.size
+        return notifications?.size?: 0
     }
 }

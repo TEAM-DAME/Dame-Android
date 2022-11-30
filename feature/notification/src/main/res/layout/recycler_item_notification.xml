@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="notificationData"
-            type="com.yangbong.damedame.notification.notification_data.NotificationData"/>
+            type="com.yangbong.damedame.notification.data.NotificationData" />
     </data>
 
     <LinearLayout
@@ -31,7 +32,7 @@
                 android:src="@drawable/img_friend_request"
                 app:layout_constraintLeft_toLeftOf="@+id/rowBackground"
                 app:layout_constraintTop_toTopOf="@id/rowBackground"
-                app:setNotificationImage="@{notificationData}"/>
+                app:setNotificationImage="@{notificationData}" />
 
             <TextView
                 android:id="@+id/notificationText"
@@ -40,8 +41,8 @@
                 android:layout_marginStart="59dp"
                 android:layout_marginTop="19dp"
                 android:fontFamily="@font/jua"
-                android:textColor="#ffffff"
                 android:text="@{notificationData.notificationMsg}"
+                android:textColor="#ffffff"
                 android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

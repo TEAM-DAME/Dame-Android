@@ -1,6 +1,4 @@
-package com.yangbong.damedame.notification.notification_data
-
-import com.yangbong.damedame.notification.R
+package com.yangbong.damedame.notification.data
 
 enum class EmotionType(
     val emotion: String,
@@ -9,10 +7,4 @@ enum class EmotionType(
     POSITIVE("긍정", 0),
     NEGATIVE("부정", 1),
     NEUTRAL("중립", 2);
-
-    fun findByTypeNumber(inputEmotionTypeNumber: Int): EmotionType {
-        return values().find {
-            it.emotionTypeNumber == inputEmotionTypeNumber
-        }!!
-    }
 }

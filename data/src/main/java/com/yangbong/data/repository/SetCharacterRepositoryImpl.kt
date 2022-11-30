@@ -1,6 +1,5 @@
 package com.yangbong.data.repository
 
-import android.net.Network
 import com.yangbong.data.local.data_source.LocalPreferenceUserDataSource
 import com.yangbong.data.remote.call_adapter.NetworkState
 import com.yangbong.data.remote.data_source.RemoteSetCharacterDataSource

@@ -30,4 +30,8 @@ interface RemoteDataSourceModule {
     @Binds
     @Singleton
     fun bindsRemoteNotifications(source: RemoteNotificationDataSourceImpl): RemoteNotificationDataSource
+
+    @Binds
+    @Singleton
+    fun bindsRemoteCharacterSource(source: RemoteCharacterDataSourceImpl): RemoteCharacterDataSource
 }
