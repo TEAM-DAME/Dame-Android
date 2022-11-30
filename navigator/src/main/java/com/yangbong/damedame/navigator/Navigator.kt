@@ -15,7 +15,10 @@ interface MainNavigator {
     )
 
     /** SetCharacterActivity로 이동 */
-    fun navigateSetCharacter(context: Context)
+    fun navigateSetCharacter(
+        context: Context,
+        userId: Pair<String, Int>
+    )
 
     /** AuthActivity로 이동 */
     fun navigateAuth(context: Context)

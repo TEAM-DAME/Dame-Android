@@ -31,6 +31,9 @@ class SetProfileViewModel @Inject constructor(
     private val _navigateToSetCharacter = MutableLiveData<Event<Boolean>>()
     val navigateToSetCharacter: LiveData<Event<Boolean>> = _navigateToSetCharacter
 
+    private val _userId = MutableLiveData<Int>()
+    val userId: LiveData<Int> = _userId
+
     fun updateProfileIdState(state: SetProfileNicknameConstant) {
         _profileNicknameState.value = state
     }
@@ -68,6 +71,7 @@ class SetProfileViewModel @Inject constructor(
                     profileImageUrl = profileImageUrl.value ?: ""
                 )
             ).onSuccess {
+                _userId.postValue(it.userId)
                 setProfileRepository.saveUserId(it.userId)
                 _navigateToSetCharacter.postValue(Event(true))
             }.onFailure {
