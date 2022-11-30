@@ -83,6 +83,15 @@ fun ImageView.setCharacterLogo(characterLogoStatic: Drawable) = Glide.with(this)
     .apply(RequestOptions().centerCrop())
     .into(this)
 
+@BindingAdapter("setCharacterImage")
+fun ImageView.setCharacterImage(characterLogoStatic: Drawable) = Glide.with(this)
+    .load(R.drawable.login_character)
+    .placeholder(characterLogoStatic)
+    .error(characterLogoStatic)
+    .diskCacheStrategy(DiskCacheStrategy.NONE)
+    .apply(RequestOptions().centerCrop())
+    .into(this)
+
 @BindingAdapter("setProfileImage")
 fun ImageView.setProfileImage(profileImageUrl: String?) {
     this.load(profileImageUrl) {
