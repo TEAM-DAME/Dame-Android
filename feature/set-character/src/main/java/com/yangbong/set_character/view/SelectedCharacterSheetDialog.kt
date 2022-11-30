@@ -1,4 +1,4 @@
-package com.yangbong.set_character
+package com.yangbong.set_character.view
 
 import android.os.Bundle
 import android.view.LayoutInflater

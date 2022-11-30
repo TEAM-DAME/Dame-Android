@@ -5,7 +5,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/main_white">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btn_back_select_character"
@@ -38,11 +39,11 @@
             android:id="@+id/fragment_select_character_label_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
             android:fontFamily="@font/jua"
             android:gravity="center"
             android:text="@string/select_character"
             android:textColor="#808080"
-            android:layout_marginStart="2dp"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/fragment_select_character_label_bold"
             app:layout_constraintEnd_toEndOf="parent"
