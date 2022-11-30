@@ -1,4 +1,4 @@
-package com.yangbong.set_character
+package com.yangbong.set_character.ui
 
 import com.yangbong.core_ui.util.Event
 import androidx.lifecycle.LiveData

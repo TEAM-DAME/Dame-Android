@@ -71,4 +71,8 @@
     <string name="select_image_from_gallery">갤러리에서 사진 선택</string>
     <string name="select_image_from_camera">사진 촬영</string>
 
+    <!-- 캐릭터 정보 바텀 시트 다이어로그 -->
+    <string name="character_description_01">구름이는 착한 친구다.\n\n구름이는 귀엽다\n\n선택하길 바란다.\n\n자주 밥을 먹어야 한다.\n\n조용한 곳을 좋아한다.</string>
+    <string name="select">선택</string>
+
 </resources>
