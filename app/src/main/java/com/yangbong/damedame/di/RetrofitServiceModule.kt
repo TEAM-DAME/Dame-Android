@@ -38,4 +38,9 @@ object RetrofitServiceModule {
     @Singleton
     fun provideMyProfileService(@DameDameServer retrofit: Retrofit): MyProfileService =
         retrofit.create(MyProfileService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideNotificationService(@DameDameServer retrofit: Retrofit): NotificationService =
+        retrofit.create(NotificationService::class.java)
 }
