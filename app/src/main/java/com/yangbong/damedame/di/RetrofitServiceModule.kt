@@ -41,6 +41,11 @@ object RetrofitServiceModule {
 
     @Provides
     @Singleton
+    fun provideNotificationService(@DameDameServer retrofit: Retrofit): NotificationService =
+        retrofit.create(NotificationService::class.java)
+
+    @Provides
+    @Singleton
     fun provideSetCharacterService(@DameDameServer retrofit: Retrofit): SetCharacterService =
         retrofit.create(SetCharacterService::class.java)
 
@@ -48,4 +53,5 @@ object RetrofitServiceModule {
     @Singleton
     fun provideGetCharacterService(@DameDameServer retrofit: Retrofit): GetCharacterService =
         retrofit.create(GetCharacterService::class.java)
+
 }

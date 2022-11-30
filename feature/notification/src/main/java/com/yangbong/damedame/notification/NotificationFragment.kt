@@ -1,40 +1,39 @@
 package com.yangbong.damedame.notification
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.yangbong.core_ui.base.BindingFragment
 import com.yangbong.damedame.notification.databinding.FragmentNotificationBinding
+import com.yangbong.damedame.notification.data.NotificationData
 
 
-class NotificationFragment : Fragment() {
-    lateinit var adapter: NotificationRecyclerViewAdapter
-    var binding: FragmentNotificationBinding? = null
+class NotificationFragment :
+    BindingFragment<FragmentNotificationBinding>(R.layout.fragment_notification) {
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentNotificationBinding.inflate(layoutInflater)
-        return binding!!.root
-    }
+    private val notificationViewModel: NotificationViewModel by activityViewModels()
+    private var notifications = listOf<NotificationData>()
+    private var adapter = NotificationRecyclerViewAdapter(notifications)
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter= NotificationRecyclerViewAdapter(
-            listOf(1, 2, 3)
-        )
-        binding!!.notificationRecycler.layoutManager=
-            LinearLayoutManager(
-                context,
-                LinearLayoutManager.VERTICAL,
-                false
-            )
-        binding!!.notificationRecycler.adapter=adapter
+        initData()
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+        binding.notificationRecycler.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.notificationRecycler.adapter = adapter
+    }
+
+    private fun initData() {
+        notificationViewModel.notifications.observe(requireActivity()) { receivedNotifications ->
+            adapter.notifications = receivedNotifications
+            adapter.notifyDataSetChanged()
+        }
     }
 }
