@@ -51,4 +51,8 @@ dependencies {
 
     // ImageLoading Library
     implementation(ThirdPartyDependencies.coil)
+    implementation(ThirdPartyDependencies.glide)
+
+    // ProgressView Library
+    implementation(ThirdPartyDependencies.progressView)
 }
