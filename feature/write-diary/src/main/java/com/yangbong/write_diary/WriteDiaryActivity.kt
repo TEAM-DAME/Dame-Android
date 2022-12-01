@@ -26,14 +26,13 @@ BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
     lateinit var resolutionMetrics: ResolutionMetrics
     private val writeDiaryViewModel by viewModels<WriteDiaryViewModel>()
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.writeDiaryViewModel=writeDiaryViewModel
+        writeDiaryViewModel.getUserId()
         setDate()
-        init()
         textcheck()
+        init()
 
     }
     fun setDate(){
@@ -44,18 +43,7 @@ BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
         binding.day.text=day.format(curdata)
     }
 
-    fun emotion(){
-        val title=binding.diaryTitle.text.toString()
-        val content=binding.diaryText.text.toString()
 
-
-        // 감정 분석 api 쏘고 결과값 받아오고 저장
-        CoroutineScope(Dispatchers.Main).launch {
-            withContext(Dispatchers.IO){
-
-            }
-        }
-    }
     fun init(){
 
         binding.completeBtn.setOnClickListener{  // 완료 버튼시 dialog
@@ -66,8 +54,10 @@ BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
                 override fun onClicked(isok: Boolean) {
                     check=isok
                     if(check){
-                        //writeDiaryViewModel.postWriteDiary()
-                        Log.i("test","ok")
+                        var title=binding.diaryTitle.text.toString()
+                        var content=binding.diaryText.text.toString()
+                        writeDiaryViewModel.getData(content,title)
+                        writeDiaryViewModel.postSentiment(title+content)
                     }
                     else{
                         Log.i("test","no")
@@ -75,7 +65,6 @@ BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
                 }
             })
         }
-
     }
 
     fun textcheck(){

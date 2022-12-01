@@ -21,14 +21,18 @@ class WriteDiaryViewModel @Inject constructor(
 ):BaseViewModel(){
     var _userId=MutableLiveData<Int>()
     var _sentiment=MutableLiveData<String>()
-    var _title=MutableLiveData<String>()
-    var _content=MutableLiveData<String>()
     var _positive=MutableLiveData<Double>()
     var _neutral=MutableLiveData<Double>()
     var _negative=MutableLiveData<Double>()
+    var _content=MutableLiveData<String>()
+    var _title=MutableLiveData<String>()
 
     fun getUserId(){
         _userId.postValue(writeDiaryRepository.getUserId())
+    }
+    fun getData(content:String,title:String){
+        _content.postValue(content)
+        _title.postValue(title)
     }
     fun postSentiment(content:String){
         viewModelScope.launch {
@@ -41,9 +45,13 @@ class WriteDiaryViewModel @Inject constructor(
                 _negative.postValue(it.negative)
                 _neutral.postValue(it.negative)
                 _sentiment.postValue(it.sentiment)
+                Timber.d(it.toString())
+                postWriteDiary(_userId.value!!,_title.value!!,_content.value!!,_positive.value!!,_neutral.value!!,_neutral.value!!)
             }.onFailure { Timber.d(it) }
 
         }
+
+
     }
 
     fun postWriteDiary(userId:Int,title:String,content:String,positive:Double,neutral:Double,negative:Double){
@@ -57,7 +65,9 @@ class WriteDiaryViewModel @Inject constructor(
                     neutral=neutral,
                     negative=negative
                 )
-            ).onSuccess {  }
+            ).onSuccess { 
+                // 화면 전환 ? method 구현
+                Timber.d(it) }
                 .onFailure { Timber.d(it) }
         }
     }
