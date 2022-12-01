@@ -7,6 +7,7 @@ import com.yangbong.core_ui.util.Injector
 import com.yangbong.core_ui.util.ResolutionMetrics
 import com.yangbong.main.home.HomeFragment
 import com.yangbong.main.my_profile.MyProfileFragment
+import com.yangbong.main.search.SearchFragment
 import dagger.hilt.android.EntryPointAccessors
 
 class DameDameFragmentFactory(activity: AppCompatActivity) : FragmentFactory() {

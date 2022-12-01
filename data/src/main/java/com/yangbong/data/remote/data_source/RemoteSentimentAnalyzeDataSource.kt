@@ -11,5 +11,5 @@ interface RemoteSentimentAnalyzeDataSource {
         sentimentAnalyzeRequest: SentimentAnalyzeRequest
     ): NetworkState<SentimentAnalyzeResponse>
 
-    suspend fun getRecentReadList(): NetworkState<BaseResponse<SentimentAnalyzeResponse>>
+   // suspend fun getRecentReadList(): NetworkState<BaseResponse<SentimentAnalyzeResponse>>
 }

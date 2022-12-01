@@ -24,16 +24,16 @@ class WriteDiaryActivity:
 BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
     @Inject
     lateinit var resolutionMetrics: ResolutionMetrics
-    private val setProfileViewModel by viewModels<WriteDiaryViewModel>()
+    private val writeDiaryViewModel by viewModels<WriteDiaryViewModel>()
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding.writeDiaryViewModel=writeDiaryViewModel
         setDate()
         init()
         textcheck()
-        //naver clova api 이용하기위한 링크들 . .
 
     }
     fun setDate(){
@@ -66,6 +66,7 @@ BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
                 override fun onClicked(isok: Boolean) {
                     check=isok
                     if(check){
+                        //writeDiaryViewModel.postWriteDiary()
                         Log.i("test","ok")
                     }
                     else{

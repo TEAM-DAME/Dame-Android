@@ -9,12 +9,17 @@ data class WriteDiaryRequest(
     val title: String,
     @SerializedName("content")
     val content: String,
-    @SerializedName("positive")
-    val positive: Number,
-    @SerializedName("neural")
-    val neural: Number,
-    @SerializedName("negative")
-    val negative: Number
+    @SerializedName("emotion")
+    val emotion: Emotion,
 
+
+)
+data class Emotion(
+    @SerializedName("positive")
+    val positive: Double,
+    @SerializedName("neutral")
+    val neutral: Double,
+    @SerializedName("negative")
+    val negative: Double
 
 )
