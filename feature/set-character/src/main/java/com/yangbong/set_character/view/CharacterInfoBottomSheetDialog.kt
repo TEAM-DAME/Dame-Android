@@ -5,24 +5,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.yangbong.damedame.shared.databinding.LayoutSelectedCharacterSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.yangbong.damedame.set_character.databinding.LayoutCharacterInfoBottomSheetBinding
 import com.yangbong.damedame.shared.R
 
-class SelectedCharacterSheetDialog(
+class CharacterInfoBottomSheetDialog(
     private val onSelectClick: () -> Unit,
-) :BottomSheetDialogFragment() {
-    private var _binding: LayoutSelectedCharacterSheetBinding? = null
-    protected val binding: LayoutSelectedCharacterSheetBinding
+) : BottomSheetDialogFragment() {
+    private var _binding: LayoutCharacterInfoBottomSheetBinding? = null
+    protected val binding: LayoutCharacterInfoBottomSheetBinding
         get() = requireNotNull(_binding)
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding =
-            DataBindingUtil.inflate(inflater,R.layout.layout_selected_character_sheet,container,false)
+            DataBindingUtil.inflate(
+                inflater,
+                com.yangbong.damedame.set_character.R.layout.layout_character_info_bottom_sheet,
+                container,
+                false
+            )
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
@@ -33,7 +38,7 @@ class SelectedCharacterSheetDialog(
     }
 
     private fun onSelectClickListener() {
-        binding.selectBtn.setOnClickListener {
+        binding.btnSelect.setOnClickListener {
             onSelectClick.invoke()
             dismiss()
         }
