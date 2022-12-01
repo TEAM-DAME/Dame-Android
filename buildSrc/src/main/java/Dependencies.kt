@@ -85,6 +85,7 @@ object ThirdPartyDependencies {
     const val dotsIndicator = "com.tbuonomo:dotsindicator:${Versions.dotsIndicatorVersion}"
     const val rxBinding = "com.jakewharton.rxbinding4:rxbinding:${Versions.rxBindingVersion}"
     const val rxKotlin = "io.reactivex.rxjava3:rxkotlin:${Versions.rxKotlinVersion}"
+    const val progressView = "com.github.skydoves:progressview:${Versions.progressViewVersion}"
 }
 
 object FirebaseDependency {

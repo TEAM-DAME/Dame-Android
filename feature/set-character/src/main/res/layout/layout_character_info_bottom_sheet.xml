@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="characterInfo"
+            type="com.yangbong.set_character.CharacterData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_character"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_character_01"
+            app:layout_constraintEnd_toStartOf="@id/tv_character_description"
+            app:layout_constraintStart_toStartOf="@id/gl_character_info_bottom_sheet_vertical_start"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_character_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/jua"
+            android:text="@string/character_name_01"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/iv_character"
+            app:layout_constraintStart_toStartOf="@id/iv_character"
+            app:layout_constraintTop_toBottomOf="@+id/iv_character" />
+
+        <TextView
+            android:id="@+id/tv_character_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jua"
+            android:text="@string/character_description_01"
+            android:textColor="@color/gray_2"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_character_name"
+            app:layout_constraintEnd_toEndOf="@id/gl_character_info_bottom_sheet_vertical_end"
+            app:layout_constraintStart_toEndOf="@id/iv_character"
+            app:layout_constraintTop_toTopOf="@id/iv_character" />
+
+        <Button
+            android:id="@+id/btn_select"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bg_button_gray_15_dp"
+            android:fontFamily="@font/jua"
+            android:text="@string/select"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/gl_character_info_bottom_sheet_vertical_end"
+            app:layout_constraintStart_toStartOf="@id/gl_character_info_bottom_sheet_vertical_start"
+            app:layout_constraintTop_toBottomOf="@id/tv_character_description" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_character_info_bottom_sheet_vertical_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.064" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_character_info_bottom_sheet_vertical_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.936" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
