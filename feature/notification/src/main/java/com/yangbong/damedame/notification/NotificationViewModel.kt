@@ -25,6 +25,7 @@ class NotificationViewModel @Inject constructor(
         get() = _notifications
 
     suspend fun getNotifications() {
+
         viewModelScope.launch {
             val response = notificationRepository.getNotification(
                 DomainNotificationRequest(
@@ -42,6 +43,7 @@ class NotificationViewModel @Inject constructor(
     }
 
     suspend fun deleteNotification() {
+
         viewModelScope.launch {
             notificationRepository.deleteNotification(
                 DomainNotificationRequest(

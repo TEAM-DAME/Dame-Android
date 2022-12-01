@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frame"
+        android:layout_width="263dp"
+        android:layout_height="190dp">
+
+        <View
+            android:layout_width="263dp"
+            android:layout_height="190dp"
+            android:background="@drawable/dialog_background" />
+
+        <TextView
+            android:id="@+id/popup_text"
+            android:layout_width="187dp"
+            android:layout_height="78dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="33dp"
+            android:fontFamily="@font/jua"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="27.7sp"
+            android:text="@string/update_app_version_msg"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@+id/frame"
+            app:layout_constraintTop_toTopOf="@+id/frame" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/update_button"
+            android:layout_width="52dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="31dp"
+            android:background="@drawable/shape_rect_white_fill_10"
+            android:backgroundTint="#DC9B8C"
+            android:fontFamily="@font/jua"
+            android:gravity="center_horizontal"
+            android:paddingTop="6dp"
+            android:text="@string/update"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/frame"
+            app:layout_constraintTop_toBottomOf="@+id/popup_text" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancel_button"
+            android:layout_width="52dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="53dp"
+            android:background="@drawable/shape_rect_white_fill_10"
+            android:backgroundTint="#DC9B8C"
+            android:fontFamily="@font/jua"
+            android:gravity="center_horizontal"
+            android:paddingTop="6dp"
+            android:text="@string/cancel"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/frame"
+            app:layout_constraintTop_toBottomOf="@+id/popup_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -9,41 +9,44 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
+import com.yangbong.core_ui.base.BindingActivity
 import com.yangbong.damedame.notification.databinding.ActivitySettingBinding
 import timber.log.Timber
 
-class SettingActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySettingBinding
+class SettingActivity :
+    BindingActivity<ActivitySettingBinding>(R.layout.activity_setting) {
     private lateinit var remoteConfig: FirebaseRemoteConfig
+    private val currentVersion: String by lazy {
+        getCurrentAppVersion(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         //timber 초기화
         Timber.plant(Timber.DebugTree())
-        binding = ActivitySettingBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         //remoteConfig 초기화
         initRemoteConfig()
 
-        //remoteConfig를 활용해 최신 버전 가져오기
-        initLatestVersion()
+        initView()
     }
 
     private fun initRemoteConfig() {
+
         remoteConfig = FirebaseRemoteConfig.getInstance()
+
         val configSettings = remoteConfigSettings {
             minimumFetchIntervalInSeconds = 100
             mapOf(
-                "fortesting" to "xxx",
                 "app_version" to "0.0.0"
             )
         }
-
         remoteConfig.setConfigSettingsAsync(configSettings)
     }
 
     private fun getCurrentAppVersion(context: Context): String {
+
         var appVersion = ""
 
         runCatching {
@@ -64,6 +67,7 @@ class SettingActivity : AppCompatActivity() {
     }
 
     private fun activateRemoteConfig() {
+
         remoteConfig.fetchAndActivate()
             .addOnCompleteListener { task ->
                 val result = task.result
@@ -76,17 +80,27 @@ class SettingActivity : AppCompatActivity() {
             }
     }
 
-    private fun initLatestVersion() {
-        activateRemoteConfig()
-        binding.latestAppVersionText.text = remoteConfig.getString("app_version")
-//        Timber.d("getAppVersion: $latestVersion")
-//        val currentVersion = getCurrentAppVersion(this)
+    private fun initView() {
 
-//        binding.currentAppVersionText.text = currentVersion
-//        binding.latestAppVersionText.text = latestVersion
-//
-//        if (currentVersion != latestVersion) {
-//            showUpdateDialog()
-//        }
+        Timber.d("currentAppVersion : $currentVersion")
+
+        binding.latestAppVersionText.text = currentVersion
+
+        binding.latestAppVersionText.setOnClickListener {
+            checkIsLatestVersion()
+        }
+    }
+
+
+    private fun checkIsLatestVersion() {
+
+        activateRemoteConfig()
+        Timber.d("latestVersion : ${remoteConfig.getString("app_version")}")
+
+        val currentVersion = getCurrentAppVersion(this)
+
+        if (remoteConfig.getString("app_version") != currentVersion) {
+            UpdateDialog(this).show()
+        }
     }
 }

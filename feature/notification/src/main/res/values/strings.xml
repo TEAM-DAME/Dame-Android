@@ -1,1 +1,5 @@
-<resources></resources>
+<resources>
+    <string name="update_app_version_msg">앱을 최신버전으로\n업데이트 해주세요!</string>
+    <string name="update">업데이트</string>
+    <string name="cancel">취소</string>
+</resources>
