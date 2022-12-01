@@ -19,13 +19,14 @@ class SearchRepositoryImpl @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override fun SearchOnClick() {
+    override fun searchOnClick() {
         TODO("Not yet implemented")
     }
 
-    override fun RecentOnClick() {
+    override fun recentOnClick() {
         TODO("Not yet implemented")
     }
+
 
     override fun postSearch(searchRequest: DomainSearchRequest): Result<DomainSearchRequest> {
         TODO("Not yet implemented")

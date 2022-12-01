@@ -10,10 +10,6 @@ import com.yangbong.core_ui.util.ResolutionMetrics
 import com.yangbong.damedame.write_diary.R
 import com.yangbong.damedame.write_diary.databinding.ActivityWriteDiaryBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -47,10 +43,10 @@ BindingActivity<ActivityWriteDiaryBinding>(R.layout.activity_write_diary){
     fun init(){
 
         binding.completeBtn.setOnClickListener{  // 완료 버튼시 dialog
-            val dlg=diary_dialog(this)
+            val dlg=DiaryDialog(this)
             var check=false
             dlg.show()
-            dlg.setOnClickedListener(object :diary_dialog.ButtonClickListener{
+            dlg.setOnClickedListener(object :DiaryDialog.ButtonClickListener{
                 override fun onClicked(isok: Boolean) {
                     check=isok
                     if(check){

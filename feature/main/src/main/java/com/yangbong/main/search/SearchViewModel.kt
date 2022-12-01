@@ -30,10 +30,10 @@ class SearchViewModel @Inject constructor(
         _searchdata.value=items
     }
 
-    fun SearchOnClick(){
+    fun searchOnClick(){
 
     }
-    fun RecentOnClick(){
+    fun recentOnClick(){
 
     }
 }

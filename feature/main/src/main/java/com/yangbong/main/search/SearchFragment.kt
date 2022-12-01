@@ -34,7 +34,7 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
         myFSadapter= FriendSearchRecyclerViewAdapter(searchData)
         myFSadapter.FSitemClickListner=object :FriendSearchRecyclerViewAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
-                searchViewModel.RecentOnClick()
+                searchViewModel.recentOnClick()
             }
 
             override fun onXClick(position: Int) {
@@ -49,7 +49,7 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
         }
         binding.SearchBtn.setOnClickListener {
             searchViewModel.addSearchData(binding.SearchTxt.text.toString())
-            searchViewModel.SearchOnClick()
+            searchViewModel.searchOnClick()
             val intent=Intent(activity,SearchActivity::class.java)
             startActivity(intent)
         }
