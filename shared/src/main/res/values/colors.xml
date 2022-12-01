@@ -29,6 +29,8 @@
     <color name="disable_btn">#D3D3D3</color>
 
     <color name="main_white">#F3F3ED</color>
+    <color name="main_deep_white">#F3F3EC</color>
+    <color name="beige">#F5F5DC</color>
     <color name="write_feed_gray">#eeeeee</color>
     <color name="transparent">#00FF0000</color>
     <color name="gray_808080">#808080</color>

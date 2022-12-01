@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/img_character_01" />
+        tools:src="@drawable/img_character_1" />
 
     <TextView
         android:id="@+id/item_character_name"
@@ -26,6 +26,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_character_image"
-        tools:text="@string/character_name_01" />
+        tools:text="@string/character_name_1" />
 
 </LinearLayout>
