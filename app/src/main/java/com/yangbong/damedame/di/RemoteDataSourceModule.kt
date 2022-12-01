@@ -26,14 +26,14 @@ interface RemoteDataSourceModule {
     @Binds
     @Singleton
     fun bindsRemoteSetCharacterSource(source: RemoteSetCharacterDataSourceImpl): RemoteSetCharacterDataSource
-<<<<<<< HEAD
+
     @Binds
     @Singleton
     fun bindsRemoteWriteDiarySource(source: RemoteWriteDiarySourceImpl):RemoteWriteDiarySource
     @Binds
     @Singleton
     fun bindsRemoteSentimentAnalyzeSource(soure:RemoteSentimentAnalyzeDataSourceImpl):RemoteSentimentAnalyzeDataSource
-=======
+
 
     @Binds
     @Singleton
@@ -42,5 +42,7 @@ interface RemoteDataSourceModule {
     @Binds
     @Singleton
     fun bindsRemoteCharacterSource(source: RemoteCharacterDataSourceImpl): RemoteCharacterDataSource
->>>>>>> 023adb75b16e98bf93e70b97e03b5e19871d2f53
+    @Binds
+    @Singleton
+    fun bindsRemoteSearchSource(source:RemoteSearchSource):RemoteSearchSource
 }

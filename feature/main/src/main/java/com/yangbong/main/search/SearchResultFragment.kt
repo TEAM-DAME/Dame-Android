@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yangbong.core_ui.base.BindingFragment
 import com.yangbong.core_ui.util.ResolutionMetrics
@@ -18,7 +19,6 @@ class SearchResultFragment(private val resolutionMetrics: ResolutionMetrics) :
     BindingFragment<FragmentSearchResultBinding>(R.layout.fragment_search_result){
     lateinit var mySRadapter: SearchResultRecyclerViewAdapter
     private val Number.dp get() = resolutionMetrics.toPixel(this.toInt())
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         init()
         super.onViewCreated(view, savedInstanceState)
@@ -38,7 +38,7 @@ class SearchResultFragment(private val resolutionMetrics: ResolutionMetrics) :
                 parentFragmentManager.beginTransaction().replace(R.id.frag_contatiner,frag3).commit()
             }
         }
-
+        mySRadapter= SearchResultRecyclerViewAdapter(A)
         binding.RSRecyclerView.adapter=mySRadapter
         binding.backBtn.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()
