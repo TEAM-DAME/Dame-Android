@@ -8,5 +8,5 @@ import com.yangbong.data.remote.model.response.LoginResponse
 
 interface RemoteLoginDataSource {
 
-    suspend fun postLogin(loginRequest: LoginRequest): NetworkState<BaseResponse<LoginResponse>>
+    suspend fun postLogin(loginRequest: LoginRequest): NetworkState<BaseResponse<LoginResponse?>>
 }
