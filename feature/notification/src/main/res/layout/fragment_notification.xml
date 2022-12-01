@@ -23,14 +23,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
-            android:layout_marginEnd="163dp"
             android:fontFamily="@font/jua"
             android:text="알림"
             android:textColor="#000000"
             android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -38,8 +37,8 @@
             android:layout_width="332dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="43dp"
-            android:layout_marginStart="19dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/notificationMainText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

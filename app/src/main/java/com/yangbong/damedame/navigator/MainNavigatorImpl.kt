@@ -4,7 +4,7 @@ import android.content.Context
 import com.yangbong.auth.AuthActivity
 import com.yangbong.core_ui.extension.navigateActivity
 import com.yangbong.damedame.MainActivity
-import com.yangbong.set_character.SetCharacterActivity
+import com.yangbong.set_character.ui.SetCharacterActivity
 import com.yangbong.set_profile.ui.SetProfileActivity
 import javax.inject.Inject
 

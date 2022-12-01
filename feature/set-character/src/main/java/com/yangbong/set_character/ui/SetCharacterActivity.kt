@@ -1,20 +1,24 @@
-package com.yangbong.set_character
+package com.yangbong.set_character.ui
 
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.activity.viewModels
 import com.yangbong.core_ui.base.BindingActivity
-import com.yangbong.core_ui.util.Event
 import com.yangbong.core_ui.util.EventObserver
 import com.yangbong.damedame.set_character.databinding.ActivitySetCharacterBinding
 import dagger.hilt.android.AndroidEntryPoint
 import com.yangbong.damedame.set_character.R
+import com.yangbong.set_character.CharacterData
+import com.yangbong.set_character.view.SelectedCharacterSheetDialog
+import com.yangbong.set_character.SetCharacterAdapter
 
 @AndroidEntryPoint
 class SetCharacterActivity :
     BindingActivity<ActivitySetCharacterBinding>(R.layout.activity_set_character) {
     private val setCharacterViewModel by viewModels<SetCharacterViewModel>()
+
     lateinit var adapter: SetCharacterAdapter
+
     val characterData: ArrayList<CharacterData> = ArrayList()
 
 //    lateinit var userId: Int
