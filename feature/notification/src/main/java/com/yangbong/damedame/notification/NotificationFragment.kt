@@ -20,17 +20,20 @@ class NotificationFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initData()
         initRecyclerView()
     }
 
     private fun initRecyclerView() {
+
         binding.notificationRecycler.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.notificationRecycler.adapter = adapter
     }
 
     private fun initData() {
+
         notificationViewModel.notifications.observe(requireActivity()) { receivedNotifications ->
             adapter.notifications = receivedNotifications
             adapter.notifyDataSetChanged()
