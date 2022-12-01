@@ -9,7 +9,7 @@ import com.yangbong.damedame.set_character.databinding.ActivitySetCharacterBindi
 import dagger.hilt.android.AndroidEntryPoint
 import com.yangbong.damedame.set_character.R
 import com.yangbong.set_character.CharacterData
-import com.yangbong.set_character.view.SelectedCharacterSheetDialog
+import com.yangbong.set_character.view.CharacterInfoBottomSheetDialog
 import com.yangbong.set_character.SetCharacterAdapter
 
 @AndroidEntryPoint
@@ -34,7 +34,7 @@ class SetCharacterActivity :
         adapter = SetCharacterAdapter(characterData)
         adapter.itemClickListener = object : SetCharacterAdapter.OnItemClickListener {
             override fun OnItemClick(data: CharacterData, imageView: ImageView) {
-                SelectedCharacterSheetDialog(
+                CharacterInfoBottomSheetDialog(
                     onSelectClick = ::postCharacterInfo
                 ).show(
                     supportFragmentManager,
