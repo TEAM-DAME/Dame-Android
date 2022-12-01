@@ -17,15 +17,15 @@
     <!-- 캐릭터 선택 화면 -->
     <string name="character">캐릭터</string>
     <string name="select_character">를 선택해주세요</string>
-    <string name="character_name_01">구름이</string>
-    <string name="character_name_02">몽실이</string>
-    <string name="character_name_03">솜사탕</string>
-    <string name="character_name_04">개나리</string>
-    <string name="character_name_05">까망이</string>
-    <string name="character_name_06">토순이</string>
-    <string name="character_name_07">뿡뿡이</string>
-    <string name="character_name_08">째깐이</string>
-    <string name="character_name_09">팬둥이</string>
+    <string name="character_name_1">구름이</string>
+    <string name="character_name_2">몽실이</string>
+    <string name="character_name_3">솜사탕</string>
+    <string name="character_name_4">개나리</string>
+    <string name="character_name_5">까망이</string>
+    <string name="character_name_6">토순이</string>
+    <string name="character_name_7">뿡뿡이</string>
+    <string name="character_name_8">째깐이</string>
+    <string name="character_name_9">팬둥이</string>
 
     <!-- 프로필 설정 화면 -->
     <string name="id">아이디</string>
@@ -72,7 +72,15 @@
     <string name="select_image_from_camera">사진 촬영</string>
 
     <!-- 캐릭터 정보 바텀 시트 다이어로그 -->
-    <string name="character_description_01">구름이는 착한 친구다.\n\n구름이는 귀엽다\n\n선택하길 바란다.\n\n자주 밥을 먹어야 한다.\n\n조용한 곳을 좋아한다.</string>
     <string name="select">선택</string>
+    <string name="character_description_1">구름이는 착한 친구다.\n\n구름이는 귀엽다\n\n선택하길 바란다.\n\n자주 밥을 먹어야 한다.\n\n조용한 곳을 좋아한다.</string>
+    <string name="character_description_2">몽실이는 착한 친구다.\n\n몽실이는 귀엽다\n\n선택하길 바란다.\n\n자주 밥을 먹어야 한다.\n\n조용한 곳을 좋아한다.</string>
+    <string name="character_description_3">솜사탕은 착한 친구다.\n\n솜사탕은 귀엽다\n\n선택하길 바란다.\n\n자주 밥을 먹어야 한다.\n\n조용한 곳을 좋아한다.</string>
+    <string name="character_description_4">개나리는 착한 친구다.\n\n개나리는 귀엽다\n\n선택하길 바란다.\n\n자주 밥을 먹어야 한다.\n\n조용한 곳을 좋아한다.</string>
+    <string name="character_description_5">까망이는 착한 친구다.\n\n까망이는 귀엽다\n\n선택하길 바란다.\n\n자주 밥을 먹어야 한다.\n\n조용한 곳을 좋아한다.</string>
+    <string name="character_description_6">토순이는 착한 친구다.\n\n토순이는 귀엽다\n\n선택하길 바란다.\n\n자주 밥을 먹어야 한다.\n\n조용한 곳을 좋아한다.</string>
+    <string name="character_description_7">뿡뿡이는 착한 친구다.\n\n뿡뿡이는 귀엽다\n\n선택하길 바란다.\n\n자주 밥을 먹어야 한다.\n\n조용한 곳을 좋아한다.</string>
+    <string name="character_description_8">째깐이는 착한 친구다.\n\n째깐이는 귀엽다\n\n선택하길 바란다.\n\n자주 밥을 먹어야 한다.\n\n조용한 곳을 좋아한다.</string>
+    <string name="character_description_9">팬둥이는 착한 친구다.\n\n팬둥이는 귀엽다\n\n선택하길 바란다.\n\n자주 밥을 먹어야 한다.\n\n조용한 곳을 좋아한다.</string>
 
 </resources>

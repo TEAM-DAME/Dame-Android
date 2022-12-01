@@ -11,7 +11,7 @@ import com.yangbong.domain.entity.CharacterInfo
 
 class SetCharacterAdapter(
     private val onCharacterClick: (Int) -> Unit
-): ListAdapter<CharacterInfo, SetCharacterAdapter.CharacterInfoViewHolder>(
+) : ListAdapter<CharacterInfo, SetCharacterAdapter.CharacterInfoViewHolder>(
     ItemDiffCallback<CharacterInfo>(
         onContentsTheSame = { oldItem, newItem -> oldItem.hashCode() == newItem.hashCode() },
         onItemsTheSame = { oldItem, newItem -> oldItem.characterId == newItem.characterId }
@@ -22,22 +22,8 @@ class SetCharacterAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterInfoViewHolder {
         if (!::inflater.isInitialized)
             inflater = LayoutInflater.from(parent.context)
-
         val binding = ItemCharacterBinding.inflate(inflater, parent, false)
-        return CharacterInfoViewHolder(
-            binding.apply {
-                root.apply {
-//                    layoutParams = ConstraintLayout.LayoutParams(
-//                        ViewGroup.LayoutParams.MATCH_PARENT,
-//                        ViewGroup.LayoutParams.WRAP_CONTENT
-//                    ).apply {
-//                        setMargins(
-//                            getDimen(R.dimen.diary_margin), 0, getDimen(R.dimen.diary_margin), 0
-//                        )
-//                    }
-                }
-            }
-        )
+        return CharacterInfoViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: CharacterInfoViewHolder, position: Int) {
@@ -50,7 +36,7 @@ class SetCharacterAdapter(
             characterInfo: CharacterInfo,
             onCharacterClick: (Int) -> Unit
         ) {
-
+            binding.characterData = characterInfo
             binding.root.setOnSingleClickListener { onCharacterClick(characterInfo.characterId) }
         }
     }

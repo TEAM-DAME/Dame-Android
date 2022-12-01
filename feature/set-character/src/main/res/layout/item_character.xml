@@ -13,10 +13,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/item_character_image"
             android:layout_width="85dp"
             android:layout_height="85dp"
@@ -25,7 +25,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/img_character_01" />
+            app:setCharacterImage="@{characterData.characterId}"
+            tools:src="@drawable/img_character_1" />
 
         <TextView
             android:id="@+id/item_character_name"
@@ -36,7 +37,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_character_image"
-            tools:text="@string/character_name_01" />
+            app:setCharacterNickname="@{characterData.characterId}"
+            tools:text="@string/character_name_1" />
 
     </LinearLayout>
 </layout>

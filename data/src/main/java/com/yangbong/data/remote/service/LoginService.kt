@@ -12,5 +12,5 @@ interface LoginService {
     @PUT("v1/auth/login")
     suspend fun postLogin(
         @Body body: LoginRequest
-    ): NetworkState<BaseResponse<LoginResponse>>
+    ): NetworkState<BaseResponse<LoginResponse?>>
 }

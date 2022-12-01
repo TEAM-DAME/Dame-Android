@@ -8,12 +8,14 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.databinding.BindingAdapter
 import coil.load
 import coil.transform.CircleCropTransformation
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.yangbong.core_ui.constant.SetProfileNicknameConstant
 import com.yangbong.core_ui.constant.SetProfileNicknameConstant.*
 import com.yangbong.damedame.shared.R
+
 
 @BindingAdapter("profileIdStateNumber")
 fun TextView.setProfileIdState(profileIdStateNumber: SetProfileNicknameConstant?) {
@@ -83,8 +85,8 @@ fun ImageView.setCharacterLogo(characterLogoStatic: Drawable) = Glide.with(this)
     .apply(RequestOptions().centerCrop())
     .into(this)
 
-@BindingAdapter("setCharacterImage")
-fun ImageView.setCharacterImage(characterLogoStatic: Drawable) = Glide.with(this)
+@BindingAdapter("setCharacterAnimatedImage")
+fun ImageView.setCharacterAnimatedImage(characterLogoStatic: Drawable) = Glide.with(this)
     .load(R.drawable.login_character)
     .placeholder(characterLogoStatic)
     .error(characterLogoStatic)
@@ -99,4 +101,42 @@ fun ImageView.setProfileImage(profileImageUrl: String?) {
         error(R.color.transparent)
         placeholder(R.color.transparent)
     }
+}
+
+@BindingAdapter("setCharacterImage")
+fun ImageView.setCharacterImage(characterId: Int) {
+    val drawableResource = "img_character_$characterId"
+    val packageName = this.context.packageName
+    val resource = this.context.resources.getIdentifier(drawableResource, "drawable", packageName)
+    Glide.with(this)
+        .load(resource)
+        .placeholder(R.color.transparent)
+        .error(R.color.transparent)
+        .diskCacheStrategy(DiskCacheStrategy.NONE)
+        .apply(RequestOptions().centerCrop())
+        .into(this)
+}
+
+@BindingAdapter("setCharacterDescription")
+fun TextView.setCharacterDescription(characterId: Int) {
+    val context = this.context
+    val packageName = context.packageName
+    val stringResource = "character_description_$characterId"
+    val resource = context.resources.getIdentifier(stringResource, "string", packageName)
+    text = resources.getString(resource)
+}
+
+@BindingAdapter("setCharacterNickname")
+fun TextView.setCharacterNickname(characterId: Int) {
+    val context = this.context
+    val packageName = context.packageName
+    val stringResource = "character_name_$characterId"
+    val resource = context.resources.getIdentifier(stringResource, "string", packageName)
+    text = resources.getString(resource)
+}
+
+@BindingAdapter("setCharacterAnimatedBackground")
+fun LottieAnimationView.setCharacterAnimatedBackground(characterId: Int) {
+    val rawResource = "wave_$characterId.json"
+    this.setAnimation(rawResource)
 }

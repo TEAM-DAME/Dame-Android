@@ -31,6 +31,9 @@ dependencies {
     implementation(AndroidXDependencies.hilt)
     kapt(KaptDependencies.hiltCompiler)
 
+    // ThirdParty Library
+    implementation(ThirdPartyDependencies.lottie)
+
     // Material Design
     implementation(MaterialDesignDependencies.materialDesign)
 

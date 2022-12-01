@@ -26,6 +26,9 @@ dependencies {
     implementation(AndroidXDependencies.coroutines)
     implementation(AndroidXDependencies.splashScreen)
 
+    // ThirdParty Library
+    implementation(ThirdPartyDependencies.lottie)
+
     // Material Design
     implementation(MaterialDesignDependencies.materialDesign)
 
