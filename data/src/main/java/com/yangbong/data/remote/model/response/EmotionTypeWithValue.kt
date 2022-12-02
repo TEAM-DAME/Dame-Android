@@ -6,5 +6,5 @@ data class Emotion(
     @SerializedName("emotionType")
     val emotionType: String,
     @SerializedName("emotionValue")
-    val emotionValue: Int,
+    val emotionValue: Int
 )

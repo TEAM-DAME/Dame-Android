@@ -61,10 +61,14 @@
         <activity
             android:name="com.yangbong.set_profile.ui.SetProfileActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name="com.yangbong.set_character.ui.SetCharacterActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name="com.yangbong.write_diary.WriteDiaryActivity"
             android:exported="false" />
 
         <activity
