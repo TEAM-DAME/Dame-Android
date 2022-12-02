@@ -100,6 +100,6 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
     }
 
     companion object {
-        private const val KAKAO = "KAKAO"
+        private const val KAKAO = "kakao"
     }
 }

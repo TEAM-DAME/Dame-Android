@@ -43,4 +43,8 @@ interface RepositoryModule {
     @Binds
     @Singleton
     fun bindsHomeRepository(repository: HomeRepositoryImpl): HomeRepository
+
+    @Binds
+    @Singleton
+    fun bindsWriteDiaryRepository(repository: WriteDiaryRepositoryImpl): WriteDiaryRepository
 }

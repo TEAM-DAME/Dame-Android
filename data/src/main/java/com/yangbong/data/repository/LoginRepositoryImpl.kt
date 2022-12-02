@@ -56,7 +56,6 @@ class LoginRepositoryImpl @Inject constructor(
         when (response) {
             is NetworkState.Success -> return Result.success(
                 DomainLoginResponse(
-                    accessToken = response.body.data?.jwtToken ?: "",
                     isNewUser = response.body.data?.isNewUser ?: true
                 )
             )
@@ -68,11 +67,11 @@ class LoginRepositoryImpl @Inject constructor(
             )
             is NetworkState.NetworkError -> Timber.d(
                 response.error,
-                "${this.javaClass.name}_postKakaoLogin"
+                "${this.javaClass.name}_postLogin"
             )
             is NetworkState.UnknownError -> Timber.d(
                 response.t,
-                "${this.javaClass.name}_postKakaoLogin"
+                "${this.javaClass.name}_postLogin"
             )
         }
         return Result.failure(IllegalStateException("NetworkError or UnKnownError please check timber"))

@@ -10,7 +10,7 @@ import retrofit2.http.POST
 interface SignUpService {
 
     @POST("v1/auth/sign-up")
-    suspend fun postSetProfile(
+    suspend fun postSignUp(
         @Body body: SignUpRequest
-    ): NetworkState<BaseResponse<SignUpResponse>>
+    ): NetworkState<BaseResponse<SignUpResponse?>>
 }

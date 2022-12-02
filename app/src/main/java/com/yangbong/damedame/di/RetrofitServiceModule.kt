@@ -54,4 +54,8 @@ object RetrofitServiceModule {
     fun provideGetCharacterService(@DameDameServer retrofit: Retrofit): GetCharacterService =
         retrofit.create(GetCharacterService::class.java)
 
+    @Provides
+    @Singleton
+    fun provideWriteDiaryService(@DameDameServer retrofit: Retrofit): WriteDiaryService =
+        retrofit.create(WriteDiaryService::class.java)
 }

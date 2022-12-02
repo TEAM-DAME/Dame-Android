@@ -4,7 +4,7 @@ import com.yangbong.data.remote.call_adapter.NetworkState
 import com.yangbong.data.remote.model.response.BaseResponse
 import com.yangbong.data.remote.model.response.CharacterResponse
 
-interface RemoteCharacterDataSource {
+interface RemoteGetCharacterDataSource {
 
     suspend fun getCharacterInfo(userId: Int): NetworkState<BaseResponse<CharacterResponse>>
 }

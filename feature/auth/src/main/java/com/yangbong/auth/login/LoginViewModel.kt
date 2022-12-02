@@ -1,18 +1,22 @@
 package com.yangbong.auth.login
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yangbong.core_ui.util.Event
 import com.yangbong.domain.entity.request.DomainLoginRequest
+import com.yangbong.domain.repository.LoginRepository
 import com.yangbong.domain.use_case.login.LoginUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
+    private val loginRepository: LoginRepository,
     private val loginUseCases: LoginUseCases
 ) : ViewModel() {
 
@@ -44,11 +48,12 @@ class LoginViewModel @Inject constructor(
                     socialToken = socialToken.value ?: ""
                 )
             ).onSuccess {
+                loginUseCases.saveUserProfileImageUrl(profileImageUrl.value ?: "")
                 if (it.isNewUser) {
+                    Timber.tag("okhttp").d("isNewUser 참참참")
                     _navigateToSetProfile.postValue(Event(platform))
-                    loginUseCases.saveUserProfileImageUrl(profileImageUrl.value ?: "")
                 } else {
-                    loginUseCases.saveAccessToken(it.accessToken ?: "")
+                    Timber.tag("okhttp").d("isNewUser 거짓거짓거짓")
                     _navigateToHome.postValue(Event(true))
                 }
             }.onFailure {

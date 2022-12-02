@@ -2,19 +2,19 @@ package com.yangbong.data.repository
 
 import com.yangbong.core_data.exception.RetrofitFailureStateException
 import com.yangbong.data.remote.call_adapter.NetworkState
-import com.yangbong.data.remote.data_source.RemoteCharacterDataSource
+import com.yangbong.data.remote.data_source.RemoteGetCharacterDataSource
 import com.yangbong.domain.entity.response.DomainCharacterResponse
 import com.yangbong.domain.repository.HomeRepository
 import timber.log.Timber
 import javax.inject.Inject
 
 class HomeRepositoryImpl @Inject constructor(
-    private val remoteCharacterDataSource: RemoteCharacterDataSource,
+    private val remoteGetCharacterDataSource: RemoteGetCharacterDataSource,
 ) : HomeRepository {
 
     override suspend fun getCharacterInfo(userId: Int): Result<DomainCharacterResponse> {
 
-        when (val response = remoteCharacterDataSource.getCharacterInfo(userId)) {
+        when (val response = remoteGetCharacterDataSource.getCharacterInfo(userId)) {
             is NetworkState.Success -> return Result.success(
                 DomainCharacterResponse(
                     characterId = response.body.data.characterId,

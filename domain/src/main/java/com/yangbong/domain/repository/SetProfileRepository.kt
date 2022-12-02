@@ -16,6 +16,8 @@ interface SetProfileRepository {
 
     fun saveUserProfileImageUrl(profileImageUrl: String)
 
+    fun saveAccessToken(accessToken: String)
+
     fun getUserProfileImageUrl(): String
 
     suspend fun uploadAndDownloadFile(file: File, onResult: (String) -> Unit)

@@ -51,7 +51,8 @@ class SetProfileRepositoryImpl @Inject constructor(
         when (response) {
             is NetworkState.Success -> return Result.success(
                 DomainSignUpResponse(
-                    userId = response.body.data.userId
+                    userId = response.body.data?.userId ?: -1,
+                    jwtToken = response.body.data?.jwtToken ?: ""
                 )
             )
             is NetworkState.Failure -> return Result.failure(
@@ -78,6 +79,10 @@ class SetProfileRepositoryImpl @Inject constructor(
 
     override fun saveUserProfileImageUrl(profileImageUrl: String) {
         localPreferenceUserDataSource.saveUserProfileImageUrl(profileImageUrl)
+    }
+
+    override fun saveAccessToken(accessToken: String) {
+        localPreferenceUserDataSource.saveAccessToken(accessToken)
     }
 
     override fun getUserProfileImageUrl(): String {
