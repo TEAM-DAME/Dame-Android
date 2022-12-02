@@ -6,9 +6,9 @@ import com.yangbong.data.remote.model.response.CharacterResponse
 import com.yangbong.data.remote.service.GetCharacterService
 import javax.inject.Inject
 
-class RemoteCharacterDataSourceImpl @Inject constructor(
+class RemoteGetCharacterDataSourceImpl @Inject constructor(
     private val characterService: GetCharacterService
-) : RemoteCharacterDataSource {
+) : RemoteGetCharacterDataSource {
     override suspend fun getCharacterInfo(userId: Int): NetworkState<BaseResponse<CharacterResponse>> {
         return characterService.getCharacter(userId)
     }
