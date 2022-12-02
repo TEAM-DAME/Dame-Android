@@ -17,7 +17,6 @@ class RemoteSetProfileDataSourceImpl @Inject constructor(
         checkDuplicateProfileNicknameService.checkDuplicateProfileNickname(profileNickname)
 
 
-    override suspend fun postSignUp(signUpRequest: SignUpRequest): NetworkState<BaseResponse<SignUpResponse>> =
-        signUpService.postSetProfile(signUpRequest)
-
+    override suspend fun postSignUp(signUpRequest: SignUpRequest): NetworkState<BaseResponse<SignUpResponse?>> =
+        signUpService.postSignUp(signUpRequest)
 }

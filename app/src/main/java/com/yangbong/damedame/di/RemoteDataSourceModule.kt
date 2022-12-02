@@ -33,7 +33,7 @@ interface RemoteDataSourceModule {
 
     @Binds
     @Singleton
-    fun bindsRemoteGetCharacterDataSource(source: RemoteGetGetCharacterDataSourceImpl): RemoteGetCharacterDataSource
+    fun bindsRemoteGetCharacterDataSource(source: RemoteGetCharacterDataSourceImpl): RemoteGetCharacterDataSource
 
     @Binds
     @Singleton

@@ -6,7 +6,7 @@ data class Diary(
     @SerializedName("id")
     val id: Int,
     @SerializedName("emotion")
-    val emotion: Emotion,
+    val emotionTypeWithValue: EmotionTypeWithValue,
     @SerializedName("title")
     val title: String,
     @SerializedName("date")
