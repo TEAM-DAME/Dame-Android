@@ -71,8 +71,9 @@ class SetProfileViewModel @Inject constructor(
                     profileImageUrl = profileImageUrl.value ?: ""
                 )
             ).onSuccess {
-                _userId.postValue(it.userId)
                 setProfileRepository.saveUserId(it.userId)
+                setProfileRepository.saveAccessToken(it.jwtToken)
+                _userId.postValue(it.userId)
                 _navigateToSetCharacter.postValue(Event(true))
             }.onFailure {
                 Timber.d(it)
