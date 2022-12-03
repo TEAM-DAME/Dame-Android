@@ -1,6 +1,7 @@
 package com.yangbong.main.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,9 +22,10 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
     lateinit var searchData:ArrayList<String>
     private val Number.dp get() = resolutionMetrics.toPixel(this.toInt())
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initOnclick()
         init()
-        initResult()
+        initOnclick()
+
+
         binding.searchViewModel=searchViewModel
         super.onViewCreated(view, savedInstanceState)
     }
@@ -59,6 +61,9 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
                 searchViewModel.addSearchDataView(binding.SearchTxt.text.toString())
                 toResultLayout()
                 searchViewModel.getSearch(binding.SearchTxt.text.toString())
+                initResult()
+
+
             }
 
         }
@@ -81,20 +86,24 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
         binding.RSRecyclerView.adapter=myRSadapter
         searchViewModel.searchResultData.observe(viewLifecycleOwner,androidx.lifecycle.Observer{
             myRSadapter.items = searchViewModel.searchResultData.value!!
+            Log.i("test",myRSadapter.items.toString())
+            Log.i("test",searchViewModel.searchResultData.value!!.toString())
+
             (binding.RSRecyclerView.adapter)?.notifyDataSetChanged()
         })
-
     }
-    private fun init(){
+
+    fun init(){
+        searchViewModel.getRecentSearchData()
         searchData= arrayListOf()
         binding.FSRecyclerView.layoutManager=
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
         myFSadapter= FriendSearchRecyclerViewAdapter(searchData)
-        searchViewModel.getRecentSearchData()
         myFSadapter.FSitemClickListner=object :FriendSearchRecyclerViewAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
                 searchViewModel.getSearch(myFSadapter.items[position])
                 toResultLayout()
+                initResult()
             }
 
             override fun onXClick(position: Int) {
@@ -111,6 +120,9 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
         }
 
         )
+
+        //----------RESULT LAYOUT--------------//
+
 
     }
 

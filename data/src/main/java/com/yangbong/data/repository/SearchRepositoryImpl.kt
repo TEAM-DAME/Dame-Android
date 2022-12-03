@@ -1,16 +1,16 @@
 package com.yangbong.data.repository
 
-import com.google.gson.JsonArray
+import android.util.Log
 import com.yangbong.core_data.exception.RetrofitFailureStateException
 import com.yangbong.data.local.data_source.LocalPreferenceUserDataSource
 import com.yangbong.data.remote.call_adapter.NetworkState
 import com.yangbong.data.remote.data_source.RemoteSearchSource
 import com.yangbong.data.remote.mapper.SearchMapper
-import com.yangbong.data.remote.model.request.SearchRequest
-import com.yangbong.domain.entity.request.DomainSearchRequest
+import com.yangbong.domain.entity.SearchInfo
 import com.yangbong.domain.entity.response.DomainSearchResponse
 import com.yangbong.domain.repository.SearchRepository
 import org.json.JSONArray
+import timber.log.Timber
 import javax.inject.Inject
 
 class SearchRepositoryImpl @Inject constructor(
@@ -21,9 +21,17 @@ class SearchRepositoryImpl @Inject constructor(
 ):SearchRepository {
     override fun addSearchData(data: String) {
         val sharedData=localPreferenceUserDataSource.getRecentSearchData()
-        var dataJsonArr= JSONArray(sharedData)
-        dataJsonArr.put(data)
-        localPreferenceUserDataSource.setRecentSearchData(dataJsonArr.toString())
+
+        if(sharedData.isEmpty()){
+            var dataJsonArr=JSONArray()
+            dataJsonArr.put(data)
+            localPreferenceUserDataSource.setRecentSearchData(dataJsonArr.toString())
+        }
+        else{
+            var dataJsonArr= JSONArray(sharedData)
+            dataJsonArr.put(data)
+            localPreferenceUserDataSource.setRecentSearchData(dataJsonArr.toString())
+        }
 
     }
 
@@ -53,18 +61,16 @@ class SearchRepositoryImpl @Inject constructor(
     }
 
 
-    override suspend fun getSearch(searchRequest: DomainSearchRequest): Result<DomainSearchResponse> {
+    override suspend fun getSearch(searchRequest: String): Result<DomainSearchResponse> {
         val searchResult = remoteSearchSource.getSearch(
-            SearchRequest(
-                searchContent = searchRequest.searchContent
-            )
+            searchRequest
         )
+        Log.i("result",searchResult.toString())
         when (searchResult) {
             is NetworkState.Success -> return Result.success(
                 DomainSearchResponse(
-                    searchDataList = searchResult.body.data.searchData.map {
-                        searchMapper.toSearchInfo(it)
-                    }
+
+                    data = searchResult.body.data.map { searchMapper.toSearchInfo(it) } as ArrayList<SearchInfo>
                 ))
             is NetworkState.Failure ->
                 return Result.failure(
@@ -73,15 +79,12 @@ class SearchRepositoryImpl @Inject constructor(
                         searchResult.code
                     )
                 )
-            else ->
-                return Result.failure(
-                    IllegalStateException(
-                        "UnKnownError please check "
-                    )
-                )
-
-
+            is NetworkState.NetworkError -> Timber.d(searchResult.error)
+            is NetworkState.UnknownError -> Timber.d(searchResult.t)
         }
+        return Result.failure(IllegalStateException("NetworkError or UnKnownError please check timber"))
+
+
     }
 }
 

@@ -1,16 +1,18 @@
 package com.yangbong.main.search
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.yangbong.core_ui.base.BaseViewModel
 import com.yangbong.domain.entity.SearchInfo
-import com.yangbong.domain.entity.request.DomainSearchRequest
 import com.yangbong.domain.repository.SearchRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 import javax.inject.Inject
 
+@HiltViewModel
 class SearchViewModel @Inject constructor(
     private val searchRepository: SearchRepository
 ) : BaseViewModel() {
@@ -28,8 +30,9 @@ class SearchViewModel @Inject constructor(
         else{
             items.add(data)
             _searchData.value=items
+            searchRepository.addSearchData(data)
         }
-        searchRepository.addSearchData(data)
+
     }
     fun deleteDataView(data:String){
         items.remove(data)
@@ -54,12 +57,13 @@ class SearchViewModel @Inject constructor(
 
     fun getSearch(searchContent:String){
         viewModelScope.launch {
-            searchRepository.getSearch(
-                DomainSearchRequest(
-                    searchContent = searchContent
-                )
-            ).onSuccess {
-                _searchResultData.postValue(it.searchDataList)
+            searchRepository.getSearch(searchContent)
+            .onSuccess {
+                _searchResultData.postValue(it.data)
+                Log.i("d",it.data.toString())
+
+            }.onFailure {
+                Log.i("d",it.message.toString())
             }
         }
 

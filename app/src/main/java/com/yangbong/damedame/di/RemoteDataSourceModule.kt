@@ -45,5 +45,5 @@ interface RemoteDataSourceModule {
 
     @Binds
     @Singleton
-    fun bindsRemoteSearchSource(source:RemoteSearchSource):RemoteSearchSource
+    fun bindsRemoteSearchSource(source:RemoteSearchSourceImpl):RemoteSearchSource
 }

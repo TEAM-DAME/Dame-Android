@@ -12,6 +12,9 @@ import com.yangbong.damedame.auth.R
 import com.yangbong.damedame.auth.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import com.kakao.sdk.common.util.Utility
+import android.util.Log
+
 
 @AndroidEntryPoint
 class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_login) {
@@ -29,6 +32,8 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         initLoginFailureMessageObserver()
         initMoveToHomeObserver()
         initMoveToSetProfileObserver()
+
+
     }
 
     private fun initClickEvent() {

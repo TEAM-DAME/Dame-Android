@@ -2,11 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <data>
-        <variable
-            name="searchViewModel"
-            type="com.yangbong.main.search.SearchViewModel" />
-    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +24,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="10dp"
-                app:setProfileImage="@{searchViewModel.profileImgUrl}"
                 app:layout_constraintLeft_toLeftOf="@+id/rowBackground"
                 app:layout_constraintTop_toTopOf="@id/rowBackground" />
 

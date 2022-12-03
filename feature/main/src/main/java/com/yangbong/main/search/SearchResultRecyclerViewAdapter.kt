@@ -3,7 +3,10 @@ package com.yangbong.main.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.yangbong.damedame.main.databinding.SearchResultRowBinding
+import com.yangbong.damedame.shared.R
 import com.yangbong.domain.entity.SearchInfo
 
 class SearchResultRecyclerViewAdapter(var items:List<SearchInfo>):RecyclerView.Adapter<SearchResultRecyclerViewAdapter.ViewHolder>() {
@@ -26,8 +29,13 @@ class SearchResultRecyclerViewAdapter(var items:List<SearchInfo>):RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.friendNameText.text=items[position].userNickName
-        holder.binding.searchViewModel?.getProfileImg(items[position].userProfileImg)
+        holder.binding.friendNameText.text=items[position].nickName
+        holder.binding.friendProfileImage.load(items[position].profileImageUrl){
+            transformations(CircleCropTransformation())
+            error(R.color.transparent)
+            placeholder(R.color.transparent)
+        }
+
     }
 
     override fun getItemCount(): Int {

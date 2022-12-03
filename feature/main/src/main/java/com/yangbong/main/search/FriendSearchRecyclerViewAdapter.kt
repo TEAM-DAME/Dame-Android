@@ -13,7 +13,7 @@ class FriendSearchRecyclerViewAdapter(var items: ArrayList<String>):RecyclerView
                 FSitemClickListner?.onItemClick(adapterPosition)
             }
            binding.XBtn.setOnClickListener {
-               FSitemClickListner?.onItemClick(adapterPosition)
+               FSitemClickListner?.onXClick(adapterPosition)
            }
        }
 

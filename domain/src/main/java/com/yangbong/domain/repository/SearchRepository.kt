@@ -1,6 +1,5 @@
 package com.yangbong.domain.repository
 
-import com.yangbong.domain.entity.request.DomainSearchRequest
 import com.yangbong.domain.entity.response.DomainSearchResponse
 
 interface SearchRepository {
@@ -8,5 +7,5 @@ interface SearchRepository {
     fun deleteData(data:String)
     fun deleteAllData()
     fun getRecentSearchData():String
-    suspend fun getSearch(searchRequest: DomainSearchRequest): Result<DomainSearchResponse>
+    suspend fun getSearch(searchRequest: String): Result<DomainSearchResponse>
 }

@@ -10,8 +10,8 @@ class SearchMapper @Inject constructor(
 ) {
     fun toSearchInfo(searchData:SearchData): SearchInfo {
         return SearchInfo(
-            userNickName = searchData.userNickName,
-            userProfileImg = searchData.userProfileImg
+            nickName = searchData.nickName,
+            profileImageUrl = searchData.profileImageUrl
         )
     }
 }
