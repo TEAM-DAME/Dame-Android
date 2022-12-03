@@ -8,6 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -58,4 +59,9 @@ object RetrofitServiceModule {
     @Singleton
     fun provideWriteDiaryService(@DameDameServer retrofit: Retrofit): WriteDiaryService =
         retrofit.create(WriteDiaryService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideSearchService(@DameDameServer retrofit: Retrofit):SearchService=
+        retrofit.create(SearchService::class.java)
 }

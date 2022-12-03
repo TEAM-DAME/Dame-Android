@@ -12,7 +12,6 @@ class NotificationMapper  @Inject constructor(
 ){
 
     fun toNotificationInfo(notification: Notification): NotificationInfo {
-
         return NotificationInfo(
             notificationType = notification.notificationType,
             todayEmotion = notification.todayEmotion,

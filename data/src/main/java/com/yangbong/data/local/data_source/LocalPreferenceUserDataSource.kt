@@ -25,5 +25,11 @@ interface LocalPreferenceUserDataSource {
 
     fun removeUserNickname()
 
+    fun getRecentSearchData():String
+
+    fun setRecentSearchData(recentSearchData:String)
+
+    fun removeRecentSearchData()
+
     fun clearUserInfo()
 }
