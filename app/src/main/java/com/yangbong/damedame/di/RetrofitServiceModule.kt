@@ -64,4 +64,8 @@ object RetrofitServiceModule {
     @Singleton
     fun provideSearchService(@DameDameServer retrofit: Retrofit):SearchService=
         retrofit.create(SearchService::class.java)
+    @Provides
+    @Singleton
+    fun provideUserProfileService(@DameDameServer retrofit: Retrofit):UserProfileService=
+        retrofit.create(UserProfileService::class.java)
 }
