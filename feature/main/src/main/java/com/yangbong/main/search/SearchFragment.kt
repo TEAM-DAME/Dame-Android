@@ -23,6 +23,7 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initOnclick()
         init()
+        initResult()
         binding.searchViewModel=searchViewModel
         super.onViewCreated(view, savedInstanceState)
     }
@@ -74,7 +75,7 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
         myRSadapter= SearchResultRecyclerViewAdapter(resultData)
         myRSadapter.SRitemClickListener=object :SearchResultRecyclerViewAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                // local pref 에 userid 저장하고 화면전환하기
+                // TODO local pref 에 userid 저장하고 화면전환하기
             }
         }
         binding.RSRecyclerView.adapter=myRSadapter
