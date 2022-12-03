@@ -22,8 +22,7 @@ class SearchViewModel @Inject constructor(
     //
     private val _searchResultData=MutableLiveData<List<SearchInfo>>()
     val searchResultData:LiveData<List<SearchInfo>> =_searchResultData
-    private val _profileImgUrl=MutableLiveData<String>()
-    val profileImgUrl:LiveData<String> =_profileImgUrl
+
     fun addSearchDataView(data:String){
         if(items.contains(data)){
         }
@@ -68,10 +67,8 @@ class SearchViewModel @Inject constructor(
         }
 
     }
-    //----------------Search Result -------------- //
-    fun getProfileImg(imgUrl:String){
-        _profileImgUrl.postValue(imgUrl)
-    }
+
+
 
 
 }
