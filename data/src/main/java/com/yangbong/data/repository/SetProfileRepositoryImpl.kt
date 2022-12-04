@@ -43,7 +43,7 @@ class SetProfileRepositoryImpl @Inject constructor(
                 platform = signUpRequest.platform,
                 socialToken = signUpRequest.socialToken,
                 fcmToken = signUpRequest.fcmToken,
-                nickname = signUpRequest.nickname,
+                nickName = signUpRequest.nickname,
                 profileImageUrl = signUpRequest.profileImageUrl
             )
         )
