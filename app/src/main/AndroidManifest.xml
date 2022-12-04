@@ -72,6 +72,10 @@
             android:exported="false"/>
 
         <activity
+            android:name="com.yangbong.damedame.notification.SettingActivity"
+            android:exported="false"/>
+
+        <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
             <intent-filter>
