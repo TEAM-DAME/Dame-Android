@@ -12,8 +12,6 @@ import com.yangbong.damedame.auth.R
 import com.yangbong.damedame.auth.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.kakao.sdk.common.util.Utility
-import android.util.Log
 
 
 @AndroidEntryPoint
@@ -32,17 +30,12 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
         initLoginFailureMessageObserver()
         initMoveToHomeObserver()
         initMoveToSetProfileObserver()
-
-
     }
 
     private fun initClickEvent() {
         with(binding) {
             kakaoLoginLayout.setOnSingleClickListener {
                 loginViewModel.updatePlatform(KAKAO)
-                kakaoLoginManager.getKakaoUserInfo {
-                    loginViewModel.updateProfileImageUrl(it)
-                }
                 kakaoLoginManager.startKakaoLogin {
                     loginViewModel.updateSocialToken(it)
                 }
@@ -52,8 +45,15 @@ class LoginFragment : BindingFragment<FragmentLoginBinding>(R.layout.fragment_lo
     }
 
     private fun initLoginObserver() {
-        loginViewModel.socialToken.observe(viewLifecycleOwner) {
-            loginViewModel.postLogin()
+        with(loginViewModel) {
+            socialToken.observe(viewLifecycleOwner) {
+                kakaoLoginManager.getKakaoUserInfo {
+                    updateProfileImageUrl(it)
+                }
+            }
+            profileImageUrl.observe(viewLifecycleOwner) {
+                postLogin()
+            }
         }
     }
 
