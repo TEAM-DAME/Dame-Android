@@ -8,7 +8,7 @@ import retrofit2.http.POST
 
 interface NaverClovaSentimentService {
 
-    @POST
+    @POST("v1/analyze")
     suspend fun postSentimentAnalyze(
         @Body body: SentimentAnalyzeRequest
     ): NetworkState<SentimentAnalyzeResponse>
