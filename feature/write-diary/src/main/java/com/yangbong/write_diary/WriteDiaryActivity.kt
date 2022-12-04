@@ -66,7 +66,10 @@ class WriteDiaryActivity :
     }
 
     private fun postDiary() {
-        writeDiaryViewModel.postDiary(writeDiaryViewModel.userId.value ?: -1)
+        writeDiaryViewModel.postDiary(
+            binding.etTitle.text.toString(),
+            binding.etContent.text.toString()
+        )
     }
 
     private fun initMoveToHomeObserver() {

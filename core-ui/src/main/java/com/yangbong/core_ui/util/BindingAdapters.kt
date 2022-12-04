@@ -5,6 +5,9 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageButton
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet.Layout
 import androidx.databinding.BindingAdapter
 import coil.load
 import coil.transform.CircleCropTransformation
@@ -15,6 +18,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.yangbong.core_ui.constant.SetProfileNicknameConstant
 import com.yangbong.core_ui.constant.SetProfileNicknameConstant.*
 import com.yangbong.damedame.shared.R
+import kotlin.math.max
+import kotlin.math.roundToInt
 
 
 @BindingAdapter("profileIdStateNumber")
@@ -140,3 +145,78 @@ fun LottieAnimationView.setCharacterAnimatedBackground(characterId: Int) {
     val rawResource = "wave_$characterId.json"
     this.setAnimation(rawResource)
 }
+
+@BindingAdapter("positive", "neutral", "negative")
+fun TextView.setMaxEmotionValue(
+    positive: Double,
+    neutral: Double,
+    negative: Double
+) {
+    val maxValue = max(max(positive, neutral), negative)
+    text = maxValue.roundToInt().toString() + "%"
+}
+
+@BindingAdapter("setDate")
+fun TextView.setDate(rawDate: String) {
+    // TODO("서버에서 시간 포맷 수정해주면 다시 수정하기!")
+    val date = rawDate.split("T")
+    text = date[0]
+}
+
+@BindingAdapter("setIsLocked")
+fun AppCompatImageButton.setIsLocked(visibility: Int) {
+    if (mapToBoolean(visibility)) setImageResource(R.drawable.ic_unlock)
+    else setImageResource(R.drawable.ic_lock)
+}
+
+private fun mapToBoolean(visibility: Int): Boolean {
+    return if (visibility == 0) false
+    else visibility == 1
+}
+
+@BindingAdapter("positive", "neutral", "negative")
+fun ImageView.setEmotionCharacter(
+    positive: Double,
+    neutral: Double,
+    negative: Double
+) {
+    val emotionMap = hashMapOf<String, Double>()
+    emotionMap["positive"] = positive
+    emotionMap["neutral"] = neutral
+    emotionMap["negative"] = negative
+
+    val maxValue = emotionMap.maxOfOrNull { it.value }
+    val keys = emotionMap.filterValues { it == maxValue }.keys
+
+    if (keys.contains("positive")) {
+        setImageResource(R.drawable.img_emotion_positive)
+    } else if (keys.contains("neutral")) {
+        setImageResource(R.drawable.img_emotion_neutral)
+    } else {
+        setImageResource(R.drawable.img_emotion_negative)
+    }
+}
+
+@BindingAdapter("positive", "neutral", "negative")
+fun ConstraintLayout.setEmotionLayout(
+    positive: Double,
+    neutral: Double,
+    negative: Double
+) {
+    val emotionMap = hashMapOf<String, Double>()
+    emotionMap["positive"] = positive
+    emotionMap["neutral"] = neutral
+    emotionMap["negative"] = negative
+
+    val maxValue = emotionMap.maxOfOrNull { it.value }
+    val keys = emotionMap.filterValues { it == maxValue }.keys
+
+    if (keys.contains("positive")) {
+        setBackgroundResource(R.drawable.bg_button_positive_20_dp)
+    } else if (keys.contains("neutral")) {
+        setBackgroundResource(R.drawable.bg_button_neutral_20_dp)
+    } else {
+        setBackgroundResource(R.drawable.bg_button_negative_20_dp)
+    }
+}
+

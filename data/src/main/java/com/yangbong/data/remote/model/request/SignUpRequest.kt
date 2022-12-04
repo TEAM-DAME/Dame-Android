@@ -9,8 +9,8 @@ data class SignUpRequest(
     val socialToken: String,
     @SerializedName("fcmToken")
     val fcmToken: String,
-    @SerializedName("nickname")
-    val nickname: String,
+    @SerializedName("nickName")
+    val nickName: String,
     @SerializedName("profileImageUrl")
     val profileImageUrl: String
 )

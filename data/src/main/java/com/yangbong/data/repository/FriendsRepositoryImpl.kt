@@ -10,10 +10,10 @@ import javax.inject.Inject
 
 class FriendsRepositoryImpl @Inject constructor(
     private val remoteUserProfileDataSource: RemoteUserProfileDataSource
-):FriendsRepository{
-    override suspend fun getUserProfileInfo(userId:Int): Result<ProfileInfo> {
-        when(val response=remoteUserProfileDataSource.getUserProfile(userId)){
-            is NetworkState.Success->return Result.success(
+) : FriendsRepository {
+    override suspend fun getUserProfileInfo(userId: Int): Result<ProfileInfo> {
+        when (val response = remoteUserProfileDataSource.getUserProfile(userId)) {
+            is NetworkState.Success -> return Result.success(
                 ProfileInfo(
                     nickName = response.body.data.nickName,
                     profileImageUrl = response.body.data.profileImageUrl,
@@ -23,7 +23,7 @@ class FriendsRepositoryImpl @Inject constructor(
                     isFriend = response.body.data.isFriend
                 )
             )
-            is NetworkState.Failure->
+            is NetworkState.Failure ->
                 return Result.failure(
                     RetrofitFailureStateException(
                         response.error,

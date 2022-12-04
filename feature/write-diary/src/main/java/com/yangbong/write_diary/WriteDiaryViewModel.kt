@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.lang.Double.max
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,9 +26,6 @@ class WriteDiaryViewModel @Inject constructor(
     var title = MutableLiveData("")
     var content = MutableLiveData("")
     var date = MutableLiveData("")
-
-    private val _emotionValue = MutableLiveData<Double>()
-    val emotionValue: LiveData<Double> = _emotionValue
 
     private val _writeDiaryUiState: MutableStateFlow<UiState<EmotionInfo>> =
         MutableStateFlow(UiState.Loading)
@@ -43,14 +41,20 @@ class WriteDiaryViewModel @Inject constructor(
     private val _userId = MutableLiveData<Int>()
     val userId: LiveData<Int> = _userId
 
+    private var positiveValue : Double = 0.0
+    private var neutralValue : Double = 0.0
+    private var negativeValue : Double = 0.0
+
     fun postSentiment(content: String) {
         viewModelScope.launch {
             writeDiaryRepository.postSentiment(content)
                 .onSuccess {
                     _writeDiaryUiState.value = UiState.Success(it)
                     _postDiary.postValue(Event(true))
-                    _emotionValue.postValue(it.emotionValue.toDouble())
-                    Timber.tag("okhttp").d("감정분석 성공!!! ${it.emotionType}")
+                    positiveValue = it.positive
+                    neutralValue = it.neutral
+                    negativeValue = it.negative
+                    Timber.tag("okhttp").d("감정분석 성공!!! ${max(max(it.positive, it.neutral), it.negative)}")
                 }
                 .onFailure {
                     _writeDiaryUiState.value = UiState.Failure(it.message)
@@ -59,14 +63,17 @@ class WriteDiaryViewModel @Inject constructor(
         }
     }
 
-    fun postDiary(userId: Int) {
+    fun postDiary(title: String, content: String) {
         viewModelScope.launch {
             writeDiaryRepository.postDiary(
                 DomainDiaryRequest(
-                    userId = userId,
-                    title = title.value ?: "",
-                    content = content.value ?: "",
-                    emotionValue = emotionValue.value ?: 0.0
+                    minionId = 1,
+                    userId = userId.value ?: -1,
+                    title = title,
+                    content = content,
+                    positive = positiveValue,
+                    neutral = neutralValue,
+                    negative = negativeValue
                 )
             ).onSuccess {
                 _moveToHome.postValue(Event(true))

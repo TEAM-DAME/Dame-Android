@@ -1,9 +1,10 @@
 package com.yangbong.domain.entity
 
 data class MyProfileUser(
-    var profileId: String,
+    val userId: Int,
+    var nickName: String,
     var profileImageUrl: String,
     var diaryCount: Int,
-    var pocketCount: Int,
+    var minionCount: Int,
     var friendCount: Int
 )

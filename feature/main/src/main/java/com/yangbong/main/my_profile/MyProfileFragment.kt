@@ -13,9 +13,11 @@ import com.yangbong.core_ui.util.ResolutionMetrics
 import com.yangbong.core_ui.util.UiState
 import com.yangbong.damedame.main.R
 import com.yangbong.damedame.main.databinding.FragmentMyProfileBinding
+import com.yangbong.domain.entity.MyProfileUser
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
@@ -30,22 +32,25 @@ class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        terminationTokenHandling(viewModel)
         initView()
-        observeData()
-    }
-
-    override fun onStart() {
-        super.onStart()
+        observeProfileInfo()
+        observeDiaryList()
         viewModel.getMyProfileInfo()
+        viewModel.getDiaryInfo()
     }
 
-    private fun observeData() {
+    private fun observeProfileInfo() {
         viewModel.myProfileUiState.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
             when (it) {
                 is UiState.Success -> {
-                    myProfileTopAdapter.myProfileUser = it.data.myProfileUser
-                    diaryAdapter.submitList(it.data.diaryList)
+                    myProfileTopAdapter.myProfileUser = MyProfileUser(
+                        userId = it.data.userId,
+                        nickName = it.data.nickName,
+                        profileImageUrl = it.data.profileImageUrl,
+                        diaryCount = it.data.diaryCount,
+                        minionCount = it.data.minionCount,
+                        friendCount = it.data.friendCount
+                    )
                 }
                 is UiState.Failure -> {
                     it.msg?.let { msg ->
@@ -60,6 +65,24 @@ class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
 
         viewModel.isDiaryEmpty.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
             binding.isDiaryEmpty = it
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun observeDiaryList() {
+        viewModel.diaryUiState.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
+            when (it) {
+                is UiState.Success -> {
+                    diaryAdapter.submitList(it.data)
+                }
+                is UiState.Failure -> {
+                    it.msg?.let { msg ->
+                        requireContext().shortToast(msg)
+                    }
+                }
+                else -> {
+                    // TODO : 로딩 로직
+                }
+            }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
@@ -88,7 +111,7 @@ class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
     }
 
     private fun onPocketClick(id: Int) {
-        
+
     }
 
     private fun onFriendsClick(id: Int) {

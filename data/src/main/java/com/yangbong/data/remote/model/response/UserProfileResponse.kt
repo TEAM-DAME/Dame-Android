@@ -4,16 +4,15 @@ import com.google.gson.annotations.SerializedName
 
 data class UserProfileResponse(
     @SerializedName("nickName")
-    val nickName:String,
+    val nickName: String,
     @SerializedName("profileImageUrl")
-    val profileImageUrl:String,
+    val profileImageUrl: String,
     @SerializedName("diaryCount")
-    val diaryCount:Int,
+    val diaryCount: Int,
     @SerializedName("minionCount")
-    val minionCount:Int,
+    val minionCount: Int,
     @SerializedName("friendCount")
-    val friendCount:Int,
+    val friendCount: Int,
     @SerializedName("isFriend")
-    val isFriend:Boolean
-
+    val isFriend: Boolean
 )

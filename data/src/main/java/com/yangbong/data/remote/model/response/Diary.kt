@@ -3,14 +3,24 @@ package com.yangbong.data.remote.model.response
 import com.google.gson.annotations.SerializedName
 
 data class Diary(
-    @SerializedName("id")
-    val id: Int,
-    @SerializedName("emotion")
-    val emotionTypeWithValue: EmotionTypeWithValue,
+    @SerializedName("diaryId")
+    val diaryId: Int,
+    @SerializedName("userId")
+    val userId: Int,
     @SerializedName("title")
     val title: String,
-    @SerializedName("date")
-    val date: String,
-    @SerializedName("isLocked")
-    val isLocked: Boolean
+    @SerializedName("content")
+    val content: String,
+    @SerializedName("positive")
+    val positive: Double,
+    @SerializedName("neutral")
+    val neutral: Double,
+    @SerializedName("negative")
+    val negative: Double,
+    @SerializedName("visibility")
+    val visibility: Int,
+    @SerializedName("diaryTime")
+    val diaryTime: String,
+    @SerializedName("minionId")
+    val minionId: Int
 )
