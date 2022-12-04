@@ -11,8 +11,10 @@ import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import com.yangbong.core_ui.base.BindingActivity
 import com.yangbong.damedame.notification.databinding.ActivitySettingBinding
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class SettingActivity :
     BindingActivity<ActivitySettingBinding>(R.layout.activity_setting) {
     private lateinit var remoteConfig: FirebaseRemoteConfig
@@ -25,12 +27,12 @@ class SettingActivity :
 
         //timber 초기화
         Timber.plant(Timber.DebugTree())
-
         //remoteConfig 초기화
         initRemoteConfig()
 
         initView()
     }
+
 
     private fun initRemoteConfig() {
 
@@ -84,6 +86,8 @@ class SettingActivity :
 
         Timber.d("currentAppVersion : $currentVersion")
 
+        NavigatorIntentObject.setMainIntent(mainNavigator.navigateNotificationFromMain(this))
+
         binding.latestAppVersionText.text = currentVersion
 
         binding.latestAppVersionText.setOnClickListener {
@@ -92,6 +96,9 @@ class SettingActivity :
 
         binding.enterNotificationImg.setOnClickListener {
             NotificationDialog(this).show()
+        }
+        binding.backButton.setOnClickListener {
+            finish()
         }
     }
 
@@ -107,4 +114,6 @@ class SettingActivity :
             UpdateDialog(this).show()
         }
     }
+
+
 }

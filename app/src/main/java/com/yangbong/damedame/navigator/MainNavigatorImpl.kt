@@ -1,6 +1,7 @@
 package com.yangbong.damedame.navigator
 
 import android.content.Context
+import android.content.Intent
 import com.yangbong.auth.AuthActivity
 import com.yangbong.core_ui.extension.navigateActivity
 import com.yangbong.damedame.MainActivity
@@ -44,6 +45,10 @@ internal class MainNavigatorImpl @Inject constructor() : MainNavigator {
 
     override fun transactionToHome() {
         MainActivity.transactionToHome()
+    }
+
+    override fun navigateNotificationFromMain(context: Context): Intent {
+        return Intent(context, MainActivity::class.java)
     }
 
 

@@ -1,6 +1,7 @@
 package com.yangbong.damedame.navigator
 
 import android.content.Context
+import android.content.Intent
 
 interface MainNavigator {
     /** MainActivity로 이동 */
@@ -31,4 +32,7 @@ interface MainNavigator {
 
     /** MainActivity로 이동시 home화면이 나오도록 transaction 하는 로직 */
     fun transactionToHome()
+
+    /** notification클릭 시 main으로 이동할 수 있게 하는 intent */
+    fun navigateNotificationFromMain(context: Context): Intent
 }
