@@ -33,8 +33,9 @@ class WriteDiaryRepositoryImpl @Inject constructor(
         when (emotionResult) {
             is NetworkState.Success -> return Result.success(
                 EmotionInfo(
-                    emotionType = emotionResult.body.document.sentiment,
-                    emotionValue = emotionResult.body.document.confidence.maxValue()
+                    positive = emotionResult.body.document.confidence.positive,
+                    neutral = emotionResult.body.document.confidence.neutral,
+                    negative = emotionResult.body.document.confidence.negative
                 )
             )
             is NetworkState.Failure -> return Result.failure(
@@ -54,13 +55,14 @@ class WriteDiaryRepositoryImpl @Inject constructor(
     override suspend fun postDiary(diaryRequest: DomainDiaryRequest): Result<String> {
         val response = remoteWriteDiaryDataSource.postDiary(
             WriteDiaryRequest(
+                minionId = diaryRequest.minionId,
                 userId = diaryRequest.userId,
                 title = diaryRequest.title,
                 content = diaryRequest.content,
                 emotion = EmotionRequest(
-                    positive = diaryRequest.emotionValue,
-                    neutral = diaryRequest.emotionValue,
-                    negative = diaryRequest.emotionValue
+                    positive = diaryRequest.positive,
+                    neutral = diaryRequest.neutral,
+                    negative = diaryRequest.negative
                 )
             )
         )

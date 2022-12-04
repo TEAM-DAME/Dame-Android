@@ -6,7 +6,7 @@ import com.yangbong.data.remote.model.response.EmptyResponse
 import com.yangbong.data.remote.service.WriteDiaryService
 import javax.inject.Inject
 
-class RemoteWriteWriteDiaryDataSourceImpl @Inject constructor(
+class RemoteWriteDiaryDataSourceImpl @Inject constructor(
     private val writeDiaryService: WriteDiaryService
 ) : RemoteWriteDiaryDataSource {
     override suspend fun postDiary(diaryRequest: WriteDiaryRequest): NetworkState<EmptyResponse> {

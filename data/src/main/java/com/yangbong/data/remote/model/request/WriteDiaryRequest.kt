@@ -3,6 +3,8 @@ package com.yangbong.data.remote.model.request
 import com.google.gson.annotations.SerializedName
 
 data class WriteDiaryRequest(
+    @SerializedName("minionId")
+    val minionId: Int,
     @SerializedName("userId")
     val userId: Int,
     @SerializedName("title")
