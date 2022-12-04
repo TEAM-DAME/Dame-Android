@@ -1,10 +1,18 @@
 package com.yangbong.data.remote.model.response
 
+import com.google.gson.annotations.SerializedName
+
 data class MyProfileResponse(
-    val profileId: String,
-    val profileImageUrl: String,
+    @SerializedName("userId")
+    val userId: Int,
+    @SerializedName("nickName")
+    val nickName: String?,
+    @SerializedName("profileImageUrl")
+    val profileImageUrl: String?,
+    @SerializedName("diaryCount")
     val diaryCount: Int,
-    val pocketCount: Int,
-    val friendCount: Int,
-    val diaries: List<Diary>
+    @SerializedName("minionCount")
+    val minionCount: Int,
+    @SerializedName("friendCount")
+    val friendCount: Int
 )
