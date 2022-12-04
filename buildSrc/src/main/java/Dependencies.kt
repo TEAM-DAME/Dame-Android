@@ -112,3 +112,8 @@ object ClassPathPlugins {
     const val crashlytics = "com.google.firebase:firebase-crashlytics-gradle:2.8.1"
     const val appDistribution = "com.google.firebase:firebase-appdistribution-gradle:3.0.1"
 }
+
+object WorkManagerDependency{
+    const val runtimeKtx =  "androidx.work:work-runtime-ktx:${Versions.workVersion}"
+
+}

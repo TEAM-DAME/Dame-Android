@@ -4,20 +4,28 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import com.yangbong.core_ui.base.BindingActivity
+import com.yangbong.core_ui.extension.shortToast
 import com.yangbong.damedame.notification.databinding.ActivitySettingBinding
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class SettingActivity :
     BindingActivity<ActivitySettingBinding>(R.layout.activity_setting) {
     private lateinit var remoteConfig: FirebaseRemoteConfig
     private val currentVersion: String by lazy {
         getCurrentAppVersion(this)
+    }
+    private val latestVersion: String by lazy {
+        activateRemoteConfig()
+        remoteConfig.getString("app_version")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,12 +33,12 @@ class SettingActivity :
 
         //timber 초기화
         Timber.plant(Timber.DebugTree())
-
         //remoteConfig 초기화
         initRemoteConfig()
 
         initView()
     }
+
 
     private fun initRemoteConfig() {
 
@@ -84,23 +92,40 @@ class SettingActivity :
 
         Timber.d("currentAppVersion : $currentVersion")
 
+        NavigatorIntentObject.setMainIntent(mainNavigator.navigateNotificationFromMain(this))
+
         binding.latestAppVersionText.text = currentVersion
 
         binding.latestAppVersionText.setOnClickListener {
             checkIsLatestVersion()
+        }
+
+        binding.enterNotificationImg.setOnClickListener {
+            NotificationDialog(this).show()
+        }
+        binding.backButton.setOnClickListener {
+            finish()
+        }
+
+        if (latestVersion != currentVersion) {
+            binding.latestAppVersionText.setTextColor(
+                ContextCompat.getColor(
+                    this,
+                    com.yangbong.damedame.shared.R.color.alert_red
+                )
+            )
         }
     }
 
 
     private fun checkIsLatestVersion() {
 
-        activateRemoteConfig()
         Timber.d("latestVersion : ${remoteConfig.getString("app_version")}")
 
-        val currentVersion = getCurrentAppVersion(this)
-
-        if (remoteConfig.getString("app_version") != currentVersion) {
+        if (latestVersion != currentVersion) {
             UpdateDialog(this).show()
         }
     }
+
+
 }

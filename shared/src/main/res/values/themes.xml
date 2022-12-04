@@ -82,6 +82,13 @@
         <item name="android:background">@drawable/bg_round_white_top_20_dp</item>
     </style>
 
+
+    <style name="timePickerStyle">
+        <item name="android:fontFamily">@font/jua</item>
+        <item name="android:textSize">26dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="semi_bold_02">
         <item name="android:fontFamily">@font/jua</item>
         <item name="android:textStyle">normal</item>
