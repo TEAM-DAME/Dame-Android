@@ -6,8 +6,10 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.work.*
+import com.yangbong.damedame.notification.SettingActivity
 import com.yangbong.damedame.notification.util.getWaitingTimeBeforeNotification
 import java.util.concurrent.TimeUnit
 
@@ -16,13 +18,16 @@ class NotificationWorker(
     parameters: WorkerParameters,
 ) : CoroutineWorker(appContext, parameters) {
 
-    private val channelID = "DAME_DAME"
-    private var notificationManager: NotificationManager? = null
+    private lateinit var notificationManager: NotificationManager
 
     companion object {
         var notificationHour = 22
         var notificationMinute = 0
+
+        const val NOTIFICATION_ID = 45
         const val WORK_NAME = "NOTIFICATION_WORK"
+        const val CHANNEL_ID = "DAME_DAME"
+        const val CHANNEL_NAME = "DAME_DAME_CHANNEL"
     }
 
     override suspend fun doWork(): Result {
@@ -49,11 +54,9 @@ class NotificationWorker(
     }
 
     private fun displayNotification(): Notification {
-        val notificationId = 45
-
-        val intent = Intent(applicationContext, this::class.java).apply {
+        val intent = Intent(applicationContext, SettingActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            putExtra("Fragment", "HomeFragment")
+//            putExtra("Fragment", "HomeFragment")
         }
 
         val pendingIntent: PendingIntent = PendingIntent.getActivity(
@@ -63,32 +66,30 @@ class NotificationWorker(
             PendingIntent.FLAG_UPDATE_CURRENT
         )
 
-        val notification: Notification = NotificationCompat.Builder(applicationContext, channelID)
-            .setContentTitle("다메다메")
-            .setContentText("오늘의 일기는 작성하셨나요?")
-            .setSmallIcon(
-                applicationContext.resources.getIdentifier(
-                    "notification_icon.png",
-                    "drawable",
-                    applicationContext.packageName
-                )
-            )
-            .setAutoCancel(true)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setContentIntent(pendingIntent)
-            .setWhen(System.currentTimeMillis())
-            .build()
+        val notification: Notification =
+            NotificationCompat.Builder(applicationContext, CHANNEL_ID)
+                .setContentTitle(applicationContext.resources.getString(com.yangbong.damedame.notification.R.string.dame_dame))
+                .setContentText(applicationContext.resources.getString(com.yangbong.damedame.notification.R.string.writing_diary_msg))
+                .setSmallIcon(com.yangbong.damedame.notification.R.drawable.notification_icon)
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setContentIntent(pendingIntent)
+                .setWhen(System.currentTimeMillis())
+                .build()
 
-        notificationManager?.notify(notificationId, notification)
+        notificationManager.notify(NOTIFICATION_ID, notification)
         return notification
     }
 
     private fun createNotificationChannel() {
-        val importance = NotificationManager.IMPORTANCE_HIGH
-        val channel = NotificationChannel(channelID, "DameDame", importance).apply {
-            description = "Request writing diary"
-        }
-        notificationManager?.createNotificationChannel(channel)
+
+        val channel = NotificationChannel(
+            CHANNEL_ID,
+            CHANNEL_NAME,
+            NotificationManager.IMPORTANCE_DEFAULT
+        )
+
+        notificationManager.createNotificationChannel(channel)
     }
 
 }

@@ -11,6 +11,7 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.testworkmanager.NotificationWorker
+import com.yangbong.damedame.notification.databinding.NotificationDialogBinding
 import com.yangbong.damedame.notification.databinding.UpdateVersionDialogBinding
 import com.yangbong.damedame.notification.util.getWaitingTimeBeforeNotification
 import kotlinx.coroutines.CoroutineScope
@@ -20,24 +21,28 @@ import java.util.concurrent.TimeUnit
 
 class NotificationDialog(private val context: AppCompatActivity) {
 
-    private val binding: UpdateVersionDialogBinding =
-        UpdateVersionDialogBinding.inflate(context.layoutInflater)
+    private val binding: NotificationDialogBinding =
+        NotificationDialogBinding.inflate(context.layoutInflater)
 
     private val dialog = Dialog(context)
 
-    init{
-        binding.updateButton.setOnClickListener {
-            CoroutineScope(Dispatchers.Default).launch {
-                delayCreateWork()
-            }
+    init {
+
+        binding.settingButton.setOnClickListener {
+            NotificationWorker.notificationHour = binding.dameTimePicker.hour
+            NotificationWorker.notificationMinute = binding.dameTimePicker.minute
+            delayCreateWork()
+            dialog.dismiss()
         }
 
+        binding.dameTimePicker.setIs24HourView(true)
         binding.cancelButton.setOnClickListener {
             dialog.dismiss()
         }
     }
 
     fun show() {
+
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(binding.root)
         dialog.setCancelable(false)
@@ -64,6 +69,10 @@ class NotificationDialog(private val context: AppCompatActivity) {
 
         Log.e(ContentValues.TAG, "Init WorkManager")
         WorkManager.getInstance(context)
-            .enqueueUniqueWork("Notification Work", ExistingWorkPolicy.REPLACE, oneTimeWorkRequest)
+            .enqueueUniqueWork(
+                NotificationWorker.WORK_NAME,
+                ExistingWorkPolicy.REPLACE,
+                oneTimeWorkRequest
+            )
     }
 }

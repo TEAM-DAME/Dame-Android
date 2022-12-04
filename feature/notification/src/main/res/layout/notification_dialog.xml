@@ -29,10 +29,12 @@
             android:backgroundTint="#F3F3ED"
             android:fontFamily="@font/jua"
             android:paddingTop="10sp"
-            android:text="시간 설정"
+            android:text="@string/time_setting"
             android:textAlignment="center"
             android:textColor="@color/black"
+            android:layout_marginStart="20dp"
             android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TimePicker
@@ -56,24 +58,24 @@
             android:layout_width="62dp"
             android:layout_height="40dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="230dp"
             android:background="@drawable/bg_button_red_15_dp"
             android:fontFamily="@font/jua"
-            android:text="설정"
+            android:text="@string/setting"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@id/timeSettingText" />
 
         <android.widget.Button
-            android:id="@+id/cancel_button"
+            android:id="@+id/cancelButton"
             android:layout_width="62dp"
             android:layout_height="40dp"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="230dp"
             android:layout_marginEnd="40dp"
             android:background="@drawable/bg_button_red_15_dp"
             android:fontFamily="@font/jua"
-            android:text="취소"
+            android:text="@string/cancel"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintRight_toRightOf="parent"
