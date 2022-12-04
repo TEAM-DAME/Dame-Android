@@ -1,10 +1,12 @@
 package com.yangbong.auth
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.kakao.sdk.common.util.Utility
 import com.yangbong.auth.login.AutoLoginConstant
 import com.yangbong.auth.login.LoginFragment
 import com.yangbong.auth.login.LoginViewModel
@@ -24,6 +26,7 @@ class AuthActivity : BindingActivity<ActivityAuthBinding>(R.layout.activity_auth
         super.onCreate(savedInstanceState)
         checkAutoLoginState()
         autoLogin()
+
     }
 
     private fun autoLogin() {

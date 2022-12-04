@@ -42,4 +42,11 @@ interface RemoteDataSourceModule {
     @Binds
     @Singleton
     fun bindsRemoteSentimentAnalyzeDataSource(source: RemoteSentimentAnalyzeDataSourceImpl): RemoteSentimentAnalyzeDataSource
+
+    @Binds
+    @Singleton
+    fun bindsRemoteSearchSource(source:RemoteSearchSourceImpl):RemoteSearchSource
+    @Binds
+    @Singleton
+    fun bindsRemoteUserProfileDataSource(source:RemoteUserProfileDataSourceImpl):RemoteUserProfileDataSource
 }

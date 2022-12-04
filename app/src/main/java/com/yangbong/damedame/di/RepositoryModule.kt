@@ -47,4 +47,11 @@ interface RepositoryModule {
     @Binds
     @Singleton
     fun bindsWriteDiaryRepository(repository: WriteDiaryRepositoryImpl): WriteDiaryRepository
+
+    @Binds
+    @Singleton
+    fun bindsSearchRepository(repository: SearchRepositoryImpl):SearchRepository
+    @Binds
+    @Singleton
+    fun bindsFriendsRepository(repository: FriendsRepositoryImpl):FriendsRepository
 }
