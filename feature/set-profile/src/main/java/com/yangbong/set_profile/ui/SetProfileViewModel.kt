@@ -77,6 +77,8 @@ class SetProfileViewModel @Inject constructor(
                 _navigateToSetCharacter.postValue(Event(true))
             }.onFailure {
                 Timber.d(it)
+                // TODO ("임시")
+                _navigateToSetCharacter.postValue(Event(true))
             }
         }
     }

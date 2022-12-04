@@ -69,7 +69,7 @@
 
         <activity
             android:name="com.yangbong.write_diary.WriteDiaryActivity"
-            android:exported="false" />
+            android:exported="false"/>
 
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"

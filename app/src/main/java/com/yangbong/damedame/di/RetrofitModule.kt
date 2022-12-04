@@ -122,7 +122,7 @@ object RetrofitModule {
 
     private const val AUTHORIZATION = "Authorization"
     private const val APPLICATION_JSON = "application/json"
-    private const val NAVER_CLOVA_SENTIMENT_BASE_URL = "https://naveropenapi.apigw.ntruss.com/sentiment-analysis/v1/analyze"
+    private const val NAVER_CLOVA_SENTIMENT_BASE_URL = "https://naveropenapi.apigw.ntruss.com/sentiment-analysis/"
 }
 
 /**
