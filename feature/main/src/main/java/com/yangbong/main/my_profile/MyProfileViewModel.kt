@@ -9,7 +9,6 @@ import com.yangbong.core_ui.util.asEventFlow
 import com.yangbong.domain.entity.MyProfileInfo
 import com.yangbong.domain.repository.MyProfileRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.NonCancellable.message
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -35,8 +34,8 @@ class MyProfileViewModel @Inject constructor(
             _myProfileUiState.value = UiState.Loading
             myProfileRepository.getMyProfileInfo()
                 .onSuccess {
-                    _myProfileUiState.value = UiState.Success(it)
-                    _isDiaryEmpty.emit(it.diaryList.isEmpty())
+                 //   _myProfileUiState.value = UiState.Success(it)
+                  //  _isDiaryEmpty.emit(it.diaryList.isEmpty())
                 }
                 .onFailure {
                     _myProfileUiState.value = UiState.Failure(it.message)
