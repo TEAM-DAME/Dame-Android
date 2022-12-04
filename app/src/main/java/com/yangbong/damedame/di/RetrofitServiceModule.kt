@@ -68,4 +68,9 @@ object RetrofitServiceModule {
     @Singleton
     fun provideUserProfileService(@DameDameServer retrofit: Retrofit):UserProfileService=
         retrofit.create(UserProfileService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideGetDiaryService(@DameDameServer retrofit: Retrofit): GetDiaryService =
+        retrofit.create(GetDiaryService::class.java)
 }

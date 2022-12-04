@@ -37,7 +37,7 @@ interface RemoteDataSourceModule {
 
     @Binds
     @Singleton
-    fun bindsRemoteWriteDiaryDataSource(source: RemoteWriteWriteDiaryDataSourceImpl): RemoteWriteDiaryDataSource
+    fun bindsRemoteWriteDiaryDataSource(source: RemoteWriteDiaryDataSourceImpl): RemoteWriteDiaryDataSource
 
     @Binds
     @Singleton
@@ -45,8 +45,13 @@ interface RemoteDataSourceModule {
 
     @Binds
     @Singleton
-    fun bindsRemoteSearchSource(source:RemoteSearchSourceImpl):RemoteSearchSource
+    fun bindsRemoteSearchSource(source: RemoteSearchSourceImpl): RemoteSearchSource
+
     @Binds
     @Singleton
-    fun bindsRemoteUserProfileDataSource(source:RemoteUserProfileDataSourceImpl):RemoteUserProfileDataSource
+    fun bindsRemoteUserProfileDataSource(source: RemoteUserProfileDataSourceImpl): RemoteUserProfileDataSource
+
+    @Binds
+    @Singleton
+    fun bindsRemoteGetDiaryDataSource(source: RemoteGetDiaryDataSourceImpl): RemoteGetDiaryDataSource
 }
