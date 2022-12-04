@@ -50,6 +50,8 @@ abstract class BindingActivity<T : ViewDataBinding>(
             mainNavigator.navigateAuth(this)
             sharedPreferences.edit { remove("DAME_DAME_ACCESS_TOKEN") }
             sharedPreferences.edit { remove("USER_NICKNAME") }
+            sharedPreferences.edit { remove("USER_ID") }
+            sharedPreferences.edit { remove("USER_PROFILE_IMAGE_URL") }
             finishAffinity()
         })
     }
