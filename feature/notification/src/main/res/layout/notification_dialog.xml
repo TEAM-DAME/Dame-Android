@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/img_character_1"
+            android:background="@drawable/img_character_2"
             android:backgroundTint="#F3F3ED"
             android:backgroundTintMode="multiply"
             android:numbersInnerTextColor="@color/white"
