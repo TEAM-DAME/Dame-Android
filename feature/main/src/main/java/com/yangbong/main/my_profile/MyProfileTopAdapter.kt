@@ -8,6 +8,7 @@ import com.yangbong.core_ui.extension.setOnSingleClickListener
 import com.yangbong.damedame.main.databinding.LayoutMyProfileTopBinding
 import com.yangbong.damedame.notification.SettingActivity
 import com.yangbong.domain.entity.MyProfileUser
+import timber.log.Timber
 
 class MyProfileTopAdapter(
     private val onPocketClick: (Int) -> Unit,
@@ -43,19 +44,18 @@ class MyProfileTopAdapter(
                 binding.userData = it
 
                 binding.btnSettings.setOnClickListener {
+                    Timber.tag("okhttp").d("셋팅 버튼 클릭됨!")
                     with(itemView.context) {
                         navigateActivity<SettingActivity>()
                     }
                 }
 
                 binding.pocketLayout.setOnSingleClickListener {
-                    // TODO("MyProfileUser 데이터 구조 변경해야함!")
-                    onPocketClick(myProfileUser.profileId.toInt())
+                    onPocketClick(myProfileUser.userId)
                 }
 
                 binding.friendLayout.setOnSingleClickListener {
-                    // TODO("MyProfileUser 데이터 구조 변경해야함!")
-                    onFriendsClick(myProfileUser.profileId.toInt())
+                    onFriendsClick(myProfileUser.userId)
                 }
             }
         }

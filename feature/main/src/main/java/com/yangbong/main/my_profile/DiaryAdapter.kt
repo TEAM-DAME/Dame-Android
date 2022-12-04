@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yangbong.core_ui.extension.getDimen
 import com.yangbong.core_ui.extension.setOnSingleClickListener
 import com.yangbong.core_ui.util.ItemDiffCallback
+import com.yangbong.damedame.main.databinding.ItemDiaryBinding
 import com.yangbong.damedame.shared.R
-import com.yangbong.damedame.shared.databinding.ItemDiaryBinding
 import com.yangbong.domain.entity.DiaryInfo
 
 class DiaryAdapter(
@@ -18,7 +18,7 @@ class DiaryAdapter(
 ) : ListAdapter<DiaryInfo, DiaryAdapter.DiaryViewHolder>(
     ItemDiffCallback<DiaryInfo>(
         onContentsTheSame = { oldItem, newItem -> oldItem == newItem },
-        onItemsTheSame = { oldItem, newItem -> oldItem.id == newItem.id }
+        onItemsTheSame = { oldItem, newItem -> oldItem.diaryId == newItem.diaryId }
     )
 ) {
     private lateinit var inflater: LayoutInflater
@@ -57,9 +57,15 @@ class DiaryAdapter(
         ) {
             binding.diaryData = diaryInfo
             binding.btnLock.setOnSingleClickListener {
-                onLockCLick(diaryInfo.isLocked, diaryInfo.id)
+                onLockCLick(mapToBoolean(diaryInfo.visibility), diaryInfo.diaryId)
             }
-            binding.root.setOnSingleClickListener { onDiaryClick(diaryInfo.id) }
+            binding.root.setOnSingleClickListener { onDiaryClick(diaryInfo.diaryId) }
+        }
+
+        private fun mapToBoolean(visibility: Int): Boolean {
+            return if (visibility == 0) false
+            else visibility == 1
         }
     }
+
 }
