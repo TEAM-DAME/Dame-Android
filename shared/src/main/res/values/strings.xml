@@ -83,4 +83,17 @@
     <string name="character_description_8">째깐이는 착한 친구다.\n\n째깐이는 귀엽다\n\n선택하길 바란다.\n\n자주 밥을 먹어야 한다.\n\n조용한 곳을 좋아한다.</string>
     <string name="character_description_9">팬둥이는 착한 친구다.\n\n팬둥이는 귀엽다\n\n선택하길 바란다.\n\n자주 밥을 먹어야 한다.\n\n조용한 곳을 좋아한다.</string>
 
+    <!-- 일기 작성 화면 -->
+    <string name="complete">완료</string>
+    <string name="hint_title">제목을 입력해주세요.</string>
+    <string name="hint_content">내용을 입력해주세요.</string>
+
+    <!-- 다이얼로그 화면 -->
+    <string name="exit_diary_dialog_title">작성한 내용을 버리고\n돌아가시겠습니까?</string>
+    <string name="exit_diary_dialog_content">작성한 일기가 저장되지 않습니다</string>
+    <string name="post_diary_dialog_title">일기 작성을 완료하시겠습니까?</string>
+    <string name="post_diary_dialog_content">한 번 작성된 일기는 수정이 불가능합니다.</string>
+    <string name="dialog_cancel">취소</string>
+    <string name="dialog_check">확인</string>
+
 </resources>

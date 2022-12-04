@@ -1,6 +1,7 @@
 package com.yangbong.data.repository
 
 import com.yangbong.core_data.exception.RetrofitFailureStateException
+import com.yangbong.data.local.data_source.LocalPreferenceUserDataSource
 import com.yangbong.data.remote.call_adapter.NetworkState
 import com.yangbong.data.remote.data_source.RemoteWriteDiaryDataSource
 import com.yangbong.data.remote.data_source.RemoteSentimentAnalyzeDataSource
@@ -20,7 +21,8 @@ import kotlin.math.roundToInt
 
 class WriteDiaryRepositoryImpl @Inject constructor(
     private val remoteSentimentAnalyzeDataSource: RemoteSentimentAnalyzeDataSource,
-    private val remoteWriteDiaryDataSource: RemoteWriteDiaryDataSource
+    private val remoteWriteDiaryDataSource: RemoteWriteDiaryDataSource,
+    private val localPreferencesUserDataSource: LocalPreferenceUserDataSource
 ) : WriteDiaryRepository {
     override suspend fun postSentiment(content: String): Result<EmotionInfo> {
         val emotionResult = remoteSentimentAnalyzeDataSource.postSentimentAnalyze(
@@ -56,9 +58,9 @@ class WriteDiaryRepositoryImpl @Inject constructor(
                 title = diaryRequest.title,
                 content = diaryRequest.content,
                 emotion = EmotionRequest(
-                    positive = diaryRequest.emotionValue.positive,
-                    neutral = diaryRequest.emotionValue.neutral,
-                    negative = diaryRequest.emotionValue.negative
+                    positive = diaryRequest.emotionValue,
+                    neutral = diaryRequest.emotionValue,
+                    negative = diaryRequest.emotionValue
                 )
             )
         )
@@ -74,6 +76,10 @@ class WriteDiaryRepositoryImpl @Inject constructor(
             is NetworkState.UnknownError -> Timber.d(response.t)
         }
         return Result.failure(IllegalStateException(UNKNOWN_ERROR))
+    }
+
+    override fun getUserId(): Int {
+        return localPreferencesUserDataSource.getUserId()
     }
 
     companion object {

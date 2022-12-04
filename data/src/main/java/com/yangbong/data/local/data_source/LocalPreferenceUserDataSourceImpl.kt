@@ -51,9 +51,23 @@ class LocalPreferenceUserDataSourceImpl @Inject constructor(
         localPreferences.edit { remove(USER_NICKNAME) }
     }
 
+    override fun getRecentSearchData():String=
+        localPreferences.getString(RECENT_SEARCH_DATA,"") ?: ""
+
+
+    override fun setRecentSearchData(recentSearchData:String) {
+        localPreferences.edit{ putString(RECENT_SEARCH_DATA,recentSearchData)}
+    }
+
+    override fun removeRecentSearchData() {
+        localPreferences.edit{remove(RECENT_SEARCH_DATA)}
+    }
+
+
     override fun clearUserInfo() {
         localPreferences.edit { clear() }
     }
+
 
     companion object {
         const val DAME_DAME_ACCESS_TOKEN = "DAME_DAME_ACCESS_TOKEN"
@@ -61,5 +75,6 @@ class LocalPreferenceUserDataSourceImpl @Inject constructor(
         const val USER_NICKNAME = "USER_NICKNAME"
         const val USER_PROFILE_IMAGE_URL = "USER_PROFILE_IMAGE_URL"
         const val IS_FIRST_VISITED = "IS_FIRST_VISITED"
+        const val RECENT_SEARCH_DATA ="RECENT_SEARCH_DATA"
     }
 }

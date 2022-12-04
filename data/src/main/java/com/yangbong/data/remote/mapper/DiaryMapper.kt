@@ -5,7 +5,6 @@ import com.yangbong.data.remote.model.response.Diary
 import com.yangbong.data.remote.model.response.EmotionTypeWithValue
 import com.yangbong.domain.entity.DiaryInfo
 import com.yangbong.domain.entity.EmotionInfo
-import com.yangbong.domain.entity.request.EmotionValue
 import javax.inject.Inject
 
 class DiaryMapper @Inject constructor(

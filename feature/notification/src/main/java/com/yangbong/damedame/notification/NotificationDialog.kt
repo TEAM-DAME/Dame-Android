@@ -28,7 +28,7 @@ class NotificationDialog(private val context: AppCompatActivity) {
     init{
         binding.updateButton.setOnClickListener {
             CoroutineScope(Dispatchers.Default).launch {
-                createWorkManager()
+                delayCreateWork()
             }
         }
 

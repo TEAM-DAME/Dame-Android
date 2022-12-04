@@ -8,4 +8,6 @@ interface WriteDiaryRepository {
     suspend fun postSentiment(content: String): Result<EmotionInfo>
 
     suspend fun postDiary(diaryRequest: DomainDiaryRequest): Result<String>
+
+    fun getUserId(): Int
 }
