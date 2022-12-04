@@ -76,6 +76,7 @@ class SetProfileViewModel @Inject constructor(
                 _userId.postValue(it.userId)
                 _navigateToSetCharacter.postValue(Event(true))
             }.onFailure {
+                _navigateToSetCharacter.postValue(Event(true))
                 Timber.d(it)
             }
         }

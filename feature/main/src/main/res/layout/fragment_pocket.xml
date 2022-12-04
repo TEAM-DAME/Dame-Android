@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <data>
+        <variable
+            name="viewModel"
+            type="com.yangbong.main.pocket.PocketViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,7 +45,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_nickname_at_special"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="wonseok" />
+            tools:text="@{String.valueOf(viewModel.userNickname)" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btn_share"

@@ -45,8 +45,17 @@ interface RemoteDataSourceModule {
 
     @Binds
     @Singleton
-    fun bindsRemoteSearchSource(source:RemoteSearchSourceImpl):RemoteSearchSource
+    fun bindsRemoteSearchSource(source: RemoteSearchSourceImpl): RemoteSearchSource
+
     @Binds
     @Singleton
-    fun bindsRemoteUserProfileDataSource(source:RemoteUserProfileDataSourceImpl):RemoteUserProfileDataSource
+    fun bindsRemoteUserProfileDataSource(source: RemoteUserProfileDataSourceImpl): RemoteUserProfileDataSource
+
+    @Binds
+    @Singleton
+    fun bindsRemoteFriendListDataSource(source: RemoteFriendListDataSourceImpl): RemoteFriendListDataSource
+
+    @Binds
+    @Singleton
+    fun bindsRemotePocketDataSource(source: RemotePocketDataSourceImpl): RemotePocketDataSource
 }
