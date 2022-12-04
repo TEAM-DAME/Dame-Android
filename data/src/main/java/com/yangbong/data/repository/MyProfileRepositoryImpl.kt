@@ -1,6 +1,7 @@
 package com.yangbong.data.repository
 
 import com.yangbong.core_data.exception.RetrofitFailureStateException
+import com.yangbong.data.local.data_source.LocalPreferenceUserDataSource
 import com.yangbong.data.remote.call_adapter.NetworkState
 import com.yangbong.data.remote.data_source.RemoteMyProfileDataSource
 import com.yangbong.data.remote.mapper.DiaryMapper
@@ -14,22 +15,19 @@ import javax.inject.Inject
 
 class MyProfileRepositoryImpl @Inject constructor(
     private val remoteUserDataSource: RemoteMyProfileDataSource,
-    private val diaryMapper: DiaryMapper
+    private val localPreferenceUserDataSource: LocalPreferenceUserDataSource
 ) : MyProfileRepository {
-    override suspend fun getMyProfileInfo(): Result<MyProfileInfo> {
-        when (val response = remoteUserDataSource.getMyProfile()) {
+    override suspend fun getMyProfileInfo(): Result<MyProfileUser> {
+        val userId=localPreferenceUserDataSource.getUserId()
+        when (val response = remoteUserDataSource.getMyProfile(userId)) {
             is NetworkState.Success -> return Result.success(
-                MyProfileInfo(
-                    myProfileUser = MyProfileUser(
-                        response.body.data.profileId,
-                        response.body.data.profileImageUrl,
-                        response.body.data.diaryCount,
-                        response.body.data.pocketCount,
-                        response.body.data.friendCount
-                    ),
-                    diaryList = response.body.data.diaries.map {
-                        diaryMapper.toDiaryInfo(it)
-                    }
+                MyProfileUser(
+                    profileId = response.body.data.nickName,
+                    profileImageUrl = response.body.data.profileImageUrl,
+                    diaryCount = response.body.data.diaryCount,
+                    pocketCount = response.body.data.minionCount,
+                    friendCount = response.body.data.friendCount,
+                    isFriend = response.body.data.isFriend
                 )
             )
             is NetworkState.Failure ->

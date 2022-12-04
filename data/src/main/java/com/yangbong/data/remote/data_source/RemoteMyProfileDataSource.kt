@@ -5,5 +5,5 @@ import com.yangbong.data.remote.model.response.BaseResponse
 import com.yangbong.data.remote.model.response.MyProfileResponse
 
 interface RemoteMyProfileDataSource {
-    suspend fun getMyProfile(): NetworkState<BaseResponse<MyProfileResponse>>
+    suspend fun getMyProfile(userId:Int): NetworkState<BaseResponse<MyProfileResponse>>
 }

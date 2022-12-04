@@ -9,6 +9,6 @@ import javax.inject.Inject
 class RemoteMyProfileDataSourceImpl @Inject constructor(
     private val myProfileService: MyProfileService
 ) : RemoteMyProfileDataSource {
-    override suspend fun getMyProfile(): NetworkState<BaseResponse<MyProfileResponse>> =
-        myProfileService.getMyProfile()
+    override suspend fun getMyProfile(userId:Int): NetworkState<BaseResponse<MyProfileResponse>> =
+        myProfileService.getMyProfile(userId)
 }

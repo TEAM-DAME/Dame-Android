@@ -9,6 +9,7 @@ import com.yangbong.core_ui.util.asEventFlow
 import com.yangbong.domain.entity.MyProfileInfo
 import com.yangbong.domain.repository.MyProfileRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.NonCancellable.message
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
