@@ -85,9 +85,6 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
         binding.RSRecyclerView.adapter=myRSadapter
         searchViewModel.searchResultData.observe(viewLifecycleOwner,androidx.lifecycle.Observer{
             myRSadapter.items = searchViewModel.searchResultData.value!!
-            Log.i("test",myRSadapter.items.toString())
-            Log.i("test",searchViewModel.searchResultData.value!!.toString())
-
             (binding.RSRecyclerView.adapter)?.notifyDataSetChanged()
         })
     }
