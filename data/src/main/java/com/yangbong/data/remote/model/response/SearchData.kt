@@ -8,5 +8,5 @@ data class SearchData(
     @SerializedName("nickName")
     val nickName:String,
     @SerializedName("profileImageUrl")
-    val profileImageUrl:String
+    val profileImageUrl:String?
 )
