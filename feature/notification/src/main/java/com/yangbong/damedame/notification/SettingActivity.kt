@@ -89,6 +89,10 @@ class SettingActivity :
         binding.latestAppVersionText.setOnClickListener {
             checkIsLatestVersion()
         }
+
+        binding.enterNotificationImg.setOnClickListener {
+            NotificationDialog(this).show()
+        }
     }
 
 
