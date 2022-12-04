@@ -43,4 +43,6 @@ dependencies {
     implementation(FirebaseDependency.analyticsKtx)
     implementation(FirebaseDependency.firebaeMessaging)
     implementation(FirebaseDependency.configKtx)
+
+    implementation(WorkManagerDependency.runtimeKtx)
 }

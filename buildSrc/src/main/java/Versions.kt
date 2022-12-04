@@ -53,6 +53,7 @@ object Versions {
     const val rxKotlinVersion = "3.0.1"
     const val amplifyVersion = "2.0.0"
     const val progressViewVersion = "1.1.3"
+    const val workVersion = "2.7.1"
 
     val javaVersion = JavaVersion.VERSION_11
     const val jvmVersion = "11"
