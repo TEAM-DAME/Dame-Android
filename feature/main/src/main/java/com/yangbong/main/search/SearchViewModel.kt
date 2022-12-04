@@ -45,12 +45,15 @@ class SearchViewModel @Inject constructor(
     }
     fun getRecentSearchData(){
         val sharedData=searchRepository.getRecentSearchData()
-        var recentSearchJsonArr= JSONArray(sharedData)
-        var recentSearchArr=ArrayList<String>()
-        for(i in 0 until recentSearchJsonArr.length()){
-            recentSearchArr.add(recentSearchJsonArr.optString(i))
+        if(sharedData.isEmpty()){ }
+        else {
+            var recentSearchJsonArr = JSONArray(sharedData)
+            var recentSearchArr = ArrayList<String>()
+            for (i in 0 until recentSearchJsonArr.length()) {
+                recentSearchArr.add(recentSearchJsonArr.optString(i))
+            }
+            _searchData.value = recentSearchArr
         }
-        _searchData.value=recentSearchArr
 
     }
 

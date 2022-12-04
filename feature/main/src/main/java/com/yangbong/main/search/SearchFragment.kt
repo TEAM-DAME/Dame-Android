@@ -24,8 +24,6 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         init()
         initOnclick()
-
-
         binding.searchViewModel=searchViewModel
         super.onViewCreated(view, savedInstanceState)
     }
