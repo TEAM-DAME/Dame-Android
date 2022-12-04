@@ -1,9 +1,14 @@
 package com.yangbong.domain.entity
 
 data class DiaryInfo(
-    val id: Int,
-    val emotion: EmotionInfo,
+    val diaryId: Int,
+    val userId: Int,
     val title: String,
-    val date: String,
-    val isLocked: Boolean
+    val content: String,
+    val positive: Double,
+    val neutral: Double,
+    val negative: Double,
+    val visibility: Int,
+    val diaryTime: String,
+    val minionId: Int
 )
