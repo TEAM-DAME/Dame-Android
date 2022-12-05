@@ -27,6 +27,10 @@ dependencies {
     implementation(AndroidXDependencies.coroutines)
     implementation(AndroidXDependencies.recyclerView)
 
+    // Jetpack Navigation Component
+    implementation(AndroidXDependencies.navigationFragment)
+    implementation(AndroidXDependencies.navigationUI)
+
     // Material Design
     implementation(MaterialDesignDependencies.materialDesign)
 
