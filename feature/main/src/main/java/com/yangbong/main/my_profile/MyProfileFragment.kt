@@ -5,6 +5,8 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
 import com.yangbong.core_ui.base.BindingFragment
 import com.yangbong.core_ui.extension.shortToast
@@ -26,17 +28,24 @@ class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
     private val myProfileTopAdapter = MyProfileTopAdapter(::onPocketClick, ::onFriendsClick)
     private val diaryAdapter = DiaryAdapter(::onLockClick, ::onDiaryClick)
     private val concatAdapter = ConcatAdapter(myProfileTopAdapter, diaryAdapter)
+    private lateinit var navController: NavController
 
     private val Number.dp: Int
         get() = resolutionMetrics.toPixel(this.toInt())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initNavController()
         initView()
         observeProfileInfo()
         observeDiaryList()
         viewModel.getMyProfileInfo()
         viewModel.getDiaryInfo()
+
+    }
+
+    private fun initNavController() {
+        navController = findNavController()
     }
 
     private fun observeProfileInfo() {
@@ -111,11 +120,11 @@ class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
     }
 
     private fun onPocketClick(id: Int) {
-
+        navController.navigate(R.id.action_my_profile_navigation_to_pocket_navigation)
     }
 
     private fun onFriendsClick(id: Int) {
-
+        navController.navigate(R.id.action_my_profile_navigation_to_friends_navigation)
     }
 
 }
