@@ -10,7 +10,6 @@ import com.yangbong.domain.entity.SearchInfo
 import com.yangbong.domain.repository.FriendsRepository
 import com.yangbong.domain.repository.SearchRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.NonCancellable.message
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 import timber.log.Timber
@@ -77,7 +76,7 @@ class SearchViewModel @Inject constructor(
     }
     fun getUserProfileInfo(userId:Int){
         viewModelScope.launch {
-            friendsRepository.getUserProfileInfo(userId)
+            searchRepository.getUserProfileInfo(userId)
                 .onSuccess {
                     _userProfileData.postValue(it)
                 }

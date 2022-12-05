@@ -5,7 +5,9 @@ import com.yangbong.core_data.exception.RetrofitFailureStateException
 import com.yangbong.data.local.data_source.LocalPreferenceUserDataSource
 import com.yangbong.data.remote.call_adapter.NetworkState
 import com.yangbong.data.remote.data_source.RemoteSearchSource
+import com.yangbong.data.remote.data_source.RemoteUserProfileDataSource
 import com.yangbong.data.remote.mapper.SearchMapper
+import com.yangbong.domain.entity.ProfileInfo
 import com.yangbong.domain.entity.SearchInfo
 import com.yangbong.domain.entity.response.DomainSearchResponse
 import com.yangbong.domain.repository.SearchRepository
@@ -14,21 +16,21 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class SearchRepositoryImpl @Inject constructor(
-    private val remoteSearchSource:RemoteSearchSource,
-    private val searchMapper:SearchMapper,
+    private val remoteUserProfileDataSource: RemoteUserProfileDataSource,
+    private val remoteSearchSource: RemoteSearchSource,
+    private val searchMapper: SearchMapper,
     private val localPreferenceUserDataSource: LocalPreferenceUserDataSource
 
-):SearchRepository {
+) : SearchRepository {
     override fun addSearchData(data: String) {
-        val sharedData=localPreferenceUserDataSource.getRecentSearchData()
+        val sharedData = localPreferenceUserDataSource.getRecentSearchData()
 
-        if(sharedData.isEmpty()){
-            var dataJsonArr=JSONArray()
+        if (sharedData.isEmpty()) {
+            var dataJsonArr = JSONArray()
             dataJsonArr.put(data)
             localPreferenceUserDataSource.setRecentSearchData(dataJsonArr.toString())
-        }
-        else{
-            var dataJsonArr= JSONArray(sharedData)
+        } else {
+            var dataJsonArr = JSONArray(sharedData)
             dataJsonArr.put(data)
             localPreferenceUserDataSource.setRecentSearchData(dataJsonArr.toString())
         }
@@ -36,15 +38,15 @@ class SearchRepositoryImpl @Inject constructor(
     }
 
     override fun deleteData(data: String) {
-        val sharedData=localPreferenceUserDataSource.getRecentSearchData()
-        var dataArr=ArrayList<String>()
-        var dataJsonArr= JSONArray(sharedData)
-        for(i in 0 until dataJsonArr.length()){
+        val sharedData = localPreferenceUserDataSource.getRecentSearchData()
+        var dataArr = ArrayList<String>()
+        var dataJsonArr = JSONArray(sharedData)
+        for (i in 0 until dataJsonArr.length()) {
             dataArr.add(dataJsonArr.optString(i))
         }
         dataArr.remove(data)
-        var deleteJsonArray=JSONArray()
-        for(i in dataArr){
+        var deleteJsonArray = JSONArray()
+        for (i in dataArr) {
             deleteJsonArray.put(i)
         }
         localPreferenceUserDataSource.setRecentSearchData(deleteJsonArray.toString())
@@ -65,7 +67,7 @@ class SearchRepositoryImpl @Inject constructor(
         val searchResult = remoteSearchSource.getSearch(
             searchRequest
         )
-        Log.i("result",searchResult.toString())
+        Log.i("result", searchResult.toString())
         when (searchResult) {
             is NetworkState.Success -> return Result.success(
                 DomainSearchResponse(
@@ -85,6 +87,32 @@ class SearchRepositoryImpl @Inject constructor(
         return Result.failure(IllegalStateException("NetworkError or UnKnownError please check timber"))
 
 
+    }
+
+    override suspend fun getUserProfileInfo(userId: Int): Result<ProfileInfo> {
+        when (val response = remoteUserProfileDataSource.getUserProfile(userId)) {
+            is NetworkState.Success -> return Result.success(
+                ProfileInfo(
+                    nickName = response.body.data.nickName,
+                    profileImageUrl = response.body.data.profileImageUrl,
+                    diaryCount = response.body.data.diaryCount,
+                    minionCount = response.body.data.minionCount,
+                    friendCount = response.body.data.friendCount,
+                    isFriend = response.body.data.isFriend
+                )
+            )
+            is NetworkState.Failure ->
+                return Result.failure(
+                    RetrofitFailureStateException(
+                        response.error,
+                        response.code
+                    )
+                )
+            is NetworkState.NetworkError -> Timber.d(response.error)
+            is NetworkState.UnknownError -> Timber.d(response.t)
+
+        }
+        return Result.failure(IllegalStateException("NetworkError or UnKnownError please check timber"))
     }
 }
 
