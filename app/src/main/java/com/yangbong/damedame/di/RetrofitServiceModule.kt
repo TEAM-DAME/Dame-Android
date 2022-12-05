@@ -76,6 +76,12 @@ object RetrofitServiceModule {
 
     @Provides
     @Singleton
+    fun provideFriendListService(@DameDameServer retrofit: Retrofit): FriendListService =
+        retrofit.create(FriendListService::class.java)
+    
+    @Provides
+    @Singleton
     fun providePocketService(@DameDameServer retrofit: Retrofit): PocketService =
         retrofit.create(PocketService::class.java)
+
 }

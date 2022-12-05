@@ -57,5 +57,9 @@ interface RemoteDataSourceModule {
 
     @Binds
     @Singleton
+    fun bindsRemoteFriendListDataSource(source: RemoteFriendListDataSourceImpl): RemoteFriendListDataSource
+
+    @Binds
+    @Singleton
     fun bindsRemotePocketDataSource(source: RemotePocketDataSourceImpl): RemotePocketDataSource
 }

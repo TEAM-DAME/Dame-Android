@@ -5,11 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.yangbong.core_ui.base.BaseViewModel
+import com.yangbong.domain.entity.ProfileInfo
 import com.yangbong.domain.entity.SearchInfo
+import com.yangbong.domain.repository.FriendsRepository
 import com.yangbong.domain.repository.SearchRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.json.JSONArray
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,6 +25,8 @@ class SearchViewModel @Inject constructor(
     //
     private val _searchResultData=MutableLiveData<List<SearchInfo>>()
     val searchResultData:LiveData<List<SearchInfo>> =_searchResultData
+    private val _userProfileData=MutableLiveData<ProfileInfo>()
+    val userProfileData: LiveData<ProfileInfo> =_userProfileData
 
     fun addSearchDataView(data:String){
         if(items.contains(data)){
@@ -68,7 +73,17 @@ class SearchViewModel @Inject constructor(
                 Log.i("d",it.message.toString())
             }
         }
-
+    }
+    fun getUserProfileInfo(userId:Int){
+        viewModelScope.launch {
+            searchRepository.getUserProfileInfo(userId)
+                .onSuccess {
+                    _userProfileData.postValue(it)
+                }
+                .onFailure {
+                    Timber.d(it.message.toString())
+                }
+        }
     }
 
 
