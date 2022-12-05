@@ -54,4 +54,9 @@ interface RemoteDataSourceModule {
     @Binds
     @Singleton
     fun bindsRemoteGetDiaryDataSource(source: RemoteGetDiaryDataSourceImpl): RemoteGetDiaryDataSource
+
+    @Binds
+    @Singleton
+    fun bindsRemoteFriendListDataSource(source: RemoteFriendListDataSourceImpl): RemoteFriendListDataSource
+
 }

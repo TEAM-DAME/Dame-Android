@@ -78,8 +78,9 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
         myRSadapter= SearchResultRecyclerViewAdapter(resultData)
         myRSadapter.SRitemClickListener=object :SearchResultRecyclerViewAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                //user id 정보 = myRSadapter.items[position].userId
-                // TODO local pref 에 userid 저장하고 화면전환하기
+                searchViewModel.getUserProfileInfo(myRSadapter.items[position].userId)
+                // 유저 프로필 정보 searchViewModel.userProfileData.value
+
             }
         }
         binding.RSRecyclerView.adapter=myRSadapter

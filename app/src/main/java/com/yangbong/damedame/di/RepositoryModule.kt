@@ -50,8 +50,9 @@ interface RepositoryModule {
 
     @Binds
     @Singleton
-    fun bindsSearchRepository(repository: SearchRepositoryImpl):SearchRepository
+    fun bindsSearchRepository(repository: SearchRepositoryImpl): SearchRepository
+
     @Binds
     @Singleton
-    fun bindsFriendsRepository(repository: FriendsRepositoryImpl):FriendsRepository
+    fun bindsFriendsRepository(repository: FriendsRepositoryImpl): FriendsRepository
 }
