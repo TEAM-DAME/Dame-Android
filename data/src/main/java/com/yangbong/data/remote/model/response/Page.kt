@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class Page(
     @SerializedName("next")
-    val next:Int?,
+    val next: Int?,
     @SerializedName("prev")
-    val prev:Int?
+    val prev: Int?
 
 )

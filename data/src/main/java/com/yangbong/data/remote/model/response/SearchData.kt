@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class SearchData(
     @SerializedName("userId")
-    val userId:Int,
+    val userId: Int,
     @SerializedName("nickName")
-    val nickName:String,
+    val nickName: String,
     @SerializedName("profileImageUrl")
-    val profileImageUrl:String?
+    val profileImageUrl: String?
 )

@@ -7,13 +7,13 @@ import javax.inject.Inject
 
 class RemoteFriendListDataSourceImpl @Inject constructor(
     private val friendListService: FriendListService
-):RemoteFriendListDataSource{
+) : RemoteFriendListDataSource {
 
     override suspend fun getFriendList(
         userId: Int,
         page: Int,
         size: Int
     ): NetworkState<FriendListResponse> {
-        return friendListService.getFriendList(userId,page, size)
+        return friendListService.getFriendList(userId, page, size)
     }
 }

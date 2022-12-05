@@ -10,8 +10,8 @@ interface FriendListService {
 
     @GET("v1/user/friend/{userid}")
     suspend fun getFriendList(
-        @Path("userId") userId:Int,
-        @Query("page") page:Int,
-        @Query("size") size:Int
-    ):NetworkState<FriendListResponse>
+        @Path("userId") userId: Int,
+        @Query("page") page: Int,
+        @Query("size") size: Int
+    ): NetworkState<FriendListResponse>
 }

@@ -4,12 +4,12 @@ import com.google.gson.annotations.SerializedName
 
 data class FriendListResponse(
     @SerializedName("status")
-    val status:Int,
+    val status: Int,
     @SerializedName("message")
-    val message:String,
+    val message: String,
     @SerializedName("info")
-    val info:Page,
+    val info: Page,
     @SerializedName("results")
-    val results:ArrayList<SearchData>
+    val results: ArrayList<SearchData>
 
 )
