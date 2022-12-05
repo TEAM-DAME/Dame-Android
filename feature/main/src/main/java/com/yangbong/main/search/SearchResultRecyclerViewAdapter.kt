@@ -23,6 +23,7 @@ class SearchResultRecyclerViewAdapter(var items:List<SearchInfo>):RecyclerView.A
         fun onItemClick(position:Int){}
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding:SearchResultRowBinding=SearchResultRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(binding)
@@ -35,6 +36,7 @@ class SearchResultRecyclerViewAdapter(var items:List<SearchInfo>):RecyclerView.A
             error(R.color.transparent)
             placeholder(R.color.transparent)
         }
+
 
     }
 

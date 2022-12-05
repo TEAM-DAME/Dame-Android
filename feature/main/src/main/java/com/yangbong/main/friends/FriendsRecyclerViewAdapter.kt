@@ -14,7 +14,6 @@ class FriendsRecyclerViewAdapter(var items:List<SearchInfo>):RecyclerView.Adapte
         init {
             binding.btnVisit.setOnClickListener {
                 friendItemClickListener?.onItemClick(adapterPosition)
-
             }
         }
     }

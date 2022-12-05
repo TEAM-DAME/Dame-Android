@@ -79,7 +79,7 @@ class SearchFragment(private val resolutionMetrics: ResolutionMetrics) :
         myRSadapter.SRitemClickListener=object :SearchResultRecyclerViewAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
                 searchViewModel.getUserProfileInfo(myRSadapter.items[position].userId)
-                // 유저 프로필 정보 searchViewModel.userProfileData.value
+                //searchViewModel.userProfileData.value
 
             }
         }
