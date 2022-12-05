@@ -55,4 +55,8 @@ interface RepositoryModule {
     @Binds
     @Singleton
     fun bindsFriendsRepository(repository: FriendsRepositoryImpl): FriendsRepository
+
+    @Binds
+    @Singleton
+    fun bindsPocketRepository(repository: PocketRepositoryImpl): PocketRepository
 }

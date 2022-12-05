@@ -1,9 +1,7 @@
 package com.yangbong.main.friends
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yangbong.core_ui.base.BaseViewModel
 import com.yangbong.domain.entity.ProfileInfo
@@ -18,6 +16,7 @@ import javax.inject.Inject
 class FriendsViewModel @Inject constructor(
     private val friendsRepository: FriendsRepository
 ) : BaseViewModel() {
+
     private val _friendListData = MutableLiveData<ArrayList<SearchInfo>>()
     val friendListData: LiveData<ArrayList<SearchInfo>> = _friendListData
     private val _userProfileData = MutableLiveData<ProfileInfo>()
@@ -26,6 +25,7 @@ class FriendsViewModel @Inject constructor(
     val userId: LiveData<Int> = _userId
     private val _userNickName = MutableLiveData<String>()
     val userNickname: LiveData<String> = _userNickName
+
 
     fun getUserProfileInfo(userId: Int) {
         viewModelScope.launch {

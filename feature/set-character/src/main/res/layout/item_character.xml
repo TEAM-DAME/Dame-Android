@@ -25,7 +25,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:setCharacterImage="@{characterData.characterId}"
+            app:setCharacterImage="@{characterData.minionId}"
             tools:src="@drawable/img_character_1" />
 
         <TextView
@@ -37,7 +37,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_character_image"
-            app:setCharacterNickname="@{characterData.characterId}"
+            app:setCharacterNickname="@{characterData.minionId}"
             tools:text="@string/character_name_1" />
 
     </LinearLayout>

@@ -18,6 +18,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":navigator"))
     implementation(project(":shared"))
+    implementation(project(":feature:set-character"))
     implementation(project(":feature:notification"))
 
     // Android Core
@@ -26,6 +27,10 @@ dependencies {
     implementation(AndroidXDependencies.constraintLayout)
     implementation(AndroidXDependencies.coroutines)
     implementation(AndroidXDependencies.recyclerView)
+
+    // Jetpack Navigation Component
+    implementation(AndroidXDependencies.navigationFragment)
+    implementation(AndroidXDependencies.navigationUI)
 
     // Material Design
     implementation(MaterialDesignDependencies.materialDesign)
