@@ -73,4 +73,9 @@ object RetrofitServiceModule {
     @Singleton
     fun provideGetDiaryService(@DameDameServer retrofit: Retrofit): GetDiaryService =
         retrofit.create(GetDiaryService::class.java)
+
+    @Provides
+    @Singleton
+    fun providePocketService(@DameDameServer retrofit: Retrofit): PocketService =
+        retrofit.create(PocketService::class.java)
 }
