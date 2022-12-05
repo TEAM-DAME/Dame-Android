@@ -2,6 +2,7 @@ package com.yangbong.main.my_profile
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -119,12 +120,14 @@ class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
 //        startActivity(intent)
     }
 
-    private fun onPocketClick(id: Int) {
-        navController.navigate(R.id.action_my_profile_navigation_to_pocket_navigation)
+    private fun onPocketClick(id: Int, nickname: String) {
+        val bundle = bundleOf("userId" to id, "nickname" to nickname)
+        navController.navigate(R.id.action_my_profile_navigation_to_pocket_navigation, bundle)
     }
 
-    private fun onFriendsClick(id: Int) {
-        navController.navigate(R.id.action_my_profile_navigation_to_friends_navigation)
+    private fun onFriendsClick(id: Int, nickname: String) {
+        val bundle = bundleOf("userId" to id, "nickname" to nickname)
+        navController.navigate(R.id.action_my_profile_navigation_to_friends_navigation, bundle)
     }
 
 }

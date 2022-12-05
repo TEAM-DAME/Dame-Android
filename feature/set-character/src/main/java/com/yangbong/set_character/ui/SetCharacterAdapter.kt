@@ -14,7 +14,7 @@ class SetCharacterAdapter(
 ) : ListAdapter<CharacterInfo, SetCharacterAdapter.CharacterInfoViewHolder>(
     ItemDiffCallback<CharacterInfo>(
         onContentsTheSame = { oldItem, newItem -> oldItem.hashCode() == newItem.hashCode() },
-        onItemsTheSame = { oldItem, newItem -> oldItem.characterId == newItem.characterId }
+        onItemsTheSame = { oldItem, newItem -> oldItem.minionId == newItem.minionId }
     )
 ) {
     private lateinit var inflater: LayoutInflater
@@ -37,7 +37,7 @@ class SetCharacterAdapter(
             onCharacterClick: (Int) -> Unit
         ) {
             binding.characterData = characterInfo
-            binding.root.setOnSingleClickListener { onCharacterClick(characterInfo.characterId) }
+            binding.root.setOnSingleClickListener { onCharacterClick(characterInfo.minionId) }
         }
     }
 }

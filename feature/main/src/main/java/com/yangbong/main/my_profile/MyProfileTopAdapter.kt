@@ -11,8 +11,8 @@ import com.yangbong.domain.entity.MyProfileUser
 import timber.log.Timber
 
 class MyProfileTopAdapter(
-    private val onPocketClick: (Int) -> Unit,
-    private val onFriendsClick: (Int) -> Unit
+    private val onPocketClick: (Int, String) -> Unit,
+    private val onFriendsClick: (Int, String) -> Unit
 ) : RecyclerView.Adapter<MyProfileTopAdapter.MyProfileTopViewHolder>() {
     var myProfileUser: MyProfileUser? = null
         set(value) {
@@ -37,8 +37,8 @@ class MyProfileTopAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(
             myProfileUser: MyProfileUser?,
-            onPocketClick: (Int) -> Unit,
-            onFriendsClick: (Int) -> Unit
+            onPocketClick: (Int, String) -> Unit,
+            onFriendsClick: (Int, String) -> Unit
         ) {
             myProfileUser?.let {
                 binding.userData = it
@@ -51,11 +51,11 @@ class MyProfileTopAdapter(
                 }
 
                 binding.pocketLayout.setOnSingleClickListener {
-                    onPocketClick(myProfileUser.userId)
+                    onPocketClick(myProfileUser.userId, myProfileUser.nickName)
                 }
 
                 binding.friendLayout.setOnSingleClickListener {
-                    onFriendsClick(myProfileUser.userId)
+                    onFriendsClick(myProfileUser.userId, myProfileUser.nickName)
                 }
             }
         }
