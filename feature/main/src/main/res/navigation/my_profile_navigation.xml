@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_profile_nav_graph"
+    app:startDestination="@id/my_profile_navigation">
+
+    <fragment
+        android:id="@+id/my_profile_navigation"
+        android:name="com.yangbong.main.my_profile.MyProfileFragment"
+        android:label="MyProfileFragment"
+        tools:layout="@layout/fragment_my_profile">
+        <action
+            android:id="@+id/action_my_profile_navigation_to_pocket_navigation"
+            app:destination="@id/pocket_navigation" />
+        <action
+            android:id="@+id/action_my_profile_navigation_to_friends_navigation"
+            app:destination="@id/friends_navigation" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pocket_navigation"
+        android:name="com.yangbong.main.pocket.PocketFragment"
+        android:label="PocketFragment"
+        tools:layout="@layout/fragment_pocket" />
+
+    <fragment
+        android:id="@+id/friends_navigation"
+        android:name="com.yangbong.main.friends.FriendsFragment"
+        android:label="FriendsFragment"
+        tools:layout="@layout/fragment_friends" />
+</navigation>
