@@ -2,6 +2,13 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="nickname"
+            type="String" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,19 +30,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:text="@string/special_character_at"
             android:textAppearance="@style/ProfileIdTextStyleBold"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@id/tv_nickname_label"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="\ufeff@" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_nickname_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:text="@{nickname}"
             android:textAppearance="@style/ProfileIdTextStyleBold"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
