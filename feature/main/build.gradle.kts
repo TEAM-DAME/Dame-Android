@@ -18,6 +18,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":navigator"))
     implementation(project(":shared"))
+    implementation(project(":feature:set-character"))
     implementation(project(":feature:notification"))
 
     // Android Core
