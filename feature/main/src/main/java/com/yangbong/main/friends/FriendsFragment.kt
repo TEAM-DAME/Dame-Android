@@ -4,62 +4,80 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.navigation.fragment.findNavController
 
 import com.yangbong.core_ui.base.BindingFragment
 import com.yangbong.core_ui.extension.setOnSingleClickListener
+import com.yangbong.core_ui.extension.shortToast
+import com.yangbong.core_ui.util.ItemDecorationUtil
 import com.yangbong.core_ui.util.ResolutionMetrics
+import com.yangbong.core_ui.util.UiState
 import com.yangbong.damedame.main.R
 import com.yangbong.damedame.main.databinding.FragmentFriendsBinding
 import com.yangbong.domain.entity.ProfileInfo
 import com.yangbong.domain.entity.SearchInfo
+import com.yangbong.main.my_profile.DiaryAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class FriendsFragment(private val resolutionMetrics: ResolutionMetrics) :
     BindingFragment<FragmentFriendsBinding>(R.layout.fragment_friends) {
-    private val friendViewModel: FriendsViewModel by activityViewModels()
-    lateinit var myFrAdapter:FriendsRecyclerViewAdapter
-    lateinit var clickedUserData: ProfileInfo
+    private val friendsViewModel: FriendsViewModel by activityViewModels()
+    private val friendsAdapter = FriendsAdapter(::onFriendClick)
 
-    private val kotlin.Number.dp get() = resolutionMetrics.toPixel(this.toInt())
+    private val Number.dp: Int
+        get() = resolutionMetrics.toPixel(this.toInt())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        friendViewModel.getUserNickName()
-        friendViewModel.getUserId()
-        init()
-
         binding.nickname = arguments?.getString("nickname")
+        friendsViewModel.getFriendList(arguments?.getInt("userId") ?: -1)
+        initView()
         initButtonClickListener()
+        observeFriendsList()
     }
 
     private fun initButtonClickListener() {
         binding.btnBack.setOnSingleClickListener {
             findNavController().navigateUp()
         }
-
     }
 
-
-    fun init(){
-        val friendData= arrayListOf<SearchInfo>()
-        binding.rvFriendsList.layoutManager=
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
-        myFrAdapter= FriendsRecyclerViewAdapter(friendData)
-        myFrAdapter.friendItemClickListener=object :FriendsRecyclerViewAdapter.OnItemClickListener{
-            override fun onItemClick(position: Int) {
-                friendViewModel.getUserProfileInfo(myFrAdapter.items[position].userId)
-                clickedUserData=friendViewModel.userProfileData.value!!
-                //clickedUserData 에 프로필뜨게할 유저정보 저장 .
-            }
+    private fun initView() {
+        binding.rvFriendsList.apply {
+            addItemDecoration(ItemDecorationUtil.VerticalPlaceItemDecoration(16.dp))
+            adapter = friendsAdapter
         }
-        binding.rvFriendsList.adapter=myFrAdapter
-        friendViewModel.getFriendList(friendViewModel.userId.value!!,1,20)
-        friendViewModel.friendListData.observe(viewLifecycleOwner, Observer{
-            myFrAdapter.items=friendViewModel.friendListData.value!!
-            (binding.rvFriendsList.adapter)?.notifyDataSetChanged()
-        })
+    }
+
+    private fun observeFriendsList() {
+        friendsViewModel.friendsUiState.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
+            when (it) {
+                is UiState.Success -> {
+                    friendsAdapter.submitList(it.data)
+                }
+                is UiState.Failure -> {
+                    it.msg?.let { msg ->
+                        requireContext().shortToast(msg)
+                    }
+                }
+                else -> {
+                    // TODO : 로딩 로직
+                }
+            }
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
+
+        friendsViewModel.isFriendEmpty.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
+            binding.isFriendEmpty = it
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun onFriendClick(userId: Int) {
+        // TODO("친구 프로필 넘어가는 로직")
     }
 }
