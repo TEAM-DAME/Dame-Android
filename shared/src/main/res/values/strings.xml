@@ -96,4 +96,12 @@
     <string name="dialog_cancel">취소</string>
     <string name="dialog_check">확인</string>
 
+    <!-- 비어있는 다이어리 목로 화면 -->
+    <string name="no_written_diary">작성한 다이어리가 없어요.</string>
+    <string name="how_about_write_diary">우측 하단 버튼을 눌러 다이어리를 작성해보세요!</string>
+
+    <!-- 비어있는 친구 목록 화면 -->
+    <string name="no_friends">팔로우하고 있는 친구가 없어요.</string>
+    <string name="how_about_add_friends">아이디 검색을 통해 새로운 친구를 찾아봐요!</string>
+
 </resources>
