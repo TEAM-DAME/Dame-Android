@@ -9,9 +9,25 @@ data class DiaryListResponse(
     val results: List<Diary>
 )
 
-data class Info(
-    @SerializedName("next")
-    val next: Int?,
-    @SerializedName("prev")
-    val prev: Int?
+data class Diary(
+    @SerializedName("diaryId")
+    val diaryId: Int,
+    @SerializedName("userId")
+    val userId: Int,
+    @SerializedName("title")
+    val title: String,
+    @SerializedName("content")
+    val content: String,
+    @SerializedName("positive")
+    val positive: Double,
+    @SerializedName("neutral")
+    val neutral: Double,
+    @SerializedName("negative")
+    val negative: Double,
+    @SerializedName("visibility")
+    val visibility: Int,
+    @SerializedName("diaryTime")
+    val diaryTime: String,
+    @SerializedName("minionId")
+    val minionId: Int
 )
