@@ -61,6 +61,7 @@ class MyProfileViewModel @Inject constructor(
             )
                 .onSuccess {
                     _diaryUiState.value = UiState.Success(it)
+                    _isDiaryEmpty.emit(it.isEmpty())
                     Timber.tag("okhttp").d("getDiaryInfo SUCCESS!")
                 }
                 .onFailure {
