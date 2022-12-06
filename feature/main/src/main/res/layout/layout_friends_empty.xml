@@ -8,7 +8,7 @@
         <import type="android.view.View" />
 
         <variable
-            name="isDiaryEmpty"
+            name="isFriendEmpty"
             type="Boolean" />
     </data>
 
@@ -22,9 +22,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/no_written_diary"
+            android:text="@string/no_friends"
             android:textColor="@color/gray_2"
-            android:visibility="@{isDiaryEmpty? View.VISIBLE : View.GONE}"
+            android:visibility="@{isFriendEmpty? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toTopOf="@id/tv_plz_plus_add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,9 +37,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="@string/how_about_write_diary"
+            android:text="@string/how_about_add_friends"
             android:textColor="@color/gray_2"
-            android:visibility="@{isDiaryEmpty? View.VISIBLE : View.GONE}"
+            android:visibility="@{isFriendEmpty? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tv_diary_empty"
             app:layout_constraintStart_toStartOf="@+id/tv_diary_empty"

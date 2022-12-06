@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="friendInfo"
+            type="com.yangbong.domain.entity.FriendProfileInfo" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -17,6 +24,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:setProfileImage="@{friendInfo.userProfileImageUrl}"
             tools:src="@drawable/img_profile_tmp_01" />
 
         <TextView
@@ -24,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:text="@{friendInfo.userNickname}"
             android:textAppearance="@style/CharacterTextStyle"
             app:layout_constraintBottom_toBottomOf="@id/iv_friend_profile_image"
             app:layout_constraintStart_toEndOf="@id/iv_friend_profile_image"

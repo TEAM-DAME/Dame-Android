@@ -25,7 +25,6 @@ class DameDameFragmentFactory(activity: AppCompatActivity) : FragmentFactory() {
             HomeFragment::class.java.name -> HomeFragment(resolutionMetrics)
             SearchFragment::class.java.name -> SearchFragment(resolutionMetrics)
             MyProfileFragment::class.java.name -> MyProfileFragment(resolutionMetrics)
-            PocketFragment::class.java.name -> PocketFragment(resolutionMetrics)
             FriendsFragment::class.java.name -> FriendsFragment(resolutionMetrics)
             else -> super.instantiate(classLoader, className)
         }

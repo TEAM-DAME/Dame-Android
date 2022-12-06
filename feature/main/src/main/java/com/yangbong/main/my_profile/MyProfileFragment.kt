@@ -20,12 +20,11 @@ import com.yangbong.domain.entity.MyProfileUser
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import timber.log.Timber
 
 @AndroidEntryPoint
 class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
     BindingFragment<FragmentMyProfileBinding>(R.layout.fragment_my_profile) {
-    private val viewModel: MyProfileViewModel by activityViewModels()
+    private val myProfileViewModel: MyProfileViewModel by activityViewModels()
     private val myProfileTopAdapter = MyProfileTopAdapter(::onPocketClick, ::onFriendsClick)
     private val diaryAdapter = DiaryAdapter(::onLockClick, ::onDiaryClick)
     private val concatAdapter = ConcatAdapter(myProfileTopAdapter, diaryAdapter)
@@ -40,9 +39,8 @@ class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
         initView()
         observeProfileInfo()
         observeDiaryList()
-        viewModel.getMyProfileInfo()
-        viewModel.getDiaryInfo()
-
+        myProfileViewModel.getMyProfileInfo()
+        myProfileViewModel.getDiaryInfo()
     }
 
     private fun initNavController() {
@@ -50,7 +48,7 @@ class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
     }
 
     private fun observeProfileInfo() {
-        viewModel.myProfileUiState.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
+        myProfileViewModel.myProfileUiState.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
             when (it) {
                 is UiState.Success -> {
                     myProfileTopAdapter.myProfileUser = MyProfileUser(
@@ -72,14 +70,10 @@ class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
                 }
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
-
-        viewModel.isDiaryEmpty.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
-            binding.isDiaryEmpty = it
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     private fun observeDiaryList() {
-        viewModel.diaryUiState.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
+        myProfileViewModel.diaryUiState.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
             when (it) {
                 is UiState.Success -> {
                     diaryAdapter.submitList(it.data)
@@ -93,6 +87,10 @@ class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
                     // TODO : 로딩 로직
                 }
             }
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
+
+        myProfileViewModel.isDiaryEmpty.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
+            binding.isDiaryEmpty = it
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 

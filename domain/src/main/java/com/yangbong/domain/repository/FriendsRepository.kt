@@ -1,11 +1,8 @@
 package com.yangbong.domain.repository
 
-import com.yangbong.domain.entity.ProfileInfo
-import com.yangbong.domain.entity.response.DomainFriendListResponse
+import com.yangbong.domain.entity.FriendProfileInfo
 
 interface FriendsRepository {
-    suspend fun getUserProfileInfo(userId: Int): Result<ProfileInfo>
-    suspend fun getFriendList(userId: Int, page: Int, size: Int): Result<DomainFriendListResponse>
-    fun getUserId(): Int
-    fun getUserNickName(): String
+
+    suspend fun getFriendList(userId: Int, page: Int, size: Int): Result<List<FriendProfileInfo>>
 }

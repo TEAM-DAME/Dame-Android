@@ -19,23 +19,21 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
-class PocketFragment(private val resolutionMetrics: ResolutionMetrics) :
+class PocketFragment :
     BindingFragment<FragmentPocketBinding>(R.layout.fragment_pocket) {
-    private val viewModel: PocketViewModel by activityViewModels()
+    private val pocketViewModel: PocketViewModel by activityViewModels()
     private lateinit var characterAdapter: SetCharacterAdapter
-
-    private val Number.dp get() = resolutionMetrics.toPixel(this.toInt())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.nickname = arguments?.getString("nickname")
-        viewModel.getCharacterList(arguments?.getInt("userId") ?: -1)
+        pocketViewModel.getCharacterList(arguments?.getInt("userId") ?: -1)
         observeCharacterList()
         initButtonClickListener()
     }
 
     private fun observeCharacterList() {
-        viewModel.pocketUiState.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
+        pocketViewModel.pocketUiState.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
             when (it) {
                 is UiState.Success -> {
                     characterAdapter.submitList(it.data)

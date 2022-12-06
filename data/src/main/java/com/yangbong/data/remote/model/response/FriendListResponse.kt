@@ -3,13 +3,17 @@ package com.yangbong.data.remote.model.response
 import com.google.gson.annotations.SerializedName
 
 data class FriendListResponse(
-    @SerializedName("status")
-    val status: Int,
-    @SerializedName("message")
-    val message: String,
     @SerializedName("info")
-    val info: Page,
+    val info: Info,
     @SerializedName("results")
-    val results: ArrayList<SearchData>
+    val results: List<Friend>
+)
 
+data class Friend(
+    @SerializedName("userId")
+    val userId: Int?,
+    @SerializedName("userProfileImageUrl")
+    val userProfileImageUrl: String?,
+    @SerializedName("userNickname")
+    val userNickname: String?
 )

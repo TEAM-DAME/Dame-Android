@@ -1,13 +1,18 @@
 package com.yangbong.main.friends
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.yangbong.core_ui.base.BaseViewModel
-import com.yangbong.domain.entity.ProfileInfo
-import com.yangbong.domain.entity.SearchInfo
+import com.yangbong.core_ui.util.EventFlow
+import com.yangbong.core_ui.util.MutableEventFlow
+import com.yangbong.core_ui.util.UiState
+import com.yangbong.core_ui.util.asEventFlow
+import com.yangbong.domain.entity.CharacterInfo
+import com.yangbong.domain.entity.FriendProfileInfo
 import com.yangbong.domain.repository.FriendsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -17,44 +22,31 @@ class FriendsViewModel @Inject constructor(
     private val friendsRepository: FriendsRepository
 ) : BaseViewModel() {
 
-    private val _friendListData = MutableLiveData<ArrayList<SearchInfo>>()
-    val friendListData: LiveData<ArrayList<SearchInfo>> = _friendListData
-    private val _userProfileData = MutableLiveData<ProfileInfo>()
-    val userProfileData: LiveData<ProfileInfo> = _userProfileData
-    private val _userId = MutableLiveData<Int>()
-    val userId: LiveData<Int> = _userId
-    private val _userNickName = MutableLiveData<String>()
-    val userNickname: LiveData<String> = _userNickName
+    private val _isFriendEmpty = MutableEventFlow<Boolean>()
+    val isFriendEmpty: EventFlow<Boolean>
+        get() = _isFriendEmpty.asEventFlow()
 
+    private val _friendsUiState: MutableStateFlow<UiState<List<FriendProfileInfo>>> =
+        MutableStateFlow(UiState.Loading)
+    val friendsUiState: StateFlow<UiState<List<FriendProfileInfo>>>
+        get() = _friendsUiState.asStateFlow()
 
-    fun getUserProfileInfo(userId: Int) {
+    fun getFriendList(userId: Int) {
         viewModelScope.launch {
-            friendsRepository.getUserProfileInfo(userId)
+            _friendsUiState.value = UiState.Loading
+            friendsRepository.getFriendList(
+                userId = userId,
+                page = 1,
+                size = 20
+            )
                 .onSuccess {
-                    _userProfileData.postValue(it)
+                    _friendsUiState.value = UiState.Success(it)
+                    _isFriendEmpty.emit(it.isEmpty())
+                    Timber.tag("okhttp").d("getFriendList SUCCESS!")
                 }
                 .onFailure {
-                    Timber.d(it.message.toString())
-                }
-        }
-    }
-
-    fun getUserId() {
-        _userId.postValue(friendsRepository.getUserId())
-    }
-
-    fun getUserNickName() {
-        _userNickName.postValue(friendsRepository.getUserNickName())
-    }
-
-    fun getFriendList(userId: Int, page: Int, size: Int) {
-        viewModelScope.launch {
-            friendsRepository.getFriendList(userId, page, size)
-                .onSuccess {
-                    _friendListData.postValue(it.results)
-                }
-                .onFailure {
-                    Timber.d(it.message.toString())
+                    _friendsUiState.value = UiState.Failure(it.message)
+                    Timber.tag("okhttp").d("getFriendList Failure!")
                 }
         }
     }
