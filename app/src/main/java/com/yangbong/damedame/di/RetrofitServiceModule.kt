@@ -62,11 +62,12 @@ object RetrofitServiceModule {
 
     @Provides
     @Singleton
-    fun provideSearchService(@DameDameServer retrofit: Retrofit):SearchService=
+    fun provideSearchService(@DameDameServer retrofit: Retrofit): SearchService =
         retrofit.create(SearchService::class.java)
+
     @Provides
     @Singleton
-    fun provideUserProfileService(@DameDameServer retrofit: Retrofit):UserProfileService=
+    fun provideUserProfileService(@DameDameServer retrofit: Retrofit): UserProfileService =
         retrofit.create(UserProfileService::class.java)
 
     @Provides
@@ -76,12 +77,11 @@ object RetrofitServiceModule {
 
     @Provides
     @Singleton
-    fun provideFriendListService(@DameDameServer retrofit: Retrofit): FriendListService =
-        retrofit.create(FriendListService::class.java)
-    
-    @Provides
-    @Singleton
     fun providePocketService(@DameDameServer retrofit: Retrofit): PocketService =
         retrofit.create(PocketService::class.java)
 
+    @Provides
+    @Singleton
+    fun provideFriendsService(@DameDameServer retrofit: Retrofit): FriendsService =
+        retrofit.create(FriendsService::class.java)
 }
