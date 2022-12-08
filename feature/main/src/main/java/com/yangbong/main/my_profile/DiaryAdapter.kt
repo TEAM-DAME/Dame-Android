@@ -14,7 +14,7 @@ import com.yangbong.domain.entity.DiaryInfo
 
 class DiaryAdapter(
     private val onLockCLick: (Boolean, Int) -> Unit,
-    private val onDiaryClick: (Int) -> Unit
+    private val onDiaryClick: (Int, Int) -> Unit
 ) : ListAdapter<DiaryInfo, DiaryAdapter.DiaryViewHolder>(
     ItemDiffCallback<DiaryInfo>(
         onContentsTheSame = { oldItem, newItem -> oldItem == newItem },
@@ -53,13 +53,15 @@ class DiaryAdapter(
         fun onBind(
             diaryInfo: DiaryInfo,
             onLockCLick: (Boolean, Int) -> Unit,
-            onDiaryClick: (Int) -> Unit
+            onDiaryClick: (Int, Int) -> Unit
         ) {
             binding.diaryData = diaryInfo
             binding.btnLock.setOnSingleClickListener {
                 onLockCLick(mapToBoolean(diaryInfo.visibility), diaryInfo.diaryId)
             }
-            binding.root.setOnSingleClickListener { onDiaryClick(diaryInfo.diaryId) }
+            binding.root.setOnSingleClickListener {
+                onDiaryClick(diaryInfo.userId, diaryInfo.diaryId)
+            }
         }
 
         private fun mapToBoolean(visibility: Int): Boolean {
