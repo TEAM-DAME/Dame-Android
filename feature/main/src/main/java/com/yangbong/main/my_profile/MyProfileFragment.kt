@@ -1,5 +1,6 @@
 package com.yangbong.main.my_profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
@@ -17,6 +18,9 @@ import com.yangbong.core_ui.util.UiState
 import com.yangbong.damedame.main.R
 import com.yangbong.damedame.main.databinding.FragmentMyProfileBinding
 import com.yangbong.domain.entity.MyProfileUser
+import com.yangbong.main.diary.DiaryDetailActivity
+import com.yangbong.main.diary.DiaryDetailActivity.Companion.DIARY_ID
+import com.yangbong.main.diary.DiaryDetailActivity.Companion.USER_ID
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -111,11 +115,12 @@ class MyProfileFragment(private val resolutionMetrics: ResolutionMetrics) :
 //        )
     }
 
-    private fun onDiaryClick(id: Int) {
-//        val intent = Intent(activity, DiaryDetailActivity::class.java).apply {
-//            putExtra(DIARY_ID, id)
-//        }
-//        startActivity(intent)
+    private fun onDiaryClick(userId: Int, diaryId: Int) {
+        val intent = Intent(activity, DiaryDetailActivity::class.java).apply {
+            putExtra(USER_ID, userId)
+            putExtra(DIARY_ID, diaryId)
+        }
+        startActivity(intent)
     }
 
     private fun onPocketClick(id: Int, nickname: String) {
