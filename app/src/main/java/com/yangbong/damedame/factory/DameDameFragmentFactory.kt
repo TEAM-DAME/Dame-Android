@@ -8,7 +8,6 @@ import com.yangbong.core_ui.util.ResolutionMetrics
 import com.yangbong.main.friends.FriendsFragment
 import com.yangbong.main.home.HomeFragment
 import com.yangbong.main.my_profile.MyProfileFragment
-import com.yangbong.main.pocket.PocketFragment
 import com.yangbong.main.search.SearchFragment
 import dagger.hilt.android.EntryPointAccessors
 

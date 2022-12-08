@@ -84,4 +84,9 @@ object RetrofitServiceModule {
     @Singleton
     fun provideFriendsService(@DameDameServer retrofit: Retrofit): FriendsService =
         retrofit.create(FriendsService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideDiaryContentService(@DameDameServer retrofit: Retrofit): DiaryContentService =
+        retrofit.create(DiaryContentService::class.java)
 }
